@@ -1,5 +1,5 @@
 FROM nginx:1.27-alpine
-ARG API_MODE=real
+ARG API_MODE=mock
 ARG API_BASE_URL=/api/v1
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html /usr/share/nginx/html/index.html

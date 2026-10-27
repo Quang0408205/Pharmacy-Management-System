@@ -1,7 +1,19 @@
 services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        API_MODE: ${API_MODE:-mock}
+        API_BASE_URL: ${API_BASE_URL:-/api/v1}
+    container_name: pharmacy-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-8088}:80"
+
   mongodb:
     image: mongo:7
     container_name: pharmacy-mongodb
+    profiles: ["full"]
     restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:-pharmacy}
@@ -22,6 +34,7 @@ services:
     build:
       context: ./backend/demo
     container_name: pharmacy-backend
+    profiles: ["full"]
     restart: unless-stopped
     environment:
       SPRING_MONGODB_URI: mongodb://${MONGO_ROOT_USERNAME:-pharmacy}:${MONGO_ROOT_PASSWORD:-pharmacy_secret}@mongodb:27017/${MONGO_DATABASE:-pharmacy}?authSource=admin
@@ -32,19 +45,6 @@ services:
     depends_on:
       mongodb:
         condition: service_healthy
-
-  frontend:
-    build:
-      context: ./frontend
-      args:
-        API_MODE: ${API_MODE:-real}
-        API_BASE_URL: ${API_BASE_URL:-/api/v1}
-    container_name: pharmacy-frontend
-    restart: unless-stopped
-    ports:
-      - "${FRONTEND_PORT:-3000}:80"
-    depends_on:
-      - backend
 
 volumes:
   mongo-data:
