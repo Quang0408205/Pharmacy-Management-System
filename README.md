@@ -55,20 +55,6 @@ docker compose down -v
 docker compose up -d --build
 ```
 
-## Tài khoản
-
-Mật khẩu của mọi tài khoản ban đầu là giá trị `SEED_DEFAULT_PASSWORD` trong `.env` (mặc định `Pharmacy@123`). Hãy đổi trước khi triển khai thật.
-
-| Vai trò | Tên đăng nhập | Họ tên |
-| --- | --- | --- |
-| Quản trị viên | `admin` | Quang |
-| Nhân viên bán thuốc | `thulh` | Lê Hoài Thu |
-| Nhân viên bán thuốc | `minhtn` | Trần Ngọc Minh |
-| Nhân viên kho | `hungpv` | Phạm Văn Hùng |
-| Nhân viên kho | `anhnt` | Nguyễn Thị Anh |
-
-Không có đăng ký công khai. Admin tạo nhân viên mới và nhận một link kích hoạt hiển thị một lần (hiệu lực 72 giờ) để gửi cho nhân viên đặt mật khẩu. Quên mật khẩu thì liên hệ Admin để nhận link đặt lại (hiệu lực 30 phút). Đăng nhập sai 5 lần sẽ khóa tài khoản 15 phút.
-
 ## Quy trình nghiệp vụ chính
 
 - **Nhập kho**: Kho lưu nháp phiếu nhập, xác nhận thì hệ thống tạo lô, ghi biến động và cập nhật giá nhập tham khảo. Phiếu đã xác nhận không sửa được.
