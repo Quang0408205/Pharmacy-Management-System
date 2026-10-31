@@ -14,4 +14,11 @@ export const medicineService = {
   create: (payload) => api.post('/medicines', payload),
   update: (id, payload) => api.put(`/medicines/${id}`, payload),
   setStatus: (id, status) => api.patch(`/medicines/${id}/status`, { status }),
+  manufacturers: (q) => api.get('/medicines/manufacturers', { q, limit: 200 }),
+  uploadImage: (id, file) => {
+    const form = new FormData();
+    form.append('image', file);
+    return api.post(`/medicines/${id}/image`, form);
+  },
+  removeImage: (id) => api.delete(`/medicines/${id}/image`),
 };

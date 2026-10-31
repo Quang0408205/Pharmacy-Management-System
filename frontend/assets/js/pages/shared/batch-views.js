@@ -1,14 +1,12 @@
 import { html } from '../../core/html.js';
 import { icon } from '../../core/icons.js';
-import { getQuery } from '../../core/dom.js';
+import { getQuery, pageUrl } from '../../core/dom.js';
 import { daysUntil, formatCurrency, formatDate, formatDateTime, formatNumber } from '../../core/format.js';
 import { createDataTable } from '../../components/data-table.js';
-import { confirmDialog, openDrawer } from '../../components/overlay.js';
-import { openFormDialog } from '../../components/form-modal.js';
+import { openDrawer } from '../../components/overlay.js';
 import { detailList } from '../../components/blocks.js';
 import { statusBadge, statusOptions } from '../../components/badge.js';
 import { skeletonTable } from '../../components/states.js';
-import { toast } from '../../components/toast.js';
 import { batchService } from '../../services/inventory-service.js';
 import { errorMessage } from '../../core/errors.js';
 
@@ -22,10 +20,10 @@ export const expiryText = (expiryDate) => {
 const expiryCell = (batch) => html`<div><strong>${formatDate(batch.expiryDate)}</strong>
   <div class="text-small ${batch.status === 'EXPIRED' ? 'text-danger' : 'text-secondary'}">${expiryText(batch.expiryDate)}</div></div>`;
 
-export const openBatchDrawer = async (id, { canWriteOff = false, onChanged = () => {} }) => {
+export const openBatchDrawer = async (id, { canDispose = false }) => {
   const drawer = openDrawer({ title: 'Chi tiết lô thuốc', content: skeletonTable(5) });
   try {
-    let batch = await batchService.get(id);
+    const batch = await batchService.get(id);
     const draw = () => {
       drawer.panel.querySelector('h2').textContent = `Lô ${batch.code}`;
       drawer.setBody(html`<div class="stack">
@@ -53,45 +51,14 @@ export const openBatchDrawer = async (id, { canWriteOff = false, onChanged = () 
             : html`<p class="text-secondary">Chưa có biến động.</p>`
         }
       </div>`);
-      const writeOffAllowed = canWriteOff && batch.status === 'EXPIRED' && batch.remainingQty > 0;
+      const disposalAllowed = canDispose && batch.remainingQty > 0 && batch.status !== 'QUARANTINED';
       drawer.setFooter(
-        writeOffAllowed
-          ? html`<button type="button" class="btn btn--secondary" data-dismiss="cancel">Đóng</button><button type="button" class="btn btn--danger" data-write-off>${icon('trash', 'icon--sm')} Hủy lô hết hạn</button>`
+        disposalAllowed
+          ? html`<button type="button" class="btn btn--secondary" data-dismiss="cancel">Đóng</button><a class="btn btn--danger" href="${pageUrl(`pages/warehouse/disposals.html?batchId=${batch.id}`)}">${icon('trash', 'icon--sm')} Lập phiếu xuất hủy</a>`
           : html`<button type="button" class="btn btn--secondary" data-dismiss="cancel">Đóng</button>`,
       );
     };
     draw();
-    drawer.footer.addEventListener('click', async (event) => {
-      if (!(event.target instanceof Element) || !event.target.closest('[data-write-off]')) return;
-      const confirmed = await confirmDialog({
-        title: 'Hủy lô hết hạn?',
-        message: `Toàn bộ ${formatNumber(batch.remainingQty)} ${batch.unit} của lô ${batch.code} sẽ được ghi nhận xuất hủy. Thao tác không thể hoàn tác.`,
-        confirmText: 'Tiếp tục',
-        tone: 'danger',
-      });
-      if (!confirmed) return;
-      const result = await openFormDialog({
-        title: 'Lý do hủy lô',
-        fields: [
-          {
-            name: 'reason',
-            label: 'Lý do hủy',
-            type: 'textarea',
-            required: true,
-            full: true,
-            help: 'Ví dụ: Hết hạn sử dụng, tiêu hủy theo biên bản.',
-          },
-        ],
-        submitText: 'Xác nhận hủy',
-        onSubmit: async ({ reason }) => batchService.writeOff(batch.id, reason),
-      }).closed;
-      if (result && result !== true) {
-        toast.success('Đã hủy lô hết hạn', batch.code);
-        batch = await batchService.get(batch.id);
-        draw();
-        onChanged();
-      }
-    });
   } catch (error) {
     drawer.setBody(html`<div class="alert alert--danger" role="alert">${errorMessage(error)}</div>`);
   }
@@ -99,7 +66,7 @@ export const openBatchDrawer = async (id, { canWriteOff = false, onChanged = () 
 
 export const mountBatchTable = ({
   container,
-  canWriteOff = false,
+  canDispose = false,
   baseParams = {},
   showStatusFilter = true,
   onLoaded,
@@ -157,7 +124,7 @@ export const mountBatchTable = ({
     emptyTitle: 'Không có lô nào',
     emptyIcon: 'archive',
     onLoaded,
-    onRowClick: (row) => openBatchDrawer(row.id, { canWriteOff, onChanged: () => table.reload() }),
+    onRowClick: (row) => openBatchDrawer(row.id, { canDispose }),
   });
   table.reload();
   return table;

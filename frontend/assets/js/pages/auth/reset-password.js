@@ -118,13 +118,13 @@ const showInvalid = (message) => {
   card.innerHTML = stateView({
     title: 'Liên kết không hợp lệ hoặc đã hết hạn',
     message,
-    actions: html`<a class="btn btn--primary btn--block" href="${pageUrl('pages/auth/forgot-password.html')}">Yêu cầu liên kết mới</a>
+    actions: html`<a class="btn btn--primary btn--block" href="${pageUrl('pages/auth/forgot-password.html')}">Cần liên kết mới?</a>
       <a class="btn btn--ghost btn--block" href="${pageUrl('pages/auth/login.html')}">Quay lại đăng nhập</a>`,
   }).value;
 };
 
 if (!token) {
-  showInvalid('Thiếu mã xác thực. Vui lòng mở lại liên kết trong email hoặc yêu cầu liên kết mới.');
+  showInvalid('Thiếu mã xác thực. Vui lòng mở lại liên kết do quản trị viên gửi.');
 } else {
   authService
     .checkResetToken(token)

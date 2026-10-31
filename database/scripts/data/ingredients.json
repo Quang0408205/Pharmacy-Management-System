@@ -1,0 +1,1204 @@
+[
+  {
+    "categoryCode": "GDHS",
+    "ingredient": "Paracetamol",
+    "strengths": [
+      "500mg",
+      "650mg",
+      "150mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 18000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "GDHS",
+    "ingredient": "Ibuprofen",
+    "strengths": [
+      "200mg",
+      "400mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 24000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "GDHS",
+    "ingredient": "Aspirin",
+    "strengths": [
+      "81mg",
+      "500mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 21000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "GDHS",
+    "ingredient": "Diclofenac",
+    "strengths": [
+      "50mg",
+      "75mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 32000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "GDHS",
+    "ingredient": "Tramadol",
+    "strengths": [
+      "50mg",
+      "100mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 58000,
+    "prescriptionType": "CONTROLLED"
+  },
+  {
+    "categoryCode": "GDHS",
+    "ingredient": "Naproxen",
+    "strengths": [
+      "250mg",
+      "500mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 41000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "GDHS",
+    "ingredient": "Paracetamol + Codein",
+    "strengths": [
+      "500mg/30mg"
+    ],
+    "dosageForm": "Viên nén sủi",
+    "unit": "Hộp",
+    "basePrice": 52000,
+    "prescriptionType": "CONTROLLED"
+  },
+  {
+    "categoryCode": "KSIN",
+    "ingredient": "Amoxicillin",
+    "strengths": [
+      "250mg",
+      "500mg",
+      "875mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 45000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "KSIN",
+    "ingredient": "Azithromycin",
+    "strengths": [
+      "250mg",
+      "500mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 78000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "KSIN",
+    "ingredient": "Cefuroxim",
+    "strengths": [
+      "250mg",
+      "500mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 96000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "KSIN",
+    "ingredient": "Ciprofloxacin",
+    "strengths": [
+      "250mg",
+      "500mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 54000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "KSIN",
+    "ingredient": "Cefixim",
+    "strengths": [
+      "100mg",
+      "200mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 88000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "KSIN",
+    "ingredient": "Metronidazol",
+    "strengths": [
+      "250mg",
+      "500mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 19000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "KSIN",
+    "ingredient": "Doxycyclin",
+    "strengths": [
+      "100mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 27000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TMHA",
+    "ingredient": "Amlodipin",
+    "strengths": [
+      "5mg",
+      "10mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 36000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TMHA",
+    "ingredient": "Losartan",
+    "strengths": [
+      "50mg",
+      "100mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 62000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TMHA",
+    "ingredient": "Atorvastatin",
+    "strengths": [
+      "10mg",
+      "20mg",
+      "40mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 85000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TMHA",
+    "ingredient": "Bisoprolol",
+    "strengths": [
+      "2.5mg",
+      "5mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 49000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TMHA",
+    "ingredient": "Furosemid",
+    "strengths": [
+      "40mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 15000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TMHA",
+    "ingredient": "Clopidogrel",
+    "strengths": [
+      "75mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 112000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TMHA",
+    "ingredient": "Rosuvastatin",
+    "strengths": [
+      "5mg",
+      "10mg",
+      "20mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 98000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TIEH",
+    "ingredient": "Omeprazol",
+    "strengths": [
+      "20mg",
+      "40mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 38000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TIEH",
+    "ingredient": "Esomeprazol",
+    "strengths": [
+      "20mg",
+      "40mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 92000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TIEH",
+    "ingredient": "Domperidon",
+    "strengths": [
+      "10mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 17000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TIEH",
+    "ingredient": "Loperamid",
+    "strengths": [
+      "2mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 14000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TIEH",
+    "ingredient": "Smecta (Diosmectit)",
+    "strengths": [
+      "3g"
+    ],
+    "dosageForm": "Bột pha hỗn dịch",
+    "unit": "Hộp",
+    "basePrice": 36000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TIEH",
+    "ingredient": "Racecadotril",
+    "strengths": [
+      "10mg",
+      "30mg"
+    ],
+    "dosageForm": "Bột pha hỗn dịch",
+    "unit": "Hộp",
+    "basePrice": 64000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TIEH",
+    "ingredient": "Lactulose",
+    "strengths": [
+      "10g/15ml"
+    ],
+    "dosageForm": "Dung dịch uống",
+    "unit": "Chai",
+    "basePrice": 72000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "HOHA",
+    "ingredient": "Acetylcystein",
+    "strengths": [
+      "200mg",
+      "600mg"
+    ],
+    "dosageForm": "Thuốc cốm",
+    "unit": "Hộp",
+    "basePrice": 33000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "HOHA",
+    "ingredient": "Bromhexin",
+    "strengths": [
+      "8mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 12000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "HOHA",
+    "ingredient": "Dextromethorphan",
+    "strengths": [
+      "15mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 16000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "HOHA",
+    "ingredient": "Salbutamol",
+    "strengths": [
+      "2mg",
+      "4mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 11000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "HOHA",
+    "ingredient": "Ambroxol",
+    "strengths": [
+      "30mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 22000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "HOHA",
+    "ingredient": "Siro ho Prospan",
+    "strengths": [
+      "100ml"
+    ],
+    "dosageForm": "Siro",
+    "unit": "Chai",
+    "basePrice": 78000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "HOHA",
+    "ingredient": "Montelukast",
+    "strengths": [
+      "4mg",
+      "10mg"
+    ],
+    "dosageForm": "Viên nén nhai",
+    "unit": "Hộp",
+    "basePrice": 105000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "DIUN",
+    "ingredient": "Loratadin",
+    "strengths": [
+      "10mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 13000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DIUN",
+    "ingredient": "Cetirizin",
+    "strengths": [
+      "10mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 18000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DIUN",
+    "ingredient": "Fexofenadin",
+    "strengths": [
+      "60mg",
+      "120mg",
+      "180mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 56000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DIUN",
+    "ingredient": "Desloratadin",
+    "strengths": [
+      "5mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 47000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DIUN",
+    "ingredient": "Chlorpheniramin",
+    "strengths": [
+      "4mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Lọ",
+    "basePrice": 9000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DIUN",
+    "ingredient": "Levocetirizin",
+    "strengths": [
+      "5mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 42000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DIUN",
+    "ingredient": "Prednisolon",
+    "strengths": [
+      "5mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Lọ",
+    "basePrice": 23000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "VITA",
+    "ingredient": "Vitamin C",
+    "strengths": [
+      "500mg",
+      "1000mg"
+    ],
+    "dosageForm": "Viên sủi",
+    "unit": "Tuýp",
+    "basePrice": 42000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "VITA",
+    "ingredient": "Vitamin B1 + B6 + B12",
+    "strengths": [
+      "250mg"
+    ],
+    "dosageForm": "Viên nén bao đường",
+    "unit": "Hộp",
+    "basePrice": 29000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "VITA",
+    "ingredient": "Vitamin D3",
+    "strengths": [
+      "1000IU",
+      "2000IU"
+    ],
+    "dosageForm": "Viên nang mềm",
+    "unit": "Hộp",
+    "basePrice": 95000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "VITA",
+    "ingredient": "Canxi + D3",
+    "strengths": [
+      "600mg/400IU"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 86000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "VITA",
+    "ingredient": "Sắt + Acid folic",
+    "strengths": [
+      "60mg/0.4mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 68000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "VITA",
+    "ingredient": "Kẽm gluconat",
+    "strengths": [
+      "10mg",
+      "70mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 37000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "VITA",
+    "ingredient": "Multivitamin",
+    "strengths": [
+      "Daily"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Lọ",
+    "basePrice": 165000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TDUO",
+    "ingredient": "Metformin",
+    "strengths": [
+      "500mg",
+      "850mg",
+      "1000mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 28000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TDUO",
+    "ingredient": "Gliclazid",
+    "strengths": [
+      "30mg",
+      "60mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 52000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TDUO",
+    "ingredient": "Glimepirid",
+    "strengths": [
+      "2mg",
+      "4mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 44000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TDUO",
+    "ingredient": "Levothyroxin",
+    "strengths": [
+      "50mcg",
+      "100mcg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 61000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TDUO",
+    "ingredient": "Insulin Mixtard",
+    "strengths": [
+      "100IU/ml"
+    ],
+    "dosageForm": "Dung dịch tiêm",
+    "unit": "Lọ",
+    "basePrice": 148000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TDUO",
+    "ingredient": "Sitagliptin",
+    "strengths": [
+      "50mg",
+      "100mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 310000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TDUO",
+    "ingredient": "Pioglitazon",
+    "strengths": [
+      "15mg",
+      "30mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 76000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TKAT",
+    "ingredient": "Diazepam",
+    "strengths": [
+      "5mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 25000,
+    "prescriptionType": "CONTROLLED"
+  },
+  {
+    "categoryCode": "TKAT",
+    "ingredient": "Alprazolam",
+    "strengths": [
+      "0.25mg",
+      "0.5mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 34000,
+    "prescriptionType": "CONTROLLED"
+  },
+  {
+    "categoryCode": "TKAT",
+    "ingredient": "Gabapentin",
+    "strengths": [
+      "300mg",
+      "400mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 89000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TKAT",
+    "ingredient": "Piracetam",
+    "strengths": [
+      "400mg",
+      "800mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 31000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "TKAT",
+    "ingredient": "Sertralin",
+    "strengths": [
+      "50mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 108000,
+    "prescriptionType": "CONTROLLED"
+  },
+  {
+    "categoryCode": "TKAT",
+    "ingredient": "Ginkgo biloba",
+    "strengths": [
+      "120mg"
+    ],
+    "dosageForm": "Viên nang mềm",
+    "unit": "Hộp",
+    "basePrice": 74000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TKAT",
+    "ingredient": "Cinnarizin",
+    "strengths": [
+      "25mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Lọ",
+    "basePrice": 18000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "CXKH",
+    "ingredient": "Glucosamin",
+    "strengths": [
+      "500mg",
+      "1500mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 120000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "CXKH",
+    "ingredient": "Meloxicam",
+    "strengths": [
+      "7.5mg",
+      "15mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 26000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "CXKH",
+    "ingredient": "Etoricoxib",
+    "strengths": [
+      "60mg",
+      "90mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Hộp",
+    "basePrice": 112000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "CXKH",
+    "ingredient": "Methocarbamol",
+    "strengths": [
+      "500mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 43000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "CXKH",
+    "ingredient": "Gel Voltaren Emulgel",
+    "strengths": [
+      "20g"
+    ],
+    "dosageForm": "Gel bôi ngoài da",
+    "unit": "Tuýp",
+    "basePrice": 64000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "CXKH",
+    "ingredient": "Calcitriol",
+    "strengths": [
+      "0.25mcg"
+    ],
+    "dosageForm": "Viên nang mềm",
+    "unit": "Hộp",
+    "basePrice": 82000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "CXKH",
+    "ingredient": "Alendronat",
+    "strengths": [
+      "70mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 132000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "DALI",
+    "ingredient": "Clotrimazol",
+    "strengths": [
+      "1%"
+    ],
+    "dosageForm": "Kem bôi",
+    "unit": "Tuýp",
+    "basePrice": 22000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DALI",
+    "ingredient": "Betamethason",
+    "strengths": [
+      "0.05%"
+    ],
+    "dosageForm": "Kem bôi",
+    "unit": "Tuýp",
+    "basePrice": 28000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "DALI",
+    "ingredient": "Mupirocin",
+    "strengths": [
+      "2%"
+    ],
+    "dosageForm": "Thuốc mỡ",
+    "unit": "Tuýp",
+    "basePrice": 56000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "DALI",
+    "ingredient": "Acyclovir",
+    "strengths": [
+      "5%",
+      "400mg"
+    ],
+    "dosageForm": "Kem bôi",
+    "unit": "Tuýp",
+    "basePrice": 24000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "DALI",
+    "ingredient": "Ketoconazol",
+    "strengths": [
+      "2%"
+    ],
+    "dosageForm": "Dầu gội",
+    "unit": "Chai",
+    "basePrice": 88000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DALI",
+    "ingredient": "Adapalen",
+    "strengths": [
+      "0.1%"
+    ],
+    "dosageForm": "Gel bôi",
+    "unit": "Tuýp",
+    "basePrice": 98000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "DALI",
+    "ingredient": "Kem chống nắng",
+    "strengths": [
+      "SPF50"
+    ],
+    "dosageForm": "Kem bôi",
+    "unit": "Tuýp",
+    "basePrice": 185000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "MTMH",
+    "ingredient": "Natri clorid",
+    "strengths": [
+      "0.9%"
+    ],
+    "dosageForm": "Dung dịch nhỏ",
+    "unit": "Chai",
+    "basePrice": 6000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "MTMH",
+    "ingredient": "Tobramycin",
+    "strengths": [
+      "0.3%"
+    ],
+    "dosageForm": "Thuốc nhỏ mắt",
+    "unit": "Lọ",
+    "basePrice": 38000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "MTMH",
+    "ingredient": "Naphazolin",
+    "strengths": [
+      "0.05%"
+    ],
+    "dosageForm": "Thuốc nhỏ mũi",
+    "unit": "Lọ",
+    "basePrice": 8000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "MTMH",
+    "ingredient": "Xylometazolin",
+    "strengths": [
+      "0.1%"
+    ],
+    "dosageForm": "Thuốc xịt mũi",
+    "unit": "Lọ",
+    "basePrice": 34000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "MTMH",
+    "ingredient": "Ofloxacin",
+    "strengths": [
+      "0.3%"
+    ],
+    "dosageForm": "Thuốc nhỏ tai",
+    "unit": "Lọ",
+    "basePrice": 29000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "MTMH",
+    "ingredient": "Nước mắt nhân tạo",
+    "strengths": [
+      "0.4%"
+    ],
+    "dosageForm": "Dung dịch nhỏ mắt",
+    "unit": "Lọ",
+    "basePrice": 52000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "MTMH",
+    "ingredient": "Viên ngậm Strepsils",
+    "strengths": [
+      "Orange"
+    ],
+    "dosageForm": "Viên ngậm",
+    "unit": "Hộp",
+    "basePrice": 48000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "PHUN",
+    "ingredient": "Progesteron",
+    "strengths": [
+      "100mg",
+      "200mg"
+    ],
+    "dosageForm": "Viên nang mềm",
+    "unit": "Hộp",
+    "basePrice": 135000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "PHUN",
+    "ingredient": "Drospirenon + Ethinylestradiol",
+    "strengths": [
+      "3mg/0.02mg"
+    ],
+    "dosageForm": "Viên nén bao phim",
+    "unit": "Vỉ",
+    "basePrice": 185000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "PHUN",
+    "ingredient": "Levonorgestrel",
+    "strengths": [
+      "1.5mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Hộp",
+    "basePrice": 42000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "PHUN",
+    "ingredient": "Acid folic",
+    "strengths": [
+      "5mg"
+    ],
+    "dosageForm": "Viên nén",
+    "unit": "Lọ",
+    "basePrice": 26000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "PHUN",
+    "ingredient": "Metronidazol + Miconazol",
+    "strengths": [
+      "500mg/100mg"
+    ],
+    "dosageForm": "Viên đặt",
+    "unit": "Hộp",
+    "basePrice": 58000,
+    "prescriptionType": "RX"
+  },
+  {
+    "categoryCode": "PHUN",
+    "ingredient": "Dung dịch vệ sinh",
+    "strengths": [
+      "100ml"
+    ],
+    "dosageForm": "Dung dịch",
+    "unit": "Chai",
+    "basePrice": 69000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "PHUN",
+    "ingredient": "Que thử thai",
+    "strengths": [
+      "Quickstick"
+    ],
+    "dosageForm": "Que thử",
+    "unit": "Hộp",
+    "basePrice": 18000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TPCN",
+    "ingredient": "Omega-3",
+    "strengths": [
+      "1000mg"
+    ],
+    "dosageForm": "Viên nang mềm",
+    "unit": "Lọ",
+    "basePrice": 215000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TPCN",
+    "ingredient": "Collagen",
+    "strengths": [
+      "5000mg"
+    ],
+    "dosageForm": "Dung dịch uống",
+    "unit": "Hộp",
+    "basePrice": 340000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TPCN",
+    "ingredient": "Men vi sinh Bifina",
+    "strengths": [
+      "R"
+    ],
+    "dosageForm": "Bột uống",
+    "unit": "Hộp",
+    "basePrice": 125000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TPCN",
+    "ingredient": "Viên uống Sâm",
+    "strengths": [
+      "500mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 280000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TPCN",
+    "ingredient": "Hoạt huyết dưỡng não",
+    "strengths": [
+      "150mg"
+    ],
+    "dosageForm": "Viên bao đường",
+    "unit": "Hộp",
+    "basePrice": 90000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TPCN",
+    "ingredient": "Cao Actiso",
+    "strengths": [
+      "500mg"
+    ],
+    "dosageForm": "Viên nang",
+    "unit": "Hộp",
+    "basePrice": 55000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "TPCN",
+    "ingredient": "Probiotics",
+    "strengths": [
+      "10 tỷ CFU"
+    ],
+    "dosageForm": "Gói bột",
+    "unit": "Hộp",
+    "basePrice": 165000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DCYT",
+    "ingredient": "Máy đo huyết áp điện tử",
+    "strengths": [
+      "Omron"
+    ],
+    "dosageForm": "Thiết bị",
+    "unit": "Cái",
+    "basePrice": 890000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DCYT",
+    "ingredient": "Nhiệt kế điện tử",
+    "strengths": [
+      "Microlife"
+    ],
+    "dosageForm": "Thiết bị",
+    "unit": "Cái",
+    "basePrice": 125000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DCYT",
+    "ingredient": "Khẩu trang y tế 4 lớp",
+    "strengths": [
+      "50 cái"
+    ],
+    "dosageForm": "Khẩu trang",
+    "unit": "Hộp",
+    "basePrice": 42000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DCYT",
+    "ingredient": "Bông y tế",
+    "strengths": [
+      "100g"
+    ],
+    "dosageForm": "Bông",
+    "unit": "Gói",
+    "basePrice": 15000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DCYT",
+    "ingredient": "Băng cá nhân",
+    "strengths": [
+      "100 miếng"
+    ],
+    "dosageForm": "Băng dính",
+    "unit": "Hộp",
+    "basePrice": 32000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DCYT",
+    "ingredient": "Que thử đường huyết",
+    "strengths": [
+      "50 que"
+    ],
+    "dosageForm": "Que thử",
+    "unit": "Hộp",
+    "basePrice": 380000,
+    "prescriptionType": "OTC"
+  },
+  {
+    "categoryCode": "DCYT",
+    "ingredient": "Cồn 70 độ",
+    "strengths": [
+      "60ml"
+    ],
+    "dosageForm": "Dung dịch",
+    "unit": "Chai",
+    "basePrice": 9000,
+    "prescriptionType": "OTC"
+  }
+]

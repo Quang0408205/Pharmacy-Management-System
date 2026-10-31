@@ -1,0 +1,10 @@
+{
+  "name": "pharmacy-data-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Crawl and normalize drug data for the pharmacy seed",
+  "dependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

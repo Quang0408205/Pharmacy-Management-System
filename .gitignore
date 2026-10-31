@@ -1,2 +1,5 @@
 docs/
 .env
+database/raw_data/
+database/scripts/node_modules/
+backend/demo/uploads/

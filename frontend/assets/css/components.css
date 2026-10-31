@@ -379,6 +379,75 @@ textarea.form-control {
   background: var(--color-surface-muted);
 }
 
+.combobox {
+  position: relative;
+}
+
+.combobox .form-control {
+  padding-right: 44px;
+}
+
+.combobox__list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: var(--z-dropdown);
+  max-height: 240px;
+  margin: 0;
+  padding: var(--space-1);
+  overflow-y: auto;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.combobox__option {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.combobox__option:hover,
+.combobox__option.is-active {
+  background: var(--color-primary-soft, var(--color-surface-muted));
+}
+
+.combobox__empty {
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+.image-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+}
+
+.image-field__preview {
+  width: 96px;
+  height: 96px;
+  flex: none;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.image-field__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
 .check {
   display: flex;
   align-items: center;
@@ -820,8 +889,10 @@ th[aria-sort='descending'] .icon {
 
 .toast-region {
   position: fixed;
-  right: var(--space-5);
+  left: 50%;
   bottom: var(--space-5);
+  transform: translateX(-50%);
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -830,6 +901,7 @@ th[aria-sort='descending'] .icon {
 }
 
 .toast {
+  pointer-events: auto;
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);

@@ -1,0 +1,52 @@
+[
+  {
+    "_id": "emp-01",
+    "ma_nhan_vien": "NV001",
+    "ten_dang_nhap": "admin",
+    "ho_ten": "Quang",
+    "thu_dien_tu": "admin@nhathuoc.vn",
+    "so_dien_thoai": "0901 234 567",
+    "vai_tro": "QUAN_TRI",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "emp-02",
+    "ma_nhan_vien": "NV002",
+    "ten_dang_nhap": "thulh",
+    "ho_ten": "Lê Hoài Thu",
+    "thu_dien_tu": "thu.le@nhathuoc.vn",
+    "so_dien_thoai": "0912 345 678",
+    "vai_tro": "BAN_THUOC",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "emp-03",
+    "ma_nhan_vien": "NV003",
+    "ten_dang_nhap": "minhtn",
+    "ho_ten": "Trần Ngọc Minh",
+    "thu_dien_tu": "minh.tran@nhathuoc.vn",
+    "so_dien_thoai": "0923 456 789",
+    "vai_tro": "BAN_THUOC",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "emp-04",
+    "ma_nhan_vien": "NV004",
+    "ten_dang_nhap": "hungpv",
+    "ho_ten": "Phạm Văn Hùng",
+    "thu_dien_tu": "hung.pham@nhathuoc.vn",
+    "so_dien_thoai": "0934 567 890",
+    "vai_tro": "KHO",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "emp-05",
+    "ma_nhan_vien": "NV005",
+    "ten_dang_nhap": "anhnt",
+    "ho_ten": "Nguyễn Thị Anh",
+    "thu_dien_tu": "anh.nguyen@nhathuoc.vn",
+    "so_dien_thoai": "0945 678 901",
+    "vai_tro": "KHO",
+    "trang_thai": "HOAT_DONG"
+  }
+]

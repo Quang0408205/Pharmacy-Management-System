@@ -5,15 +5,14 @@ export const employeeService = {
   get: (id) => api.get(`/employees/${id}`),
   assignRole: (id, role) => api.patch(`/employees/${id}`, { role }),
   setStatus: (id, status) => api.patch(`/employees/${id}/status`, { status }),
-  invitations: () => api.get('/invitations'),
-  invite: (payload) => api.post('/invitations', payload),
-  revokeInvitation: (id) => api.post(`/invitations/${id}/revoke`, {}),
+  create: (payload) => api.post('/employees', payload),
+  resetLink: (id) => api.post(`/employees/${id}/reset-link`, {}),
+  unlock: (id) => api.post(`/employees/${id}/unlock`, {}),
 };
 
 export const settingsService = {
   get: () => api.get('/settings'),
   update: (payload) => api.put('/settings', payload),
-  resetDemoData: () => api.post('/system/reset', {}),
 };
 
 export const activityService = {

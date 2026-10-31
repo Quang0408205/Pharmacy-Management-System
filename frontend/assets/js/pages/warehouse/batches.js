@@ -11,6 +11,6 @@ startPage({
       content,
       title: 'Lô thuốc',
       subtitle: 'Theo dõi từng lô: nguồn nhập, hạn sử dụng, số lượng ban đầu và còn lại.',
-      mount: (container) => mountBatchTable({ container, canWriteOff: true }),
+      mount: (container) => mountBatchTable({ container, canDispose: true }),
     }),
 });

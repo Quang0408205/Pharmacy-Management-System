@@ -1,0 +1,9 @@
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+app:
+  seed:
+    enabled: ${APP_SEED_ENABLED:true}

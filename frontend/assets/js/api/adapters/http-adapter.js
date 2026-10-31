@@ -7,6 +7,8 @@ const buildUrl = (path, params) => {
   return url;
 };
 
+const isForm = (body) => body instanceof FormData;
+
 const readBody = async (response) => {
   const text = await response.text();
   if (!text) return null;
@@ -24,8 +26,11 @@ export const httpAdapter = {
       response = await fetch(buildUrl(path, params), {
         method,
         credentials: 'include',
-        headers: { Accept: 'application/json', ...(body ? { 'Content-Type': 'application/json' } : {}) },
-        body: body ? JSON.stringify(body) : undefined,
+        headers: {
+          Accept: 'application/json',
+          ...(body && !isForm(body) ? { 'Content-Type': 'application/json' } : {}),
+        },
+        body: body ? (isForm(body) ? body : JSON.stringify(body)) : undefined,
       });
     } catch {
       throw new ApiError(0, 'NETWORK_ERROR', 'Không thể kết nối tới máy chủ. Vui lòng kiểm tra mạng và thử lại.');

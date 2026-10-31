@@ -58,8 +58,31 @@
   }
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+.sidebar {
+  view-transition-name: app-sidebar;
+}
+
+.app-header {
+  view-transition-name: app-header;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 140ms;
+  animation-timing-function: var(--easing-standard);
+}
+
+::view-transition-group(app-sidebar),
+::view-transition-group(app-header) {
+  animation-duration: 0s;
+}
+
 .page-content {
-  animation: fade-in var(--duration-normal) var(--easing-standard);
+  animation: fade-in var(--duration-fast, 140ms) var(--easing-standard);
 }
 
 .is-added {

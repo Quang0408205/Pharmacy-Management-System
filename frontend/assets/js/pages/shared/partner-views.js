@@ -78,6 +78,24 @@ export const openCustomerForm = (customer = null) =>
     },
   }).closed;
 
+export const openQuickCustomerForm = (phone = '') =>
+  openFormDialog({
+    title: 'Tạo nhanh khách hàng',
+    subtitle: 'Chỉ cần số điện thoại và tên để bắt đầu tích điểm.',
+    fields: [
+      { name: 'phone', label: 'Số điện thoại', type: 'tel', required: true },
+      { name: 'name', label: 'Họ và tên', required: true, full: true },
+    ],
+    values: { phone },
+    size: 'sm',
+    submitText: 'Tạo khách hàng',
+    onSubmit: async (values) => {
+      const saved = await customerService.create({ ...values, gender: 'Nam' });
+      toast.success('Đã thêm khách hàng', saved.name);
+      return saved;
+    },
+  }).closed;
+
 const receiptHistory = (receipts) =>
   receipts.length
     ? html`<div class="table-wrap"><table class="table"><thead><tr><th>Phiếu nhập</th><th>Ngày nhập</th><th class="num">Số lượng</th><th class="num">Giá trị</th><th>Trạng thái</th></tr></thead>
@@ -211,13 +229,39 @@ export const mountSupplierTable = ({ container, role }) => {
   return table;
 };
 
+const loyaltyLabels = {
+  EARN: 'Tích điểm',
+  REDEEM: 'Dùng điểm',
+  REDEEM_REFUND: 'Hoàn điểm',
+  EARN_REVOKE: 'Thu hồi điểm',
+};
+
+const loyaltyPanel = (customer, history) =>
+  html`<div class="stack">
+    <div class="points-balance"><span class="points-balance__icon">${icon('star', 'icon--lg')}</span><div><strong>${formatNumber(customer.loyaltyPoints)} điểm</strong><span class="text-secondary">Số điểm hiện có của ${customer.name}</span></div></div>
+    ${
+      history && history.length
+        ? html`<div class="table-wrap"><table class="table"><thead><tr><th>Thời gian</th><th>Loại</th><th>Hóa đơn</th><th class="num">Điểm</th><th class="num">Còn lại</th></tr></thead>
+            <tbody>${history.map(
+              (
+                entry,
+              ) => html`<tr title="${entry.note || ''}"><td class="nowrap">${formatDateTime(entry.createdAt)}</td><td>${loyaltyLabels[entry.type] || entry.type}</td><td>${entry.invoiceCode || ''}</td>
+              <td class="num ${entry.points < 0 ? 'diff-negative' : 'diff-positive'}">${entry.points > 0 ? '+' : ''}${formatNumber(entry.points)}</td><td class="num">${formatNumber(entry.balanceAfter)}</td></tr>`,
+            )}</tbody></table></div>`
+        : html`<p class="text-secondary">${history === null ? 'Đang tải lịch sử điểm...' : 'Chưa có giao dịch điểm.'}</p>`
+    }
+  </div>`;
+
 export const openCustomerDrawer = async (id, { role, onChanged = () => {} }) => {
   const drawer = openDrawer({ title: 'Hồ sơ khách hàng', content: skeletonTable(5) });
   try {
     let customer = await customerService.get(id);
-    const items = [
+    let loyaltyHistory = null;
+    let loyaltyRequested = false;
+    const items = () => [
       { key: 'profile', label: 'Thông tin' },
       { key: 'history', label: `Lịch sử mua (${customer.invoiceCount})` },
+      { key: 'points', label: 'Điểm tích lũy' },
     ];
     const draw = (active) => {
       drawer.panel.querySelector('h2').textContent = customer.name;
@@ -231,22 +275,36 @@ export const openCustomerDrawer = async (id, { role, onChanged = () => {} }) => 
                 ['Năm sinh', customer.birthYear],
                 ['Số hóa đơn', formatNumber(customer.invoiceCount)],
                 ['Tổng chi tiêu', formatCurrency(customer.totalSpent)],
+                ['Điểm tích lũy', `${formatNumber(customer.loyaltyPoints)} điểm`],
                 ['Địa chỉ', customer.address],
                 ['Ghi chú', customer.note],
               ])}</div>`
-          : customer.invoices.length
-            ? html`<div class="table-wrap"><table class="table"><thead><tr><th>Hóa đơn</th><th>Thời gian</th><th class="num">Tổng tiền</th><th>Trạng thái</th></tr></thead>
+          : active === 'points'
+            ? loyaltyPanel(customer, loyaltyHistory)
+            : customer.invoices.length
+              ? html`<div class="table-wrap"><table class="table"><thead><tr><th>Hóa đơn</th><th>Thời gian</th><th class="num">Tổng tiền</th><th>Trạng thái</th></tr></thead>
                 <tbody>${customer.invoices.map(
                   (
                     invoice,
                   ) => html`<tr class="is-clickable" data-invoice="${invoice.id}" tabindex="0"><td><strong>${invoice.code}</strong></td><td class="nowrap">${formatDateTime(invoice.createdAt)}</td>
                   <td class="num">${formatCurrency(invoice.total)}</td><td>${statusBadge('invoice', invoice.status)}</td></tr>`,
                 )}</tbody></table></div>`
-            : html`<p class="text-secondary">Khách hàng chưa có giao dịch.</p>`;
+              : html`<p class="text-secondary">Khách hàng chưa có giao dịch.</p>`;
       drawer.setBody(
-        html`${tabs(items, active, 'cus')}<div class="tab-panel" id="cus-panel" role="tabpanel">${panel}</div>`,
+        html`${tabs(items(), active, 'cus')}<div class="tab-panel" id="cus-panel" role="tabpanel">${panel}</div>`,
       );
-      bindTabs(drawer.body, draw);
+      bindTabs(drawer.body, async (key) => {
+        if (key === 'points' && !loyaltyRequested) {
+          loyaltyRequested = true;
+          draw(key);
+          try {
+            loyaltyHistory = await customerService.loyalty(customer.id);
+          } catch (error) {
+            toast.error('Không tải được lịch sử điểm', errorMessage(error));
+          }
+        }
+        draw(key);
+      });
     };
     draw('profile');
     drawer.setFooter(
@@ -285,6 +343,13 @@ export const mountCustomerTable = ({ container, role }) => {
       },
       { key: 'phone', label: 'Số điện thoại', sortable: true },
       { key: 'invoiceCount', label: 'Số hóa đơn', sortable: true, align: 'right' },
+      {
+        key: 'loyaltyPoints',
+        label: 'Điểm',
+        sortable: true,
+        align: 'right',
+        render: (row) => formatNumber(row.loyaltyPoints),
+      },
       {
         key: 'totalSpent',
         label: 'Tổng chi tiêu',

@@ -1,11 +1,24 @@
 export const appConfig = {
-  apiMode: 'mock',
   apiBaseUrl: '/api/v1',
-  mockLatency: { min: 80, max: 240 },
-  mockSeedVersion: 4,
   storagePrefix: 'pms',
   defaultPageSize: 10,
 };
+
+export const medicineUnits = [
+  'Hộp',
+  'Vỉ',
+  'Viên',
+  'Chai',
+  'Lọ',
+  'Tuýp',
+  'Gói',
+  'Ống',
+  'Cái',
+  'Bộ',
+  'Cuộn',
+  'Hũ',
+  'Túi',
+];
 
 export const roles = {
   ADMIN: 'ADMIN',

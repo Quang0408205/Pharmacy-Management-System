@@ -1,7 +1,7 @@
 import { html, raw } from '../../core/html.js';
 import { icon } from '../../core/icons.js';
 import { debounce, delegate, qs } from '../../core/dom.js';
-import { formatCurrency, formatDateTime, formatNumber, formatRelative } from '../../core/format.js';
+import { formatCurrency, formatDateTime, formatNumber, formatRelative, initials } from '../../core/format.js';
 import { errorMessage } from '../../core/errors.js';
 import { medicineImage } from '../../core/medicine-image.js';
 import { startPage } from '../../components/page.js';
@@ -13,25 +13,32 @@ import { setLoading } from '../../components/form.js';
 import { categoryService, medicineService } from '../../services/catalog-service.js';
 import { customerService } from '../../services/partner-service.js';
 import { invoiceService } from '../../services/sales-service.js';
-import { openCustomerForm } from '../shared/partner-views.js';
+import { settingsService } from '../../services/admin-service.js';
+import { openCustomerForm, openQuickCustomerForm } from '../shared/partner-views.js';
 import { openInvoiceDrawer, openPrintPreview } from '../shared/invoice-views.js';
 
 const pageSize = 24;
+const minPhoneDigits = 9;
+const defaultLoyalty = { enabled: false, earnAmountPerPoint: 10000, pointValue: 1000, maxRedeemPercent: 50 };
 
 const state = {
   cart: [],
   customer: null,
   discountType: 'AMOUNT',
   discountValue: 0,
+  pointsUsed: 0,
   paymentMethod: 'CASH',
   received: 0,
   draftId: null,
+  requestId: null,
   categoryId: '',
+  inStock: true,
   q: '',
   page: 1,
   totalPages: 1,
   medicines: [],
   invoiceNumber: '',
+  loyalty: defaultLoyalty,
 };
 
 const subtotal = () => state.cart.reduce((sum, line) => sum + line.quantity * line.medicine.price, 0);
@@ -43,7 +50,22 @@ const discountAmount = () => {
   return Math.max(0, Math.min(amount, base));
 };
 
-const total = () => subtotal() - discountAmount();
+const payable = () => subtotal() - discountAmount();
+
+const loyaltyActive = () => Boolean(state.customer) && state.loyalty.enabled;
+
+const maxPoints = () => {
+  if (!loyaltyActive()) return 0;
+  const { pointValue, maxRedeemPercent } = state.loyalty;
+  const cap = Math.floor((payable() * maxRedeemPercent) / 100 / pointValue);
+  return Math.max(0, Math.min(state.customer.loyaltyPoints || 0, cap));
+};
+
+const pointsDiscount = () => state.pointsUsed * state.loyalty.pointValue;
+
+const total = () => payable() - pointsDiscount();
+
+const earnedPoints = () => (loyaltyActive() ? Math.floor(total() / state.loyalty.earnAmountPerPoint) : 0);
 
 const quickAmounts = () => {
   const due = total();
@@ -54,16 +76,23 @@ const quickAmounts = () => {
   return [...options].sort((a, b) => a - b).slice(0, 4);
 };
 
+const stockLine = (medicine) => {
+  if (medicine.availableQty <= 0) return html`<span class="med-card__stock is-out">Hết hàng</span>`;
+  const low = medicine.stockStatus === 'LOW_STOCK';
+  return html`<span class="med-card__stock ${low ? 'is-low' : ''}">Còn ${formatNumber(medicine.availableQty)} ${medicine.unit}${low ? ' · Sắp hết' : ''}</span>`;
+};
+
 const medicineCard = (medicine) => {
   const inCart = state.cart.find((line) => line.medicine.id === medicine.id);
   const remaining = medicine.availableQty - (inCart ? inCart.quantity : 0);
   const disabled = medicine.availableQty <= 0 || remaining <= 0;
   return html`<button type="button" class="med-card ${inCart ? 'is-selected' : ''}" data-add="${medicine.id}" ${disabled ? raw('disabled') : ''} aria-label="Thêm ${medicine.name} vào giỏ">
     ${medicine.prescriptionType !== 'OTC' ? html`<span class="med-card__flag">${statusBadge('prescription', medicine.prescriptionType)}</span>` : ''}
+    ${inCart ? html`<span class="med-card__count">${inCart.quantity}</span>` : ''}
     <img class="med-card__image" src="${medicineImage(medicine)}" alt="" loading="lazy" />
     <span class="med-card__name">${medicine.name}</span>
-    <span class="med-card__meta">${medicine.manufacturer} · ${medicine.packaging}</span>
-    <span class="med-card__meta">${medicine.availableQty > 0 ? `Còn ${formatNumber(medicine.availableQty)} ${medicine.unit}` : 'Hết hàng'}${medicine.availableQty > 0 && medicine.stockStatus === 'LOW_STOCK' ? ' · Sắp hết' : ''}</span>
+    <span class="med-card__meta">${medicine.manufacturer}${medicine.packaging ? ` · ${medicine.packaging}` : ''}</span>
+    ${stockLine(medicine)}
     <span class="med-card__footer"><span class="med-card__price">${formatCurrency(medicine.price)}</span><span class="med-card__add">${icon(disabled ? 'ban' : 'plus', 'icon--sm')}</span></span>
   </button>`;
 };
@@ -90,9 +119,12 @@ const shell = (user) => html`<div class="workspace" data-workspace>
     <div class="card">
       <div class="workspace__left-head">
         <div class="chip-row" data-categories role="group" aria-label="Danh mục thuốc"></div>
-        <div class="toolbar__search">
-          ${icon('search')}
-          <input class="form-control" type="search" data-search placeholder="Tìm theo tên, mã thuốc hoặc quét mã vạch..." aria-label="Tìm thuốc" autocomplete="off" />
+        <div class="pos-search-row">
+          <div class="toolbar__search">
+            ${icon('search')}
+            <input class="form-control" type="search" data-search placeholder="Tìm theo tên, mã thuốc hoặc quét mã vạch..." aria-label="Tìm thuốc" autocomplete="off" />
+          </div>
+          <label class="check pos-search-row__stock"><input type="checkbox" data-instock checked /> Chỉ thuốc còn hàng</label>
         </div>
       </div>
       <div class="workspace__scroll" data-grid-region aria-live="polite"></div>
@@ -100,18 +132,20 @@ const shell = (user) => html`<div class="workspace" data-workspace>
     </div>
   </section>
   <section class="workspace__right" aria-label="Hóa đơn">
-    <div class="card">
-      <div class="invoice-head">
-        <div class="invoice-head__meta"><span>Số hóa đơn</span><strong data-invoice-number>...</strong></div>
-        <div class="invoice-head__meta"><span>Ngày lập</span><strong>${formatDateTime(new Date())}</strong></div>
-        <div class="invoice-head__meta"><span>Nhân viên bán</span><strong class="truncate">${user.name}</strong></div>
-        <div class="invoice-head__full row" data-customer-region></div>
+    <div class="card pos-panel">
+      <header class="pos-head">
+        <div class="pos-head__meta">
+          <div><span>Số hóa đơn</span><strong data-invoice-number>...</strong></div>
+          <div><span>Ngày lập</span><strong>${formatDateTime(new Date())}</strong></div>
+          <div><span>Nhân viên bán</span><strong class="truncate">${user.name}</strong></div>
+        </div>
+        <div class="pos-customer" data-customer-region></div>
         <button type="button" class="btn btn--ghost btn--sm mobile-only" data-show-catalog>${icon('chevronLeft', 'icon--sm')} Quay lại chọn thuốc</button>
-      </div>
-      <div class="workspace__scroll workspace__scroll--cart" data-cart-region aria-live="polite"></div>
-      <div class="workspace__footer">
-        <div class="summary-lines" data-summary></div>
-        <div class="pos-options">
+      </header>
+      <div class="pos-cart" data-cart-region aria-live="polite"></div>
+      <footer class="pos-pay">
+        <div class="summary-lines pos-pay__summary" data-summary></div>
+        <div class="pos-pay__adjust">
           <div class="form-field">
             <label class="form-label" for="discount-value">Giảm giá</label>
             <div class="row row--tight">
@@ -120,26 +154,35 @@ const shell = (user) => html`<div class="workspace" data-workspace>
             </div>
             <span class="form-error" data-discount-error role="alert"></span>
           </div>
-          <div class="form-field" data-received-region>
-            <label class="form-label" for="received">Tiền khách đưa</label>
-            <input class="form-control" id="received" type="number" min="0" step="1000" value="" data-received inputmode="numeric" />
-            <span class="form-error" data-received-error role="alert"></span>
+          <div class="form-field hidden" data-points-region>
+            <label class="form-label" for="points-used">Dùng điểm <span class="form-label__hint" data-points-help></span></label>
+            <div class="row row--tight">
+              <input class="form-control grow" id="points-used" type="number" min="0" step="1" value="0" data-points-input inputmode="numeric" />
+              <button type="button" class="btn btn--secondary btn--sm" data-points-max>Tối đa</button>
+            </div>
           </div>
         </div>
         <div class="payment-methods" role="group" aria-label="Phương thức thanh toán">
-          ${Object.entries({ CASH: 'banknote', TRANSFER: 'smartphone', CARD: 'creditCard' }).map(([key, name]) => html`<button type="button" class="payment-methods__option" data-payment="${key}" aria-pressed="${key === 'CASH'}">${icon(name, 'icon--sm')}${paymentLabels[key]}</button>`)}
+          ${Object.entries({ CASH: 'banknote', TRANSFER: 'smartphone', CARD: 'creditCard' }).map(([key, name]) => html`<button type="button" class="payment-methods__option" data-payment="${key}" aria-pressed="${key === 'CASH'}">${icon(name)}${paymentLabels[key]}</button>`)}
         </div>
-        <div class="pos-change" data-change-region>
-          <div class="chip-row" data-quick-amounts></div>
-          <div class="pos-change__value"><span>Tiền thừa</span><strong data-change>0 ₫</strong></div>
+        <div class="pos-cash" data-change-region>
+          <div class="pos-cash__head">
+            <label class="form-label" for="received">Tiền khách đưa</label>
+            <div class="chip-row pos-cash__quick" data-quick-amounts></div>
+          </div>
+          <div class="pos-cash__row" data-received-region>
+            <input class="form-control pos-cash__input" id="received" type="number" min="0" step="1000" value="" data-received inputmode="numeric" />
+            <div class="pos-cash__change"><span>Tiền thừa</span><strong data-change>0 ₫</strong></div>
+          </div>
+          <span class="form-error" data-received-error role="alert"></span>
         </div>
-        <div class="workspace-actions">
-          <button type="button" class="btn btn--primary btn--lg btn--block-row" data-checkout>${icon('checkCircle')} Thanh toán</button>
+        <button type="button" class="btn btn--primary btn--lg btn--block pos-pay__checkout" data-checkout>${icon('checkCircle')} Thanh toán</button>
+        <div class="pos-pay__secondary">
           <button type="button" class="btn btn--secondary btn--sm" data-save-draft>${icon('save', 'icon--sm')} Lưu nháp</button>
           <button type="button" class="btn btn--secondary btn--sm" data-open-drafts>${icon('clipboard', 'icon--sm')} Nháp <span class="cart-badge" data-draft-count>0</span></button>
           <button type="button" class="btn btn--ghost btn--sm" data-reset>${icon('reset', 'icon--sm')} Xóa giỏ</button>
         </div>
-      </div>
+      </footer>
     </div>
   </section>
 </div>`;
@@ -161,35 +204,149 @@ startPage({
       discountType: qs('[data-discount-type]', content),
       discountValue: qs('[data-discount-value]', content),
       discountError: qs('[data-discount-error]', content),
+      pointsRegion: qs('[data-points-region]', content),
+      pointsInput: qs('[data-points-input]', content),
+      pointsHelp: qs('[data-points-help]', content),
+      pointsMax: qs('[data-points-max]', content),
       received: qs('[data-received]', content),
       receivedRegion: qs('[data-received-region]', content),
       receivedError: qs('[data-received-error]', content),
       quick: qs('[data-quick-amounts]', content),
       change: qs('[data-change]', content),
+      changeRegion: qs('[data-change-region]', content),
       checkout: qs('[data-checkout]', content),
       invoiceNumber: qs('[data-invoice-number]', content),
       draftCount: qs('[data-draft-count]', content),
     };
     const cartCounts = content.querySelectorAll('[data-cart-count-mobile]');
+    const customerUi = { phoneInput: null, hint: null };
+
+    const clampPoints = () => {
+      const limit = maxPoints();
+      if (state.pointsUsed > limit) state.pointsUsed = limit;
+      if (state.pointsUsed < 0) state.pointsUsed = 0;
+    };
+
+    const syncPoints = () => {
+      const active = loyaltyActive();
+      refs.pointsRegion.classList.toggle('hidden', !active);
+      if (!active) return;
+      clampPoints();
+      const limit = maxPoints();
+      refs.pointsInput.max = String(limit);
+      if (document.activeElement !== refs.pointsInput) refs.pointsInput.value = String(state.pointsUsed);
+      refs.pointsHelp.textContent = `· có ${formatNumber(state.customer.loyaltyPoints)}, tối đa ${formatNumber(limit)}`;
+      refs.pointsInput.disabled = limit === 0;
+      refs.pointsMax.disabled = limit === 0;
+    };
+
+    const bindCustomerUi = () => {
+      customerUi.phoneInput = qs('[data-customer-phone]', refs.customerRegion);
+      customerUi.hint = qs('[data-customer-hint]', refs.customerRegion);
+      if (!customerUi.phoneInput) return;
+      customerUi.phoneInput.addEventListener(
+        'input',
+        debounce(() => lookupPhone(), 350),
+      );
+      customerUi.phoneInput.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        lookupPhone();
+      });
+    };
 
     const renderCustomer = () => {
-      refs.customerRegion.innerHTML = html`
-        <span class="text-secondary">Khách hàng:</span>
-        <strong class="grow truncate">${state.customer ? `${state.customer.name} · ${state.customer.phone}` : 'Khách lẻ'}</strong>
-        <button type="button" class="btn btn--secondary btn--sm" data-pick-customer>${icon('users', 'icon--sm')} ${state.customer ? 'Đổi' : 'Chọn'}</button>
-        ${state.customer ? html`<button type="button" class="icon-button icon-button--sm" data-clear-customer aria-label="Bỏ chọn khách hàng">${icon('x', 'icon--sm')}</button>` : ''}
-      `.value;
+      if (state.customer) {
+        const customer = state.customer;
+        refs.customerRegion.innerHTML = html`
+          <div class="pos-customer__card">
+            <span class="avatar">${initials(customer.name)}</span>
+            <div class="pos-customer__info">
+              <strong class="truncate">${customer.name}</strong>
+              <small>${customer.phone} · ${customer.code}</small>
+            </div>
+            ${state.loyalty.enabled ? html`<span class="points-pill" title="Điểm tích lũy">${icon('star', 'icon--sm')} ${formatNumber(customer.loyaltyPoints || 0)} điểm</span>` : ''}
+            <button type="button" class="btn btn--secondary btn--sm" data-pick-customer>Đổi</button>
+            <button type="button" class="icon-button icon-button--sm" data-clear-customer aria-label="Bỏ chọn khách hàng">${icon('x', 'icon--sm')}</button>
+          </div>`.value;
+        customerUi.phoneInput = null;
+        customerUi.hint = null;
+      } else {
+        refs.customerRegion.innerHTML = html`
+          <div class="pos-customer__search">
+            <div class="search-box">
+              ${icon('smartphone')}
+              <input class="form-control" type="tel" inputmode="tel" data-customer-phone placeholder="Nhập số điện thoại khách để tích điểm" aria-label="Số điện thoại khách hàng" autocomplete="off" />
+            </div>
+            <button type="button" class="btn btn--secondary" data-pick-customer>${icon('users', 'icon--sm')} Chọn khách</button>
+          </div>
+          <div class="pos-customer__hint" data-customer-hint>Khách lẻ · không tích điểm</div>`.value;
+        bindCustomerUi();
+      }
+      syncPoints();
+    };
+
+    const setHint = (content_, tone = '') => {
+      if (!customerUi.hint) return;
+      customerUi.hint.className = `pos-customer__hint ${tone}`;
+      customerUi.hint.innerHTML = content_.value ?? content_;
+    };
+
+    const selectCustomer = (customer) => {
+      state.customer = customer;
+      state.pointsUsed = 0;
+      renderCustomer();
+      renderSummary();
+    };
+
+    const quickCreateCustomer = async (phone) => {
+      const created = await openQuickCustomerForm(phone);
+      if (created && created !== true) {
+        selectCustomer(created);
+      }
+    };
+
+    const lookupPhone = async () => {
+      if (!customerUi.phoneInput) return;
+      const raw_ = customerUi.phoneInput.value.trim();
+      const digits = raw_.replace(/\D/g, '');
+      if (!digits) {
+        setHint('Khách lẻ · không tích điểm');
+        return;
+      }
+      if (digits.length < minPhoneDigits) {
+        setHint(`Nhập đủ số điện thoại (còn thiếu ${minPhoneDigits - digits.length} số) để tìm khách.`);
+        return;
+      }
+      setHint('Đang tìm khách hàng...');
+      try {
+        const customer = await customerService.byPhone(raw_);
+        if (!customerUi.phoneInput || customerUi.phoneInput.value.trim() !== raw_) return;
+        selectCustomer(customer);
+      } catch (error) {
+        if (!customerUi.phoneInput || customerUi.phoneInput.value.trim() !== raw_) return;
+        if (error.status === 404) {
+          setHint(
+            html`Chưa có khách với số <strong>${raw_}</strong>. <button type="button" class="link-button" data-quick-customer="${raw_}">Tạo nhanh khách hàng</button>`,
+            'is-warning',
+          );
+        } else setHint(errorMessage(error), 'is-danger');
+      }
     };
 
     const renderSummary = () => {
+      clampPoints();
       const due = total();
+      const earned = earnedPoints();
       refs.summary.innerHTML = html`
-        <div class="summary-lines__row"><span>Tạm tính</span><span>${formatCurrency(subtotal())}</span></div>
-        <div class="summary-lines__row"><span>Giảm giá</span><span>-${formatCurrency(discountAmount())}</span></div>
-        <div class="summary-lines__row summary-lines__row--total"><span>Tổng thanh toán</span><span>${formatCurrency(due)}</span></div>`.value;
+        ${discountAmount() > 0 || state.pointsUsed > 0 ? html`<div class="summary-lines__row"><span>Tạm tính</span><span>${formatCurrency(subtotal())}</span></div>` : ''}
+        ${discountAmount() > 0 ? html`<div class="summary-lines__row"><span>Giảm giá</span><span>-${formatCurrency(discountAmount())}</span></div>` : ''}
+        ${state.pointsUsed > 0 ? html`<div class="summary-lines__row"><span>Dùng ${formatNumber(state.pointsUsed)} điểm</span><span>-${formatCurrency(pointsDiscount())}</span></div>` : ''}
+        <div class="summary-lines__row summary-lines__row--total"><span>Tổng thanh toán</span><span data-total>${formatCurrency(due)}</span></div>
+        ${loyaltyActive() ? html`<div class="summary-lines__row summary-lines__row--points"><span>${icon('star', 'icon--sm')} Điểm tích được từ đơn này</span><span>+${formatNumber(earned)} điểm</span></div>` : ''}`.value;
+      syncPoints();
       const isCash = state.paymentMethod === 'CASH';
-      refs.receivedRegion.classList.toggle('is-hidden', !isCash);
-      content.querySelector('[data-change-region]').classList.toggle('hidden', !isCash);
+      refs.changeRegion.classList.toggle('hidden', !isCash);
       const change = Math.max(0, (Number(state.received) || 0) - due);
       refs.change.textContent = formatCurrency(change);
       refs.quick.innerHTML = quickAmounts()
@@ -239,10 +396,11 @@ startPage({
     };
 
     const loadMedicines = async ({ append = false } = {}) => {
-      if (!append) refs.gridRegion.innerHTML = skeletonCards(8).value;
+      if (!append) refs.gridRegion.innerHTML = skeletonCards(6).value;
       try {
         const result = await medicineService.list({
           sellable: 'true',
+          inStock: state.inStock ? 'true' : undefined,
           q: state.q,
           categoryId: state.categoryId,
           size: pageSize,
@@ -326,9 +484,11 @@ startPage({
       state.customer = null;
       state.discountType = 'AMOUNT';
       state.discountValue = 0;
+      state.pointsUsed = 0;
       state.paymentMethod = 'CASH';
       state.received = 0;
       state.draftId = null;
+      state.requestId = null;
       refs.discountType.value = 'AMOUNT';
       refs.discountValue.value = '0';
       refs.received.value = '';
@@ -352,57 +512,52 @@ startPage({
       return !message;
     };
 
+    const customerRow = (customer) =>
+      html`<button type="button" class="list__item list__item--button" data-customer="${customer.id}">
+        <span class="avatar">${initials(customer.name)}</span>
+        <span class="list__main"><strong>${customer.name}</strong><small>${customer.phone} · ${customer.code}</small></span>
+        ${state.loyalty.enabled ? html`<span class="points-pill">${icon('star', 'icon--sm')} ${formatNumber(customer.loyaltyPoints || 0)}</span>` : ''}
+      </button>`.value;
+
     const pickCustomer = async () => {
       const modal = openModal({
         title: 'Chọn khách hàng',
-        content: html`<div class="stack">
-          <div class="toolbar__search">${icon('search')}<input class="form-control" type="search" data-customer-search data-autofocus placeholder="Tìm theo tên hoặc số điện thoại..." aria-label="Tìm khách hàng" /></div>
-          <div data-customer-results class="list"></div>
+        content: html`<div class="customer-picker">
+          <div class="search-box">${icon('search')}<input class="form-control" type="search" data-customer-search data-autofocus placeholder="Tìm theo tên hoặc số điện thoại..." aria-label="Tìm khách hàng" autocomplete="off" /></div>
+          <div data-customer-results class="customer-picker__results list"></div>
         </div>`,
         footer: html`<button type="button" class="btn btn--secondary" data-pick-walkin>Khách lẻ</button><button type="button" class="btn btn--primary" data-new-customer>${icon('plus', 'icon--sm')} Thêm khách hàng mới</button>`,
       });
       const results = modal.body.querySelector('[data-customer-results]');
+      const searchInput = modal.body.querySelector('[data-customer-search]');
       let customers = [];
       const search = async () => {
+        results.innerHTML =
+          '<div class="skeleton-table"><span class="skeleton skeleton--line"></span><span class="skeleton skeleton--line"></span><span class="skeleton skeleton--line"></span></div>';
         try {
-          const query = modal.body.querySelector('[data-customer-search]').value.trim();
-          customers = (await customerService.list({ q: query, size: 8, sort: 'name,asc' })).items;
+          customers = (await customerService.list({ q: searchInput.value.trim(), size: 8, sort: 'name,asc' })).items;
           results.innerHTML = customers.length
-            ? customers
-                .map(
-                  (customer) =>
-                    html`<button type="button" class="list__item list__item--button" data-customer="${customer.id}"><span class="avatar">${customer.name
-                      .split(' ')
-                      .slice(-2)
-                      .map((part) => part[0])
-                      .join(
-                        '',
-                      )}</span><span class="list__main"><strong>${customer.name}</strong><small>${customer.phone} · ${customer.code}</small></span></button>`
-                      .value,
-                )
-                .join('')
+            ? customers.map(customerRow).join('')
             : emptyState({ title: 'Không tìm thấy khách hàng', iconName: 'users' }).value;
         } catch (error) {
           results.innerHTML = errorState(error, { retry: false }).value;
         }
       };
-      modal.body.querySelector('[data-customer-search]').addEventListener('input', debounce(search, 250));
+      searchInput.addEventListener('input', debounce(search, 250));
       search();
       delegate(modal.body, 'click', '[data-customer]', (event, button) => {
-        state.customer = customers.find((customer) => customer.id === button.dataset.customer) || null;
-        renderCustomer();
+        const found = customers.find((customer) => customer.id === button.dataset.customer);
+        if (found) selectCustomer(found);
         modal.close();
       });
       modal.footer.querySelector('[data-pick-walkin]').addEventListener('click', () => {
-        state.customer = null;
-        renderCustomer();
+        selectCustomer(null);
         modal.close();
       });
       modal.footer.querySelector('[data-new-customer]').addEventListener('click', async () => {
         const created = await openCustomerForm();
         if (created && created !== true) {
-          state.customer = created;
-          renderCustomer();
+          selectCustomer(created);
           modal.close();
         }
       });
@@ -439,13 +594,15 @@ startPage({
         modal.closed.then(() => resolve(null));
       });
 
-    const showSuccess = (invoice) => {
+    const showSuccess = (invoice, customer) => {
+      const newBalance = customer ? (customer.loyaltyPoints || 0) - invoice.pointsUsed + invoice.pointsEarned : null;
       const modal = openModal({
         title: 'Thanh toán thành công',
         size: 'sm',
         content: html`<div class="auth-state"><span class="auth-state__icon">${icon('checkCircle', 'icon--lg')}</span>
           <h3>${invoice.code}</h3>
           <p>Tổng thanh toán: <strong>${formatCurrency(invoice.total)}</strong><br />Phương thức: ${paymentLabels[invoice.paymentMethod]}<br />Tiền thừa: <strong>${formatCurrency(invoice.changeAmount)}</strong></p>
+          ${customer && state.loyalty.enabled ? html`<p class="points-summary">${icon('star', 'icon--sm')} ${customer.name}: ${invoice.pointsUsed ? `đã dùng ${formatNumber(invoice.pointsUsed)} điểm, ` : ''}<strong>+${formatNumber(invoice.pointsEarned)} điểm</strong> · còn <strong>${formatNumber(newBalance)} điểm</strong></p>` : ''}
           <p class="text-secondary text-small">Đã trừ kho theo FEFO và ghi nhận ${formatNumber(invoice.items.reduce((sum, item) => sum + item.allocations.length, 0))} lô xuất.</p></div>`,
         footer: html`<button type="button" class="btn btn--secondary" data-act="detail">Xem chi tiết</button><button type="button" class="btn btn--secondary" data-act="print">${icon('printer', 'icon--sm')} In hóa đơn mẫu</button><button type="button" class="btn btn--primary" data-dismiss="confirm" data-autofocus>Đơn mới</button>`,
       });
@@ -483,27 +640,42 @@ startPage({
         if (!prescription) return;
       }
       setLoading(refs.checkout, true);
+      state.requestId = state.requestId || crypto.randomUUID();
+      const customer = state.customer;
       try {
         const invoice = await invoiceService.checkout({
-          customerId: state.customer ? state.customer.id : null,
+          customerId: customer ? customer.id : null,
           items: state.cart.map((line) => ({ medicineId: line.medicine.id, quantity: line.quantity })),
           discountType: state.discountType,
           discountValue: Number(state.discountValue) || 0,
+          pointsUsed: state.pointsUsed,
           paymentMethod: state.paymentMethod,
           receivedAmount: state.paymentMethod === 'CASH' ? Number(state.received) || 0 : due,
           draftId: state.draftId,
+          requestId: state.requestId,
           ...prescription,
         });
         resetCart();
         refs.workspace.classList.remove('is-cart-view');
-        showSuccess(invoice);
+        showSuccess(invoice, customer);
         refreshInvoiceNumber();
         refreshDraftCount();
         state.page = 1;
         loadMedicines();
       } catch (error) {
+        if (error.code) state.requestId = null;
         toast.error('Thanh toán không thành công', errorMessage(error));
         if (error.fieldErrors && error.fieldErrors.customerId) pickCustomer();
+        if (error.fieldErrors && error.fieldErrors.pointsUsed && customer) {
+          customerService
+            .get(customer.id)
+            .then((fresh) => {
+              state.customer = { ...customer, ...fresh };
+              renderCustomer();
+              renderSummary();
+            })
+            .catch(() => {});
+        }
         state.page = 1;
         loadMedicines();
       } finally {
@@ -593,6 +765,7 @@ startPage({
             .map((line) => ({ ...line, quantity: Math.min(line.quantity, line.medicine.availableQty) }));
           state.cart = usable;
           state.customer = draft.customerId ? await customerService.get(draft.customerId) : null;
+          state.pointsUsed = 0;
           state.discountType = draft.discountType;
           state.discountValue = draft.discountValue;
           state.paymentMethod = draft.paymentMethod;
@@ -616,6 +789,12 @@ startPage({
       });
       draw();
     };
+
+    try {
+      state.loyalty = { ...defaultLoyalty, ...(await settingsService.get()).loyalty };
+    } catch {
+      state.loyalty = defaultLoyalty;
+    }
 
     renderCustomer();
     renderCart();
@@ -666,6 +845,11 @@ startPage({
       } else toast.info('Chưa xác định được thuốc', 'Nhập đúng mã vạch/mã thuốc hoặc chọn từ danh sách.');
     });
 
+    content.querySelector('[data-instock]').addEventListener('change', (event) => {
+      state.inStock = event.target.checked;
+      state.page = 1;
+      loadMedicines();
+    });
     delegate(content, 'click', '[data-add]', (event, button) => {
       const medicine = state.medicines.find((item) => item.id === button.dataset.add);
       if (medicine) addToCart(medicine);
@@ -691,10 +875,10 @@ startPage({
       renderGrid();
     });
     delegate(content, 'click', '[data-pick-customer]', pickCustomer);
-    delegate(content, 'click', '[data-clear-customer]', () => {
-      state.customer = null;
-      renderCustomer();
-    });
+    delegate(content, 'click', '[data-clear-customer]', () => selectCustomer(null));
+    delegate(content, 'click', '[data-quick-customer]', (event, button) =>
+      quickCreateCustomer(button.dataset.quickCustomer),
+    );
     delegate(content, 'click', '[data-payment]', (event, button) => {
       state.paymentMethod = button.dataset.payment;
       content
@@ -722,6 +906,18 @@ startPage({
     refs.discountValue.addEventListener('input', () => {
       state.discountValue = refs.discountValue.value;
       validateDiscount();
+      renderSummary();
+    });
+    refs.pointsInput.addEventListener('input', () => {
+      state.pointsUsed = Math.max(0, Math.floor(Number(refs.pointsInput.value) || 0));
+      renderSummary();
+    });
+    refs.pointsInput.addEventListener('blur', () => {
+      refs.pointsInput.value = String(state.pointsUsed);
+    });
+    delegate(content, 'click', '[data-points-max]', () => {
+      state.pointsUsed = maxPoints();
+      refs.pointsInput.value = String(state.pointsUsed);
       renderSummary();
     });
     delegate(content, 'click', '[data-checkout]', checkout);

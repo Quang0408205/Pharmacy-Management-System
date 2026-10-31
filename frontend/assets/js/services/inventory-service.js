@@ -12,7 +12,6 @@ export const receiptService = {
 export const batchService = {
   list: (params) => api.get('/batches', params),
   get: (id) => api.get(`/batches/${id}`),
-  writeOff: (id, reason) => api.post(`/batches/${id}/write-off`, { reason }),
 };
 
 export const inventoryService = {
@@ -30,4 +29,16 @@ export const stocktakeService = {
   submit: (id, payload) => api.post(`/stocktakes/${id}/submit`, payload),
   approve: (id, note) => api.post(`/stocktakes/${id}/approve`, { note }),
   reject: (id, note) => api.post(`/stocktakes/${id}/reject`, { note }),
+};
+
+export const disposalService = {
+  list: (params) => api.get('/disposals', params),
+  get: (id) => api.get(`/disposals/${id}`),
+  create: (payload) => api.post('/disposals', payload),
+  update: (id, payload) => api.put(`/disposals/${id}`, payload),
+  remove: (id) => api.delete(`/disposals/${id}`),
+  submit: (id) => api.post(`/disposals/${id}/submit`),
+  execute: (id) => api.post(`/disposals/${id}/execute`),
+  approve: (id, note) => api.post(`/disposals/${id}/approve`, { note }),
+  reject: (id, note) => api.post(`/disposals/${id}/reject`, { note }),
 };

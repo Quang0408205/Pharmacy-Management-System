@@ -1,4 +1,4 @@
-import { html, raw } from '../core/html.js';
+import { esc, html, raw } from '../core/html.js';
 import { qs, qsa } from '../core/dom.js';
 import { icon } from '../core/icons.js';
 
@@ -11,6 +11,13 @@ const renderControl = (field, value, id, describedBy) => {
       ${field.placeholder ? html`<option value="">${field.placeholder}</option>` : ''}
       ${(field.options || []).map((option) => html`<option value="${option.value}" ${String(option.value) === String(value ?? '') ? raw('selected') : ''}>${option.label}</option>`)}
     </select>`;
+  }
+  if (field.type === 'combobox') {
+    return html`<div class="combobox" data-combobox="${field.name}">
+      <input class="form-control" type="text" ${common} value="${value ?? ''}" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" placeholder="${field.placeholder || ''}" ${field.maxlength ? raw(`maxlength="${Number(field.maxlength)}"`) : ''} />
+      <button type="button" class="input-group__button" tabindex="-1" data-combobox-toggle aria-label="Mở danh sách">${icon('chevronDown')}</button>
+      <ul class="combobox__list hidden" role="listbox"></ul>
+    </div>`;
   }
   if (field.type === 'textarea') {
     return html`<textarea class="form-control" rows="${field.rows || 3}" ${common} ${field.maxlength ? raw(`maxlength="${Number(field.maxlength)}"`) : ''} placeholder="${field.placeholder || ''}">${value ?? ''}</textarea>`;
@@ -44,6 +51,85 @@ export const renderFields = (fields, values = {}, prefix = 'f') =>
       </div>`;
     })}
   </div>`;
+
+export const bindComboboxes = (form, fields) => {
+  fields
+    .filter((field) => field.type === 'combobox')
+    .forEach((field) => {
+      const root = qs(`[data-combobox="${CSS.escape(field.name)}"]`, form);
+      if (!root) return;
+      const input = qs('input', root);
+      const list = qs('.combobox__list', root);
+      const toggle = qs('[data-combobox-toggle]', root);
+      let options = [];
+      let active = -1;
+      const setOpen = (open) => {
+        list.classList.toggle('hidden', !open);
+        input.setAttribute('aria-expanded', String(open));
+        if (!open) active = -1;
+      };
+      const visible = (all) => {
+        const needle = input.value.trim().toLowerCase();
+        const matches = all ? options : options.filter((option) => option.toLowerCase().includes(needle));
+        return matches.slice(0, 60);
+      };
+      const render = (all = false) => {
+        const matches = visible(all);
+        list.innerHTML = matches.length
+          ? matches
+              .map(
+                (option, index) =>
+                  `<li role="option" class="combobox__option ${index === active ? 'is-active' : ''}" data-value="${esc(option)}">${esc(option)}</li>`,
+              )
+              .join('')
+          : '<li class="combobox__empty">Không có gợi ý. Nội dung đang nhập sẽ được giữ nguyên.</li>';
+        setOpen(true);
+      };
+      const choose = (value) => {
+        input.value = value;
+        setOpen(false);
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      };
+      Promise.resolve(field.loadOptions ? field.loadOptions() : field.options || [])
+        .then((loaded) => {
+          options = loaded.map((option) => (typeof option === 'string' ? option : option.label));
+        })
+        .catch(() => {});
+      input.addEventListener('input', () => render());
+      input.addEventListener('focus', () => render(!input.value.trim()));
+      toggle.addEventListener('click', () => {
+        if (list.classList.contains('hidden')) {
+          input.focus();
+          render(true);
+        } else setOpen(false);
+      });
+      input.addEventListener('keydown', (event) => {
+        const items = qsa('.combobox__option', list);
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (list.classList.contains('hidden')) render(true);
+          else if (items.length) {
+            active = (active + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+            items.forEach((item, index) => item.classList.toggle('is-active', index === active));
+            items[active].scrollIntoView({ block: 'nearest' });
+          }
+        } else if (event.key === 'Enter' && active >= 0 && items[active]) {
+          event.preventDefault();
+          choose(items[active].dataset.value);
+        } else if (event.key === 'Escape' && !list.classList.contains('hidden')) {
+          event.stopPropagation();
+          setOpen(false);
+        }
+      });
+      list.addEventListener('mousedown', (event) => {
+        const item = event.target instanceof Element ? event.target.closest('.combobox__option') : null;
+        if (!item) return;
+        event.preventDefault();
+        choose(item.dataset.value);
+      });
+      input.addEventListener('blur', () => setOpen(false));
+    });
+};
 
 export const readValues = (form, fields) => {
   const values = {};

@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Pharmacy Management System frontend (vanilla ES modules, mock API)",
+  "description": "Pharmacy Management System frontend (vanilla ES modules)",
   "scripts": {
-    "start": "node tools/serve.mjs",
+    "start": "node ../docs/tools/serve.mjs",
     "format": "prettier --write \"**/*.{html,css,js,mjs,json,md}\" --ignore-path .prettierignore",
     "format:check": "prettier --check \"**/*.{html,css,js,mjs,json,md}\" --ignore-path .prettierignore",
-    "lint": "eslint assets/js tools",
-    "check:comments": "node tools/check-comments.mjs",
-    "test:e2e": "node tools/e2e.mjs"
+    "lint": "eslint assets/js",
+    "check:comments": "node ../docs/tools/check-comments.mjs ."
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

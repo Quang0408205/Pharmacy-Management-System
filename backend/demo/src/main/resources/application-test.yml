@@ -1,0 +1,12 @@
+app:
+  security:
+    jwt-secret: test-secret-test-secret-test-secret-123456
+    max-failed-logins: 3
+    lock-duration: 1m
+  seed:
+    enabled: false
+    default-password: Test@12345
+  system-reset:
+    enabled: true
+  storage:
+    medicine-image-directory: ${java.io.tmpdir}/pharmacy-test-medicine-images

@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "cat-01",
+    "ma_danh_muc": "GDHS",
+    "ten_danh_muc": "Giảm đau - Hạ sốt",
+    "mo_ta": "Nhóm giảm đau - hạ sốt tại nhà thuốc",
+    "mau_hien_thi": "#ef4444",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-02",
+    "ma_danh_muc": "KSIN",
+    "ten_danh_muc": "Kháng sinh",
+    "mo_ta": "Nhóm kháng sinh tại nhà thuốc",
+    "mau_hien_thi": "#f97316",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-03",
+    "ma_danh_muc": "TMHA",
+    "ten_danh_muc": "Tim mạch - Huyết áp",
+    "mo_ta": "Nhóm tim mạch - huyết áp tại nhà thuốc",
+    "mau_hien_thi": "#dc2626",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-04",
+    "ma_danh_muc": "TIEH",
+    "ten_danh_muc": "Tiêu hóa",
+    "mo_ta": "Nhóm tiêu hóa tại nhà thuốc",
+    "mau_hien_thi": "#84cc16",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-05",
+    "ma_danh_muc": "HOHA",
+    "ten_danh_muc": "Hô hấp - Ho cảm",
+    "mo_ta": "Nhóm hô hấp - ho cảm tại nhà thuốc",
+    "mau_hien_thi": "#06b6d4",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-06",
+    "ma_danh_muc": "DIUN",
+    "ten_danh_muc": "Dị ứng",
+    "mo_ta": "Nhóm dị ứng tại nhà thuốc",
+    "mau_hien_thi": "#a855f7",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-07",
+    "ma_danh_muc": "VITA",
+    "ten_danh_muc": "Vitamin & Khoáng chất",
+    "mo_ta": "Nhóm vitamin & khoáng chất tại nhà thuốc",
+    "mau_hien_thi": "#eab308",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-08",
+    "ma_danh_muc": "TDUO",
+    "ten_danh_muc": "Tiểu đường - Nội tiết",
+    "mo_ta": "Nhóm tiểu đường - nội tiết tại nhà thuốc",
+    "mau_hien_thi": "#3b82f6",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-09",
+    "ma_danh_muc": "TKAT",
+    "ten_danh_muc": "Thần kinh - An thần",
+    "mo_ta": "Nhóm thần kinh - an thần tại nhà thuốc",
+    "mau_hien_thi": "#6366f1",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-10",
+    "ma_danh_muc": "CXKH",
+    "ten_danh_muc": "Cơ xương khớp",
+    "mo_ta": "Nhóm cơ xương khớp tại nhà thuốc",
+    "mau_hien_thi": "#14b8a6",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-11",
+    "ma_danh_muc": "DALI",
+    "ten_danh_muc": "Da liễu",
+    "mo_ta": "Nhóm da liễu tại nhà thuốc",
+    "mau_hien_thi": "#ec4899",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-12",
+    "ma_danh_muc": "MTMH",
+    "ten_danh_muc": "Mắt - Tai - Mũi - Họng",
+    "mo_ta": "Nhóm mắt - tai - mũi - họng tại nhà thuốc",
+    "mau_hien_thi": "#0ea5e9",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-13",
+    "ma_danh_muc": "PHUN",
+    "ten_danh_muc": "Chăm sóc phụ nữ",
+    "mo_ta": "Nhóm chăm sóc phụ nữ tại nhà thuốc",
+    "mau_hien_thi": "#f43f5e",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-14",
+    "ma_danh_muc": "TPCN",
+    "ten_danh_muc": "Thực phẩm chức năng",
+    "mo_ta": "Nhóm thực phẩm chức năng tại nhà thuốc",
+    "mau_hien_thi": "#22c55e",
+    "trang_thai": "HOAT_DONG"
+  },
+  {
+    "_id": "cat-15",
+    "ma_danh_muc": "DCYT",
+    "ten_danh_muc": "Dụng cụ y tế",
+    "mo_ta": "Nhóm dụng cụ y tế tại nhà thuốc",
+    "mau_hien_thi": "#64748b",
+    "trang_thai": "HOAT_DONG"
+  }
+]

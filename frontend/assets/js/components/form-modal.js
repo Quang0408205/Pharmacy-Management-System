@@ -8,6 +8,7 @@ import {
   showErrors,
   validateFields,
   bindPasswordToggles,
+  bindComboboxes,
 } from './form.js';
 import { openDrawer, openModal } from './overlay.js';
 import { toast } from './toast.js';
@@ -46,6 +47,7 @@ export const openFormDialog = ({
   const submit = dialog.footer.querySelector('[data-submit]');
   const alert = form.querySelector('[data-form-alert]');
   bindPasswordToggles(form);
+  bindComboboxes(form, fields);
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();

@@ -3,7 +3,6 @@ services:
     build:
       context: ./frontend
       args:
-        API_MODE: ${API_MODE:-mock}
         API_BASE_URL: ${API_BASE_URL:-/api/v1}
     container_name: pharmacy-frontend
     restart: unless-stopped
@@ -11,35 +10,43 @@ services:
       - "${FRONTEND_PORT:-8088}:80"
 
   mongodb:
-    image: mongo:7
+    build:
+      context: ./database/mongo
     container_name: pharmacy-mongodb
-    profiles: ["full"]
     restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:-pharmacy}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-pharmacy_secret}
       MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-pharmacy}
+      MONGO_REPLICA_KEY: ${MONGO_REPLICA_KEY:-change_me_replica_key_change_me_replica_key}
     ports:
       - "${MONGO_PORT:-27017}:27017"
     volumes:
       - mongo-data:/data/db
+      - ./database/mongo/init-replica.sh:/usr/local/bin/init-replica.sh:ro
     healthcheck:
-      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      test: ["CMD", "sh", "/usr/local/bin/init-replica.sh"]
       interval: 10s
-      timeout: 5s
-      retries: 10
-      start_period: 15s
+      timeout: 10s
+      retries: 12
+      start_period: 20s
 
   backend:
     build:
       context: ./backend/demo
     container_name: pharmacy-backend
-    profiles: ["full"]
     restart: unless-stopped
     environment:
-      SPRING_MONGODB_URI: mongodb://${MONGO_ROOT_USERNAME:-pharmacy}:${MONGO_ROOT_PASSWORD:-pharmacy_secret}@mongodb:27017/${MONGO_DATABASE:-pharmacy}?authSource=admin
+      SPRING_MONGODB_URI: mongodb://${MONGO_ROOT_USERNAME:-pharmacy}:${MONGO_ROOT_PASSWORD:-pharmacy_secret}@mongodb:27017/${MONGO_DATABASE:-pharmacy}?authSource=admin&replicaSet=rs0&directConnection=true
       SERVER_PORT: 8080
       SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-docker}
+      JWT_SECRET: ${JWT_SECRET:-change_me_jwt_secret_change_me_jwt_secret}
+      SEED_DEFAULT_PASSWORD: ${SEED_DEFAULT_PASSWORD:-Pharmacy@123}
+      APP_SEED_DATA_DIRECTORY: /app/seed_data
+      APP_STORAGE_MEDICINE_IMAGE_DIRECTORY: /app/uploads/medicine-images
+    volumes:
+      - ./database/seed_data:/app/seed_data:ro
+      - medicine-images:/app/uploads/medicine-images
     ports:
       - "${BACKEND_PORT:-8080}:8080"
     depends_on:
@@ -48,3 +55,4 @@ services:
 
 volumes:
   mongo-data:
+  medicine-images:

@@ -1,7 +1,7 @@
 import { preferences, flash, requireSession } from '../services/session-service.js';
 import { buildShell } from './shell.js';
 import { toast, showToast } from './toast.js';
-import { errorState } from './states.js';
+import { errorState, skeletonTable } from './states.js';
 import { errorMessage } from '../core/errors.js';
 import { qs } from '../core/dom.js';
 
@@ -11,6 +11,7 @@ export const startPage = async ({ role, nav, title, crumbs = [], render }) => {
   const root = qs('#app');
   document.title = `${title} · PharmaCare`;
   const content = buildShell({ root, user, navKey: nav, title, crumbs });
+  content.innerHTML = skeletonTable(6).value;
 
   const message = flash.take();
   if (message) showToast(message);

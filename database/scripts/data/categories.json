@@ -1,0 +1,77 @@
+[
+  {
+    "code": "GDHS",
+    "name": "Giảm đau - Hạ sốt",
+    "color": "#ef4444"
+  },
+  {
+    "code": "KSIN",
+    "name": "Kháng sinh",
+    "color": "#f97316"
+  },
+  {
+    "code": "TMHA",
+    "name": "Tim mạch - Huyết áp",
+    "color": "#dc2626"
+  },
+  {
+    "code": "TIEH",
+    "name": "Tiêu hóa",
+    "color": "#84cc16"
+  },
+  {
+    "code": "HOHA",
+    "name": "Hô hấp - Ho cảm",
+    "color": "#06b6d4"
+  },
+  {
+    "code": "DIUN",
+    "name": "Dị ứng",
+    "color": "#a855f7"
+  },
+  {
+    "code": "VITA",
+    "name": "Vitamin & Khoáng chất",
+    "color": "#eab308"
+  },
+  {
+    "code": "TDUO",
+    "name": "Tiểu đường - Nội tiết",
+    "color": "#3b82f6"
+  },
+  {
+    "code": "TKAT",
+    "name": "Thần kinh - An thần",
+    "color": "#6366f1"
+  },
+  {
+    "code": "CXKH",
+    "name": "Cơ xương khớp",
+    "color": "#14b8a6"
+  },
+  {
+    "code": "DALI",
+    "name": "Da liễu",
+    "color": "#ec4899"
+  },
+  {
+    "code": "MTMH",
+    "name": "Mắt - Tai - Mũi - Họng",
+    "color": "#0ea5e9"
+  },
+  {
+    "code": "PHUN",
+    "name": "Chăm sóc phụ nữ",
+    "color": "#f43f5e"
+  },
+  {
+    "code": "TPCN",
+    "name": "Thực phẩm chức năng",
+    "color": "#22c55e"
+  },
+  {
+    "code": "DCYT",
+    "name": "Dụng cụ y tế",
+    "color": "#64748b"
+  }
+]

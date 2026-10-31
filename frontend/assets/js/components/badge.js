@@ -44,6 +44,7 @@ const catalog = {
     CONTROLLED: ['danger', 'Kiểm soát đặc biệt'],
   },
   employee: {
+    PENDING: ['info', 'Chờ kích hoạt'],
     ACTIVE: ['success', 'Hoạt động'],
     INACTIVE: ['neutral', 'Vô hiệu hóa'],
   },
@@ -56,11 +57,17 @@ const catalog = {
     SALES: ['info', 'Nhân viên bán hàng'],
     WAREHOUSE: ['success', 'Nhân viên kho'],
   },
-  invitation: {
-    PENDING: ['info', 'Đang chờ'],
-    USED: ['success', 'Đã sử dụng'],
-    EXPIRED: ['neutral', 'Hết hạn'],
-    REVOKED: ['danger', 'Đã thu hồi'],
+  disposal: {
+    DRAFT: ['neutral', 'Nháp'],
+    PENDING_APPROVAL: ['warning', 'Chờ duyệt'],
+    APPROVED: ['info', 'Đã duyệt'],
+    REJECTED: ['danger', 'Từ chối'],
+    EXECUTED: ['success', 'Đã thực hiện'],
+  },
+  disposalReason: {
+    EXPIRED: ['danger', 'Hết hạn'],
+    DAMAGED: ['warning', 'Hư hỏng'],
+    RECALLED: ['info', 'Thu hồi'],
   },
 };
 

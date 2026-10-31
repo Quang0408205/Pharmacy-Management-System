@@ -1,25 +1,12 @@
 import { html } from '../../core/html.js';
 import { icon } from '../../core/icons.js';
-import { pageUrl, qs, delegate } from '../../core/dom.js';
+import { pageUrl, qs } from '../../core/dom.js';
 import { errorMessage } from '../../core/errors.js';
 import { mountAuthPage } from '../../components/auth-layout.js';
 import { bindPasswordToggles, setLoading } from '../../components/form.js';
 import { showToast } from '../../components/toast.js';
 import { authService } from '../../services/auth-service.js';
 import { flash, goHome } from '../../services/session-service.js';
-import { appConfig } from '../../config/app-config.js';
-import { demoAccounts, demoPassword } from '../../config/demo-data.js';
-
-const demoPanel =
-  appConfig.apiMode === 'mock'
-    ? html`<section class="demo-accounts" aria-labelledby="demo-title">
-        <h3 id="demo-title">Tài khoản demo</h3>
-        <p class="text-secondary text-small">Chỉ dùng cho môi trường demo, không dùng cho production. Mật khẩu: <strong>${demoPassword}</strong></p>
-        <div class="demo-accounts__list">
-          ${demoAccounts.map((account) => html`<button type="button" class="demo-account" data-demo="${account.email}"><span><strong>${account.role}</strong><br /><span class="text-secondary text-small">${account.email}</span></span>${icon('chevronRight', 'icon--sm')}</button>`)}
-        </div>
-      </section>`
-    : '';
 
 const card = mountAuthPage({
   title: 'Đăng nhập',
@@ -42,13 +29,12 @@ const card = mountAuthPage({
         <span class="form-error" id="password-error" role="alert"></span>
       </div>
       <div class="auth-links">
-        <label class="check"><input type="checkbox" name="remember" /> Ghi nhớ phiên (demo, 8 giờ)</label>
+        <label class="check"><input type="checkbox" name="remember" /> Ghi nhớ đăng nhập (7 ngày)</label>
         <a href="${pageUrl('pages/auth/forgot-password.html')}">Quên mật khẩu?</a>
       </div>
       <button type="submit" class="btn btn--primary btn--lg btn--block" data-submit>Đăng nhập</button>
     </form>
-    <p class="auth-footer">Có mã mời từ quản trị viên? <a href="${pageUrl('pages/auth/register.html')}">Kích hoạt tài khoản</a></p>
-    ${demoPanel}
+    <p class="auth-footer">Chưa có tài khoản? Liên hệ quản trị viên để được cấp liên kết kích hoạt.</p>
   `,
 });
 
@@ -71,14 +57,6 @@ authService
   .currentUser()
   .then((user) => goHome(user.role))
   .catch(() => {});
-
-delegate(card, 'click', '[data-demo]', (event, button) => {
-  form.elements.identifier.value = button.dataset.demo;
-  form.elements.password.value = demoPassword;
-  setFieldError('identifier', '');
-  setFieldError('password', '');
-  form.elements.password.focus();
-});
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();

@@ -1,0 +1,14 @@
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+app:
+  security:
+    jwt-secret: ${JWT_SECRET:dev-only-secret-change-me-32-bytes-minimum!!}
+  seed:
+    enabled: true
+    default-password: ${SEED_DEFAULT_PASSWORD:Pharmacy@123}
+  system-reset:
+    enabled: true

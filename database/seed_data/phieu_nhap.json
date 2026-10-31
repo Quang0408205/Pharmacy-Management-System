@@ -1,0 +1,3184 @@
+[
+  {
+    "ma_nha_cung_cap": "NCC001",
+    "ngay_nhap_truoc_so_ngay": 95,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0105",
+        "so_lo": "GD265186",
+        "san_xuat_truoc_ngay_nhap": 216,
+        "han_dung_sau_so_ngay": 516,
+        "so_luong": 90,
+        "don_gia_nhap": 20900
+      },
+      {
+        "ma_thuoc": "T0152",
+        "so_lo": "VV256353",
+        "san_xuat_truoc_ngay_nhap": 218,
+        "han_dung_sau_so_ngay": 471,
+        "so_luong": 220,
+        "don_gia_nhap": 39500
+      },
+      {
+        "ma_thuoc": "T0175",
+        "so_lo": "BR267419",
+        "san_xuat_truoc_ngay_nhap": 239,
+        "han_dung_sau_so_ngay": 50,
+        "so_luong": 50,
+        "don_gia_nhap": 23100
+      },
+      {
+        "ma_thuoc": "T0315",
+        "so_lo": "ME268722",
+        "san_xuat_truoc_ngay_nhap": 80,
+        "han_dung_sau_so_ngay": 364,
+        "so_luong": 30,
+        "don_gia_nhap": 14400
+      },
+      {
+        "ma_thuoc": "T0321",
+        "so_lo": "QB261977",
+        "san_xuat_truoc_ngay_nhap": 226,
+        "han_dung_sau_so_ngay": 763,
+        "so_luong": 200,
+        "don_gia_nhap": 10000
+      },
+      {
+        "ma_thuoc": "T0329",
+        "so_lo": "CK249385",
+        "san_xuat_truoc_ngay_nhap": 78,
+        "han_dung_sau_so_ngay": 510,
+        "so_luong": 50,
+        "don_gia_nhap": 13000
+      },
+      {
+        "ma_thuoc": "T0436",
+        "so_lo": "LY243065",
+        "san_xuat_truoc_ngay_nhap": 113,
+        "han_dung_sau_so_ngay": 573,
+        "so_luong": 200,
+        "don_gia_nhap": 54900
+      },
+      {
+        "ma_thuoc": "T0606",
+        "so_lo": "QT248249",
+        "san_xuat_truoc_ngay_nhap": 237,
+        "han_dung_sau_so_ngay": 862,
+        "so_luong": 150,
+        "don_gia_nhap": 39200
+      },
+      {
+        "ma_thuoc": "T0617",
+        "so_lo": "YZ250769",
+        "san_xuat_truoc_ngay_nhap": 141,
+        "han_dung_sau_so_ngay": 425,
+        "so_luong": 80,
+        "don_gia_nhap": 6500
+      },
+      {
+        "ma_thuoc": "T0635",
+        "so_lo": "XU243351",
+        "san_xuat_truoc_ngay_nhap": 112,
+        "han_dung_sau_so_ngay": 764,
+        "so_luong": 60,
+        "don_gia_nhap": 7500
+      },
+      {
+        "ma_thuoc": "T0694",
+        "so_lo": "YZ251359",
+        "san_xuat_truoc_ngay_nhap": 217,
+        "han_dung_sau_so_ngay": 693,
+        "so_luong": 50,
+        "don_gia_nhap": 14400
+      },
+      {
+        "ma_thuoc": "T0718",
+        "so_lo": "EW255903",
+        "san_xuat_truoc_ngay_nhap": 107,
+        "han_dung_sau_so_ngay": 671,
+        "so_luong": 80,
+        "don_gia_nhap": 18200
+      },
+      {
+        "ma_thuoc": "T0790",
+        "so_lo": "XB264375",
+        "san_xuat_truoc_ngay_nhap": 178,
+        "han_dung_sau_so_ngay": 725,
+        "so_luong": 70,
+        "don_gia_nhap": 6700
+      },
+      {
+        "ma_thuoc": "T0862",
+        "so_lo": "MH255371",
+        "san_xuat_truoc_ngay_nhap": 105,
+        "han_dung_sau_so_ngay": 302,
+        "so_luong": 50,
+        "don_gia_nhap": 10100
+      },
+      {
+        "ma_thuoc": "T0897",
+        "so_lo": "AD259027",
+        "san_xuat_truoc_ngay_nhap": 125,
+        "han_dung_sau_so_ngay": 424,
+        "so_luong": 20,
+        "don_gia_nhap": 4600
+      },
+      {
+        "ma_thuoc": "T0900",
+        "so_lo": "EB262142",
+        "san_xuat_truoc_ngay_nhap": 34,
+        "han_dung_sau_so_ngay": 729,
+        "so_luong": 180,
+        "don_gia_nhap": 4000
+      },
+      {
+        "ma_thuoc": "T0962",
+        "so_lo": "KY249473",
+        "san_xuat_truoc_ngay_nhap": 189,
+        "han_dung_sau_so_ngay": 753,
+        "so_luong": 40,
+        "don_gia_nhap": 23800
+      },
+      {
+        "ma_thuoc": "T1053",
+        "so_lo": "LH266505",
+        "san_xuat_truoc_ngay_nhap": 185,
+        "han_dung_sau_so_ngay": 500,
+        "so_luong": 140,
+        "don_gia_nhap": 38200
+      },
+      {
+        "ma_thuoc": "T1081",
+        "so_lo": "BD258140",
+        "san_xuat_truoc_ngay_nhap": 236,
+        "han_dung_sau_so_ngay": 530,
+        "so_luong": 110,
+        "don_gia_nhap": 44400
+      },
+      {
+        "ma_thuoc": "T1095",
+        "so_lo": "KP247011",
+        "san_xuat_truoc_ngay_nhap": 116,
+        "han_dung_sau_so_ngay": 340,
+        "so_luong": 40,
+        "don_gia_nhap": 50300
+      },
+      {
+        "ma_thuoc": "T1246",
+        "so_lo": "QW263289",
+        "san_xuat_truoc_ngay_nhap": 35,
+        "han_dung_sau_so_ngay": 785,
+        "so_luong": 15,
+        "don_gia_nhap": 215400
+      },
+      {
+        "ma_thuoc": "T1248",
+        "so_lo": "FB241431",
+        "san_xuat_truoc_ngay_nhap": 136,
+        "han_dung_sau_so_ngay": 850,
+        "so_luong": 50,
+        "don_gia_nhap": 168600
+      },
+      {
+        "ma_thuoc": "T1274",
+        "so_lo": "PS265848",
+        "san_xuat_truoc_ngay_nhap": 109,
+        "han_dung_sau_so_ngay": 774,
+        "so_luong": 140,
+        "don_gia_nhap": 10000
+      },
+      {
+        "ma_thuoc": "T1350",
+        "so_lo": "ZC243341",
+        "san_xuat_truoc_ngay_nhap": 225,
+        "han_dung_sau_so_ngay": 33,
+        "so_luong": 20,
+        "don_gia_nhap": 39300
+      },
+      {
+        "ma_thuoc": "T1438",
+        "so_lo": "AE254456",
+        "san_xuat_truoc_ngay_nhap": 153,
+        "han_dung_sau_so_ngay": 673,
+        "so_luong": 50,
+        "don_gia_nhap": 105700
+      },
+      {
+        "ma_thuoc": "T1468",
+        "so_lo": "GW244524",
+        "san_xuat_truoc_ngay_nhap": 210,
+        "han_dung_sau_so_ngay": 317,
+        "so_luong": 40,
+        "don_gia_nhap": 35400
+      },
+      {
+        "ma_thuoc": "T1562",
+        "so_lo": "QV265599",
+        "san_xuat_truoc_ngay_nhap": 95,
+        "han_dung_sau_so_ngay": 721,
+        "so_luong": 30,
+        "don_gia_nhap": 22000
+      },
+      {
+        "ma_thuoc": "T1568",
+        "so_lo": "PD240363",
+        "san_xuat_truoc_ngay_nhap": 156,
+        "han_dung_sau_so_ngay": 438,
+        "so_luong": 140,
+        "don_gia_nhap": 20700
+      },
+      {
+        "ma_thuoc": "T1688",
+        "so_lo": "TV240704",
+        "san_xuat_truoc_ngay_nhap": 199,
+        "han_dung_sau_so_ngay": 611,
+        "so_luong": 70,
+        "don_gia_nhap": 87600
+      },
+      {
+        "ma_thuoc": "T1783",
+        "so_lo": "ZB248077",
+        "san_xuat_truoc_ngay_nhap": 123,
+        "han_dung_sau_so_ngay": 785,
+        "so_luong": 160,
+        "don_gia_nhap": 2500
+      },
+      {
+        "ma_thuoc": "T1804",
+        "so_lo": "GX259003",
+        "san_xuat_truoc_ngay_nhap": 155,
+        "han_dung_sau_so_ngay": 412,
+        "so_luong": 60,
+        "don_gia_nhap": 13500
+      },
+      {
+        "ma_thuoc": "T1823",
+        "so_lo": "JQ258539",
+        "san_xuat_truoc_ngay_nhap": 50,
+        "han_dung_sau_so_ngay": 676,
+        "so_luong": 160,
+        "don_gia_nhap": 13200
+      },
+      {
+        "ma_thuoc": "T1850",
+        "so_lo": "CU260854",
+        "san_xuat_truoc_ngay_nhap": 212,
+        "han_dung_sau_so_ngay": 782,
+        "so_luong": 50,
+        "don_gia_nhap": 20700
+      },
+      {
+        "ma_thuoc": "T1872",
+        "so_lo": "UP240484",
+        "san_xuat_truoc_ngay_nhap": 72,
+        "han_dung_sau_so_ngay": 884,
+        "so_luong": 100,
+        "don_gia_nhap": 18400
+      },
+      {
+        "ma_thuoc": "T1881",
+        "so_lo": "RP264842",
+        "san_xuat_truoc_ngay_nhap": 22,
+        "han_dung_sau_so_ngay": 894,
+        "so_luong": 90,
+        "don_gia_nhap": 11900
+      },
+      {
+        "ma_thuoc": "T1918",
+        "so_lo": "GW249021",
+        "san_xuat_truoc_ngay_nhap": 146,
+        "han_dung_sau_so_ngay": 385,
+        "so_luong": 70,
+        "don_gia_nhap": 18600
+      },
+      {
+        "ma_thuoc": "T1926",
+        "so_lo": "XL259787",
+        "san_xuat_truoc_ngay_nhap": 51,
+        "han_dung_sau_so_ngay": 671,
+        "so_luong": 30,
+        "don_gia_nhap": 20800
+      },
+      {
+        "ma_thuoc": "T1928",
+        "so_lo": "MQ263341",
+        "san_xuat_truoc_ngay_nhap": 188,
+        "han_dung_sau_so_ngay": 858,
+        "so_luong": 50,
+        "don_gia_nhap": 19200
+      },
+      {
+        "ma_thuoc": "T1929",
+        "so_lo": "WR267859",
+        "san_xuat_truoc_ngay_nhap": 37,
+        "han_dung_sau_so_ngay": 475,
+        "so_luong": 140,
+        "don_gia_nhap": 18500
+      },
+      {
+        "ma_thuoc": "T1936",
+        "so_lo": "QH268155",
+        "san_xuat_truoc_ngay_nhap": 82,
+        "han_dung_sau_so_ngay": 781,
+        "so_luong": 20,
+        "don_gia_nhap": 26700
+      },
+      {
+        "ma_thuoc": "T1975",
+        "so_lo": "PG255438",
+        "san_xuat_truoc_ngay_nhap": 129,
+        "han_dung_sau_so_ngay": 414,
+        "so_luong": 30,
+        "don_gia_nhap": 25900
+      },
+      {
+        "ma_thuoc": "T1978",
+        "so_lo": "JE247945",
+        "san_xuat_truoc_ngay_nhap": 185,
+        "han_dung_sau_so_ngay": 541,
+        "so_luong": 40,
+        "don_gia_nhap": 25800
+      },
+      {
+        "ma_thuoc": "T1984",
+        "so_lo": "JB247960",
+        "san_xuat_truoc_ngay_nhap": 150,
+        "han_dung_sau_so_ngay": 274,
+        "so_luong": 40,
+        "don_gia_nhap": 27000
+      },
+      {
+        "ma_thuoc": "T1987",
+        "so_lo": "TS242838",
+        "san_xuat_truoc_ngay_nhap": 34,
+        "han_dung_sau_so_ngay": 41,
+        "so_luong": 180,
+        "don_gia_nhap": 27100
+      },
+      {
+        "ma_thuoc": "T2000",
+        "so_lo": "FK258812",
+        "san_xuat_truoc_ngay_nhap": 159,
+        "han_dung_sau_so_ngay": 895,
+        "so_luong": 100,
+        "don_gia_nhap": 106000
+      },
+      {
+        "ma_thuoc": "T2002",
+        "so_lo": "NT259405",
+        "san_xuat_truoc_ngay_nhap": 147,
+        "han_dung_sau_so_ngay": 265,
+        "so_luong": 80,
+        "don_gia_nhap": 390000
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC002",
+    "ngay_nhap_truoc_so_ngay": 86,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0032",
+        "so_lo": "US255311",
+        "san_xuat_truoc_ngay_nhap": 98,
+        "han_dung_sau_so_ngay": 806,
+        "so_luong": 30,
+        "don_gia_nhap": 17800
+      },
+      {
+        "ma_thuoc": "T0257",
+        "so_lo": "GW262781",
+        "san_xuat_truoc_ngay_nhap": 159,
+        "han_dung_sau_so_ngay": 332,
+        "so_luong": 80,
+        "don_gia_nhap": 41800
+      },
+      {
+        "ma_thuoc": "T0390",
+        "so_lo": "CC266574",
+        "san_xuat_truoc_ngay_nhap": 86,
+        "han_dung_sau_so_ngay": 308,
+        "so_luong": 130,
+        "don_gia_nhap": 35900
+      },
+      {
+        "ma_thuoc": "T0450",
+        "so_lo": "TH252190",
+        "san_xuat_truoc_ngay_nhap": 76,
+        "han_dung_sau_so_ngay": 559,
+        "so_luong": 100,
+        "don_gia_nhap": 47200
+      },
+      {
+        "ma_thuoc": "T0535",
+        "so_lo": "MS254743",
+        "san_xuat_truoc_ngay_nhap": 76,
+        "han_dung_sau_so_ngay": 879,
+        "so_luong": 100,
+        "don_gia_nhap": 80600
+      },
+      {
+        "ma_thuoc": "T0551",
+        "so_lo": "HK255547",
+        "san_xuat_truoc_ngay_nhap": 151,
+        "han_dung_sau_so_ngay": 335,
+        "so_luong": 70,
+        "don_gia_nhap": 9600
+      },
+      {
+        "ma_thuoc": "T0571",
+        "so_lo": "KG252667",
+        "san_xuat_truoc_ngay_nhap": 238,
+        "han_dung_sau_so_ngay": 322,
+        "so_luong": 120,
+        "don_gia_nhap": 53000
+      },
+      {
+        "ma_thuoc": "T0572",
+        "so_lo": "UF256227",
+        "san_xuat_truoc_ngay_nhap": 220,
+        "han_dung_sau_so_ngay": 734,
+        "so_luong": 50,
+        "don_gia_nhap": 59100
+      },
+      {
+        "ma_thuoc": "T0694",
+        "so_lo": "MF241000",
+        "san_xuat_truoc_ngay_nhap": 238,
+        "han_dung_sau_so_ngay": 508,
+        "so_luong": 30,
+        "don_gia_nhap": 14400
+      },
+      {
+        "ma_thuoc": "T0811",
+        "so_lo": "DD261817",
+        "san_xuat_truoc_ngay_nhap": 20,
+        "han_dung_sau_so_ngay": 827,
+        "so_luong": 80,
+        "don_gia_nhap": 51800
+      },
+      {
+        "ma_thuoc": "T0918",
+        "so_lo": "TM250689",
+        "san_xuat_truoc_ngay_nhap": 205,
+        "han_dung_sau_so_ngay": 275,
+        "so_luong": 110,
+        "don_gia_nhap": 21400
+      },
+      {
+        "ma_thuoc": "T0928",
+        "so_lo": "DM244842",
+        "san_xuat_truoc_ngay_nhap": 211,
+        "han_dung_sau_so_ngay": 541,
+        "so_luong": 30,
+        "don_gia_nhap": 24100
+      },
+      {
+        "ma_thuoc": "T0974",
+        "so_lo": "JZ247471",
+        "san_xuat_truoc_ngay_nhap": 136,
+        "han_dung_sau_so_ngay": 393,
+        "so_luong": 30,
+        "don_gia_nhap": 21500
+      },
+      {
+        "ma_thuoc": "T1040",
+        "so_lo": "YE259042",
+        "san_xuat_truoc_ngay_nhap": 194,
+        "han_dung_sau_so_ngay": 241,
+        "so_luong": 90,
+        "don_gia_nhap": 10800
+      },
+      {
+        "ma_thuoc": "T1060",
+        "so_lo": "KV259459",
+        "san_xuat_truoc_ngay_nhap": 240,
+        "han_dung_sau_so_ngay": 640,
+        "so_luong": 110,
+        "don_gia_nhap": 34800
+      },
+      {
+        "ma_thuoc": "T1070",
+        "so_lo": "JW255485",
+        "san_xuat_truoc_ngay_nhap": 234,
+        "han_dung_sau_so_ngay": 638,
+        "so_luong": 50,
+        "don_gia_nhap": 29400
+      },
+      {
+        "ma_thuoc": "T1097",
+        "so_lo": "GJ241205",
+        "san_xuat_truoc_ngay_nhap": 168,
+        "han_dung_sau_so_ngay": 681,
+        "so_luong": 140,
+        "don_gia_nhap": 46300
+      },
+      {
+        "ma_thuoc": "T1119",
+        "so_lo": "VY243621",
+        "san_xuat_truoc_ngay_nhap": 160,
+        "han_dung_sau_so_ngay": 776,
+        "so_luong": 70,
+        "don_gia_nhap": 28100
+      },
+      {
+        "ma_thuoc": "T1206",
+        "so_lo": "DS264190",
+        "san_xuat_truoc_ngay_nhap": 85,
+        "han_dung_sau_so_ngay": 797,
+        "so_luong": 50,
+        "don_gia_nhap": 14200
+      },
+      {
+        "ma_thuoc": "T1244",
+        "so_lo": "QZ252979",
+        "san_xuat_truoc_ngay_nhap": 138,
+        "han_dung_sau_so_ngay": 545,
+        "so_luong": 30,
+        "don_gia_nhap": 231700
+      },
+      {
+        "ma_thuoc": "T1253",
+        "so_lo": "JW266591",
+        "san_xuat_truoc_ngay_nhap": 229,
+        "han_dung_sau_so_ngay": 864,
+        "so_luong": 40,
+        "don_gia_nhap": 139800
+      },
+      {
+        "ma_thuoc": "T1274",
+        "so_lo": "PJ246952",
+        "san_xuat_truoc_ngay_nhap": 43,
+        "han_dung_sau_so_ngay": 704,
+        "so_luong": 110,
+        "don_gia_nhap": 10000
+      },
+      {
+        "ma_thuoc": "T1385",
+        "so_lo": "EA257638",
+        "san_xuat_truoc_ngay_nhap": 86,
+        "han_dung_sau_so_ngay": 665,
+        "so_luong": 160,
+        "don_gia_nhap": 13200
+      },
+      {
+        "ma_thuoc": "T1468",
+        "so_lo": "GT259548",
+        "san_xuat_truoc_ngay_nhap": 127,
+        "han_dung_sau_so_ngay": 855,
+        "so_luong": 80,
+        "don_gia_nhap": 35400
+      },
+      {
+        "ma_thuoc": "T1820",
+        "so_lo": "WX249024",
+        "san_xuat_truoc_ngay_nhap": 169,
+        "han_dung_sau_so_ngay": 355,
+        "so_luong": 140,
+        "don_gia_nhap": 14400
+      },
+      {
+        "ma_thuoc": "T1843",
+        "so_lo": "DW257574",
+        "san_xuat_truoc_ngay_nhap": 79,
+        "han_dung_sau_so_ngay": 633,
+        "so_luong": 80,
+        "don_gia_nhap": 18100
+      },
+      {
+        "ma_thuoc": "T1853",
+        "so_lo": "ET258211",
+        "san_xuat_truoc_ngay_nhap": 109,
+        "han_dung_sau_so_ngay": 735,
+        "so_luong": 30,
+        "don_gia_nhap": 15900
+      },
+      {
+        "ma_thuoc": "T1856",
+        "so_lo": "FH257803",
+        "san_xuat_truoc_ngay_nhap": 46,
+        "han_dung_sau_so_ngay": 378,
+        "so_luong": 40,
+        "don_gia_nhap": 16400
+      },
+      {
+        "ma_thuoc": "T1910",
+        "so_lo": "ME246632",
+        "san_xuat_truoc_ngay_nhap": 49,
+        "han_dung_sau_so_ngay": 534,
+        "so_luong": 40,
+        "don_gia_nhap": 22400
+      },
+      {
+        "ma_thuoc": "T1940",
+        "so_lo": "LW253897",
+        "san_xuat_truoc_ngay_nhap": 88,
+        "han_dung_sau_so_ngay": 597,
+        "so_luong": 210,
+        "don_gia_nhap": 48400
+      },
+      {
+        "ma_thuoc": "T1995",
+        "so_lo": "GF261160",
+        "san_xuat_truoc_ngay_nhap": 99,
+        "han_dung_sau_so_ngay": 762,
+        "so_luong": 40,
+        "don_gia_nhap": 27100
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC003",
+    "ngay_nhap_truoc_so_ngay": 77,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0009",
+        "so_lo": "XK268504",
+        "san_xuat_truoc_ngay_nhap": 49,
+        "han_dung_sau_so_ngay": 427,
+        "so_luong": 50,
+        "don_gia_nhap": 9800
+      },
+      {
+        "ma_thuoc": "T0128",
+        "so_lo": "XM253561",
+        "san_xuat_truoc_ngay_nhap": 116,
+        "han_dung_sau_so_ngay": 855,
+        "so_luong": 50,
+        "don_gia_nhap": 8400
+      },
+      {
+        "ma_thuoc": "T0142",
+        "so_lo": "BU266290",
+        "san_xuat_truoc_ngay_nhap": 66,
+        "han_dung_sau_so_ngay": 261,
+        "so_luong": 70,
+        "don_gia_nhap": 50700
+      },
+      {
+        "ma_thuoc": "T0270",
+        "so_lo": "KP245600",
+        "san_xuat_truoc_ngay_nhap": 77,
+        "han_dung_sau_so_ngay": 734,
+        "so_luong": 140,
+        "don_gia_nhap": 35900
+      },
+      {
+        "ma_thuoc": "T0271",
+        "so_lo": "DM242500",
+        "san_xuat_truoc_ngay_nhap": 96,
+        "han_dung_sau_so_ngay": 393,
+        "so_luong": 180,
+        "don_gia_nhap": 28500
+      },
+      {
+        "ma_thuoc": "T0350",
+        "so_lo": "NA269032",
+        "san_xuat_truoc_ngay_nhap": 76,
+        "han_dung_sau_so_ngay": 313,
+        "so_luong": 100,
+        "don_gia_nhap": 18100
+      },
+      {
+        "ma_thuoc": "T0556",
+        "so_lo": "RK245771",
+        "san_xuat_truoc_ngay_nhap": 137,
+        "han_dung_sau_so_ngay": 262,
+        "so_luong": 50,
+        "don_gia_nhap": 8400
+      },
+      {
+        "ma_thuoc": "T0636",
+        "so_lo": "SG262176",
+        "san_xuat_truoc_ngay_nhap": 208,
+        "han_dung_sau_so_ngay": 433,
+        "so_luong": 90,
+        "don_gia_nhap": 7000
+      },
+      {
+        "ma_thuoc": "T0731",
+        "so_lo": "JL263309",
+        "san_xuat_truoc_ngay_nhap": 204,
+        "han_dung_sau_so_ngay": 690,
+        "so_luong": 130,
+        "don_gia_nhap": 9700
+      },
+      {
+        "ma_thuoc": "T0811",
+        "so_lo": "PJ264531",
+        "san_xuat_truoc_ngay_nhap": 138,
+        "han_dung_sau_so_ngay": 795,
+        "so_luong": 60,
+        "don_gia_nhap": 51800
+      },
+      {
+        "ma_thuoc": "T0928",
+        "so_lo": "TV254773",
+        "san_xuat_truoc_ngay_nhap": 234,
+        "han_dung_sau_so_ngay": 456,
+        "so_luong": 20,
+        "don_gia_nhap": 24100
+      },
+      {
+        "ma_thuoc": "T1151",
+        "so_lo": "YX264411",
+        "san_xuat_truoc_ngay_nhap": 208,
+        "han_dung_sau_so_ngay": 419,
+        "so_luong": 80,
+        "don_gia_nhap": 21900
+      },
+      {
+        "ma_thuoc": "T1172",
+        "so_lo": "TW241332",
+        "san_xuat_truoc_ngay_nhap": 82,
+        "han_dung_sau_so_ngay": 305,
+        "so_luong": 3,
+        "don_gia_nhap": 47500
+      },
+      {
+        "ma_thuoc": "T1248",
+        "so_lo": "GM250296",
+        "san_xuat_truoc_ngay_nhap": 139,
+        "han_dung_sau_so_ngay": 304,
+        "so_luong": 40,
+        "don_gia_nhap": 168600
+      },
+      {
+        "ma_thuoc": "T1252",
+        "so_lo": "RT268260",
+        "san_xuat_truoc_ngay_nhap": 120,
+        "han_dung_sau_so_ngay": 347,
+        "so_luong": 160,
+        "don_gia_nhap": 158800
+      },
+      {
+        "ma_thuoc": "T1265",
+        "so_lo": "FP257724",
+        "san_xuat_truoc_ngay_nhap": 160,
+        "han_dung_sau_so_ngay": 454,
+        "so_luong": 40,
+        "don_gia_nhap": 8900
+      },
+      {
+        "ma_thuoc": "T1308",
+        "so_lo": "FT268832",
+        "san_xuat_truoc_ngay_nhap": 33,
+        "han_dung_sau_so_ngay": 598,
+        "so_luong": 60,
+        "don_gia_nhap": 47100
+      },
+      {
+        "ma_thuoc": "T1585",
+        "so_lo": "SY249277",
+        "san_xuat_truoc_ngay_nhap": 117,
+        "han_dung_sau_so_ngay": 552,
+        "so_luong": 50,
+        "don_gia_nhap": 13100
+      },
+      {
+        "ma_thuoc": "T1675",
+        "so_lo": "VS260987",
+        "san_xuat_truoc_ngay_nhap": 38,
+        "han_dung_sau_so_ngay": 373,
+        "so_luong": 110,
+        "don_gia_nhap": 11800
+      },
+      {
+        "ma_thuoc": "T1694",
+        "so_lo": "WR248232",
+        "san_xuat_truoc_ngay_nhap": 112,
+        "han_dung_sau_so_ngay": 851,
+        "so_luong": 30,
+        "don_gia_nhap": 83300
+      },
+      {
+        "ma_thuoc": "T1726",
+        "so_lo": "HY254351",
+        "san_xuat_truoc_ngay_nhap": 101,
+        "han_dung_sau_so_ngay": 285,
+        "so_luong": 100,
+        "don_gia_nhap": 44400
+      },
+      {
+        "ma_thuoc": "T1758",
+        "so_lo": "WM268048",
+        "san_xuat_truoc_ngay_nhap": 174,
+        "han_dung_sau_so_ngay": 422,
+        "so_luong": 140,
+        "don_gia_nhap": 3900
+      },
+      {
+        "ma_thuoc": "T1790",
+        "so_lo": "AW247946",
+        "san_xuat_truoc_ngay_nhap": 47,
+        "han_dung_sau_so_ngay": 429,
+        "so_luong": 50,
+        "don_gia_nhap": 3200
+      },
+      {
+        "ma_thuoc": "T1838",
+        "so_lo": "ZZ249167",
+        "san_xuat_truoc_ngay_nhap": 167,
+        "han_dung_sau_so_ngay": 273,
+        "so_luong": 4,
+        "don_gia_nhap": 18300
+      },
+      {
+        "ma_thuoc": "T1843",
+        "so_lo": "FU242633",
+        "san_xuat_truoc_ngay_nhap": 133,
+        "han_dung_sau_so_ngay": 691,
+        "so_luong": 130,
+        "don_gia_nhap": 18100
+      },
+      {
+        "ma_thuoc": "T1898",
+        "so_lo": "WC268284",
+        "san_xuat_truoc_ngay_nhap": 221,
+        "han_dung_sau_so_ngay": 468,
+        "so_luong": 80,
+        "don_gia_nhap": 11800
+      },
+      {
+        "ma_thuoc": "T1916",
+        "so_lo": "HZ265636",
+        "san_xuat_truoc_ngay_nhap": 108,
+        "han_dung_sau_so_ngay": 417,
+        "so_luong": 30,
+        "don_gia_nhap": 21400
+      },
+      {
+        "ma_thuoc": "T1994",
+        "so_lo": "YF256803",
+        "san_xuat_truoc_ngay_nhap": 234,
+        "han_dung_sau_so_ngay": 468,
+        "so_luong": 60,
+        "don_gia_nhap": 27200
+      },
+      {
+        "ma_thuoc": "T2011",
+        "so_lo": "FB251015",
+        "san_xuat_truoc_ngay_nhap": 209,
+        "han_dung_sau_so_ngay": 321,
+        "so_luong": 10,
+        "don_gia_nhap": 33800
+      },
+      {
+        "ma_thuoc": "T2017",
+        "so_lo": "RE245420",
+        "san_xuat_truoc_ngay_nhap": 42,
+        "han_dung_sau_so_ngay": 61,
+        "so_luong": 20,
+        "don_gia_nhap": 11300
+      },
+      {
+        "ma_thuoc": "T2024",
+        "so_lo": "XL255160",
+        "san_xuat_truoc_ngay_nhap": 211,
+        "han_dung_sau_so_ngay": 249,
+        "so_luong": 40,
+        "don_gia_nhap": 33800
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC004",
+    "ngay_nhap_truoc_so_ngay": 68,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0010",
+        "so_lo": "WK261869",
+        "san_xuat_truoc_ngay_nhap": 47,
+        "han_dung_sau_so_ngay": 526,
+        "so_luong": 20,
+        "don_gia_nhap": 11700
+      },
+      {
+        "ma_thuoc": "T0027",
+        "so_lo": "PM262410",
+        "san_xuat_truoc_ngay_nhap": 31,
+        "han_dung_sau_so_ngay": 413,
+        "so_luong": 90,
+        "don_gia_nhap": 9800
+      },
+      {
+        "ma_thuoc": "T0034",
+        "so_lo": "ZF267282",
+        "san_xuat_truoc_ngay_nhap": 20,
+        "han_dung_sau_so_ngay": 264,
+        "so_luong": 60,
+        "don_gia_nhap": 16800
+      },
+      {
+        "ma_thuoc": "T0058",
+        "so_lo": "ER252451",
+        "san_xuat_truoc_ngay_nhap": 62,
+        "han_dung_sau_so_ngay": 682,
+        "so_luong": 50,
+        "don_gia_nhap": 11400
+      },
+      {
+        "ma_thuoc": "T0235",
+        "so_lo": "JE261545",
+        "san_xuat_truoc_ngay_nhap": 120,
+        "han_dung_sau_so_ngay": 651,
+        "so_luong": 60,
+        "don_gia_nhap": 47600
+      },
+      {
+        "ma_thuoc": "T0267",
+        "so_lo": "SB259275",
+        "san_xuat_truoc_ngay_nhap": 133,
+        "han_dung_sau_so_ngay": 753,
+        "so_luong": 120,
+        "don_gia_nhap": 41100
+      },
+      {
+        "ma_thuoc": "T0334",
+        "so_lo": "YQ245499",
+        "san_xuat_truoc_ngay_nhap": 110,
+        "han_dung_sau_so_ngay": 737,
+        "so_luong": 50,
+        "don_gia_nhap": 8800
+      },
+      {
+        "ma_thuoc": "T0382",
+        "so_lo": "KC246187",
+        "san_xuat_truoc_ngay_nhap": 140,
+        "han_dung_sau_so_ngay": 492,
+        "so_luong": 110,
+        "don_gia_nhap": 43000
+      },
+      {
+        "ma_thuoc": "T0439",
+        "so_lo": "CJ243317",
+        "san_xuat_truoc_ngay_nhap": 178,
+        "han_dung_sau_so_ngay": 391,
+        "so_luong": 30,
+        "don_gia_nhap": 62100
+      },
+      {
+        "ma_thuoc": "T0466",
+        "so_lo": "CH243827",
+        "san_xuat_truoc_ngay_nhap": 26,
+        "han_dung_sau_so_ngay": 786,
+        "so_luong": 50,
+        "don_gia_nhap": 6700
+      },
+      {
+        "ma_thuoc": "T0522",
+        "so_lo": "JZ262137",
+        "san_xuat_truoc_ngay_nhap": 70,
+        "han_dung_sau_so_ngay": 520,
+        "so_luong": 20,
+        "don_gia_nhap": 87100
+      },
+      {
+        "ma_thuoc": "T0541",
+        "so_lo": "ZV266071",
+        "san_xuat_truoc_ngay_nhap": 231,
+        "han_dung_sau_so_ngay": 837,
+        "so_luong": 130,
+        "don_gia_nhap": 7700
+      },
+      {
+        "ma_thuoc": "T0578",
+        "so_lo": "VA242708",
+        "san_xuat_truoc_ngay_nhap": 23,
+        "han_dung_sau_so_ngay": 851,
+        "so_luong": 150,
+        "don_gia_nhap": 48500
+      },
+      {
+        "ma_thuoc": "T0641",
+        "so_lo": "RS263061",
+        "san_xuat_truoc_ngay_nhap": 32,
+        "han_dung_sau_so_ngay": 380,
+        "so_luong": 110,
+        "don_gia_nhap": 26300
+      },
+      {
+        "ma_thuoc": "T0692",
+        "so_lo": "WS254612",
+        "san_xuat_truoc_ngay_nhap": 201,
+        "han_dung_sau_so_ngay": 718,
+        "so_luong": 50,
+        "don_gia_nhap": 30500
+      },
+      {
+        "ma_thuoc": "T0753",
+        "so_lo": "TM242438",
+        "san_xuat_truoc_ngay_nhap": 183,
+        "han_dung_sau_so_ngay": 30,
+        "so_luong": 70,
+        "don_gia_nhap": 5600
+      },
+      {
+        "ma_thuoc": "T0852",
+        "so_lo": "VN247513",
+        "san_xuat_truoc_ngay_nhap": 230,
+        "han_dung_sau_so_ngay": 748,
+        "so_luong": 130,
+        "don_gia_nhap": 5500
+      },
+      {
+        "ma_thuoc": "T1066",
+        "so_lo": "UC243373",
+        "san_xuat_truoc_ngay_nhap": 173,
+        "han_dung_sau_so_ngay": 245,
+        "so_luong": 50,
+        "don_gia_nhap": 35700
+      },
+      {
+        "ma_thuoc": "T1076",
+        "so_lo": "FA255555",
+        "san_xuat_truoc_ngay_nhap": 110,
+        "han_dung_sau_so_ngay": 708,
+        "so_luong": 180,
+        "don_gia_nhap": 43500
+      },
+      {
+        "ma_thuoc": "T1165",
+        "so_lo": "KS248738",
+        "san_xuat_truoc_ngay_nhap": 118,
+        "han_dung_sau_so_ngay": 750,
+        "so_luong": 60,
+        "don_gia_nhap": 59100
+      },
+      {
+        "ma_thuoc": "T1168",
+        "so_lo": "RB258004",
+        "san_xuat_truoc_ngay_nhap": 214,
+        "han_dung_sau_so_ngay": 815,
+        "so_luong": 60,
+        "don_gia_nhap": 34000
+      },
+      {
+        "ma_thuoc": "T1290",
+        "so_lo": "NG256080",
+        "san_xuat_truoc_ngay_nhap": 20,
+        "han_dung_sau_so_ngay": 282,
+        "so_luong": 110,
+        "don_gia_nhap": 10000
+      },
+      {
+        "ma_thuoc": "T1356",
+        "so_lo": "BW254997",
+        "san_xuat_truoc_ngay_nhap": 24,
+        "han_dung_sau_so_ngay": 12,
+        "so_luong": 130,
+        "don_gia_nhap": 59200
+      },
+      {
+        "ma_thuoc": "T1457",
+        "so_lo": "BK247222",
+        "san_xuat_truoc_ngay_nhap": 117,
+        "han_dung_sau_so_ngay": 436,
+        "so_luong": 30,
+        "don_gia_nhap": 36200
+      },
+      {
+        "ma_thuoc": "T1530",
+        "so_lo": "RV240274",
+        "san_xuat_truoc_ngay_nhap": 111,
+        "han_dung_sau_so_ngay": 719,
+        "so_luong": 70,
+        "don_gia_nhap": 12100
+      },
+      {
+        "ma_thuoc": "T1568",
+        "so_lo": "CV256590",
+        "san_xuat_truoc_ngay_nhap": 190,
+        "han_dung_sau_so_ngay": 767,
+        "so_luong": 130,
+        "don_gia_nhap": 20700
+      },
+      {
+        "ma_thuoc": "T1694",
+        "so_lo": "FU258712",
+        "san_xuat_truoc_ngay_nhap": 236,
+        "han_dung_sau_so_ngay": 303,
+        "so_luong": 30,
+        "don_gia_nhap": 83300
+      },
+      {
+        "ma_thuoc": "T1729",
+        "so_lo": "MS246394",
+        "san_xuat_truoc_ngay_nhap": 34,
+        "han_dung_sau_so_ngay": 855,
+        "so_luong": 4,
+        "don_gia_nhap": 39100
+      },
+      {
+        "ma_thuoc": "T1740",
+        "so_lo": "AL255456",
+        "san_xuat_truoc_ngay_nhap": 87,
+        "han_dung_sau_so_ngay": 488,
+        "so_luong": 20,
+        "don_gia_nhap": 37100
+      },
+      {
+        "ma_thuoc": "T1767",
+        "so_lo": "MM248741",
+        "san_xuat_truoc_ngay_nhap": 219,
+        "han_dung_sau_so_ngay": 309,
+        "so_luong": 170,
+        "don_gia_nhap": 3600
+      },
+      {
+        "ma_thuoc": "T1820",
+        "so_lo": "HJ256327",
+        "san_xuat_truoc_ngay_nhap": 161,
+        "han_dung_sau_so_ngay": 779,
+        "so_luong": 130,
+        "don_gia_nhap": 14400
+      },
+      {
+        "ma_thuoc": "T1887",
+        "so_lo": "RM245800",
+        "san_xuat_truoc_ngay_nhap": 114,
+        "han_dung_sau_so_ngay": 45,
+        "so_luong": 30,
+        "don_gia_nhap": 11700
+      },
+      {
+        "ma_thuoc": "T1891",
+        "so_lo": "HW269711",
+        "san_xuat_truoc_ngay_nhap": 99,
+        "han_dung_sau_so_ngay": 884,
+        "so_luong": 70,
+        "don_gia_nhap": 12300
+      },
+      {
+        "ma_thuoc": "T1910",
+        "so_lo": "MQ257374",
+        "san_xuat_truoc_ngay_nhap": 210,
+        "han_dung_sau_so_ngay": 587,
+        "so_luong": 30,
+        "don_gia_nhap": 22400
+      },
+      {
+        "ma_thuoc": "T1934",
+        "so_lo": "AV267570",
+        "san_xuat_truoc_ngay_nhap": 217,
+        "han_dung_sau_so_ngay": 703,
+        "so_luong": 20,
+        "don_gia_nhap": 42600
+      },
+      {
+        "ma_thuoc": "T1973",
+        "so_lo": "LB253422",
+        "san_xuat_truoc_ngay_nhap": 133,
+        "han_dung_sau_so_ngay": 283,
+        "so_luong": 170,
+        "don_gia_nhap": 29300
+      },
+      {
+        "ma_thuoc": "T1990",
+        "so_lo": "KC250462",
+        "san_xuat_truoc_ngay_nhap": 102,
+        "han_dung_sau_so_ngay": 487,
+        "so_luong": 60,
+        "don_gia_nhap": 30100
+      },
+      {
+        "ma_thuoc": "T2003",
+        "so_lo": "LH269121",
+        "san_xuat_truoc_ngay_nhap": 200,
+        "han_dung_sau_so_ngay": 51,
+        "so_luong": 20,
+        "don_gia_nhap": 63800
+      },
+      {
+        "ma_thuoc": "T2010",
+        "so_lo": "LV249849",
+        "san_xuat_truoc_ngay_nhap": 166,
+        "han_dung_sau_so_ngay": 390,
+        "so_luong": 90,
+        "don_gia_nhap": 585000
+      },
+      {
+        "ma_thuoc": "T2020",
+        "so_lo": "PK254445",
+        "san_xuat_truoc_ngay_nhap": 36,
+        "han_dung_sau_so_ngay": 295,
+        "so_luong": 40,
+        "don_gia_nhap": 28500
+      },
+      {
+        "ma_thuoc": "T2024",
+        "so_lo": "EZ259095",
+        "san_xuat_truoc_ngay_nhap": 228,
+        "han_dung_sau_so_ngay": 398,
+        "so_luong": 30,
+        "don_gia_nhap": 33800
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC005",
+    "ngay_nhap_truoc_so_ngay": 59,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0095",
+        "so_lo": "HC264250",
+        "san_xuat_truoc_ngay_nhap": 83,
+        "han_dung_sau_so_ngay": 320,
+        "so_luong": 50,
+        "don_gia_nhap": 30500
+      },
+      {
+        "ma_thuoc": "T0105",
+        "so_lo": "GA261576",
+        "san_xuat_truoc_ngay_nhap": 215,
+        "han_dung_sau_so_ngay": 704,
+        "so_luong": 70,
+        "don_gia_nhap": 20900
+      },
+      {
+        "ma_thuoc": "T0117",
+        "so_lo": "CG242076",
+        "san_xuat_truoc_ngay_nhap": 228,
+        "han_dung_sau_so_ngay": 696,
+        "so_luong": 70,
+        "don_gia_nhap": 10100
+      },
+      {
+        "ma_thuoc": "T0121",
+        "so_lo": "VN263155",
+        "san_xuat_truoc_ngay_nhap": 92,
+        "han_dung_sau_so_ngay": 610,
+        "so_luong": 160,
+        "don_gia_nhap": 9100
+      },
+      {
+        "ma_thuoc": "T0270",
+        "so_lo": "WA258257",
+        "san_xuat_truoc_ngay_nhap": 102,
+        "han_dung_sau_so_ngay": 456,
+        "so_luong": 130,
+        "don_gia_nhap": 35900
+      },
+      {
+        "ma_thuoc": "T0316",
+        "so_lo": "LK265865",
+        "san_xuat_truoc_ngay_nhap": 209,
+        "han_dung_sau_so_ngay": 242,
+        "so_luong": 60,
+        "don_gia_nhap": 15100
+      },
+      {
+        "ma_thuoc": "T0375",
+        "so_lo": "VV265697",
+        "san_xuat_truoc_ngay_nhap": 144,
+        "han_dung_sau_so_ngay": 284,
+        "so_luong": 50,
+        "don_gia_nhap": 68500
+      },
+      {
+        "ma_thuoc": "T0417",
+        "so_lo": "JQ244762",
+        "san_xuat_truoc_ngay_nhap": 106,
+        "han_dung_sau_so_ngay": 594,
+        "so_luong": 160,
+        "don_gia_nhap": 23800
+      },
+      {
+        "ma_thuoc": "T0439",
+        "so_lo": "EL241227",
+        "san_xuat_truoc_ngay_nhap": 20,
+        "han_dung_sau_so_ngay": 368,
+        "so_luong": 40,
+        "don_gia_nhap": 62100
+      },
+      {
+        "ma_thuoc": "T0522",
+        "so_lo": "BV242613",
+        "san_xuat_truoc_ngay_nhap": 119,
+        "han_dung_sau_so_ngay": 857,
+        "so_luong": 20,
+        "don_gia_nhap": 87100
+      },
+      {
+        "ma_thuoc": "T0548",
+        "so_lo": "HH247867",
+        "san_xuat_truoc_ngay_nhap": 148,
+        "han_dung_sau_so_ngay": 865,
+        "so_luong": 50,
+        "don_gia_nhap": 7100
+      },
+      {
+        "ma_thuoc": "T0634",
+        "so_lo": "SK268175",
+        "san_xuat_truoc_ngay_nhap": 187,
+        "han_dung_sau_so_ngay": 617,
+        "so_luong": 40,
+        "don_gia_nhap": 7800
+      },
+      {
+        "ma_thuoc": "T0738",
+        "so_lo": "LF265995",
+        "san_xuat_truoc_ngay_nhap": 192,
+        "han_dung_sau_so_ngay": 250,
+        "so_luong": 90,
+        "don_gia_nhap": 11100
+      },
+      {
+        "ma_thuoc": "T0741",
+        "so_lo": "HF263316",
+        "san_xuat_truoc_ngay_nhap": 157,
+        "han_dung_sau_so_ngay": 686,
+        "so_luong": 80,
+        "don_gia_nhap": 12100
+      },
+      {
+        "ma_thuoc": "T0921",
+        "so_lo": "VW248868",
+        "san_xuat_truoc_ngay_nhap": 233,
+        "han_dung_sau_so_ngay": 384,
+        "so_luong": 110,
+        "don_gia_nhap": 21100
+      },
+      {
+        "ma_thuoc": "T0969",
+        "so_lo": "JE269776",
+        "san_xuat_truoc_ngay_nhap": 60,
+        "han_dung_sau_so_ngay": 268,
+        "so_luong": 80,
+        "don_gia_nhap": 23100
+      },
+      {
+        "ma_thuoc": "T0996",
+        "so_lo": "XT256654",
+        "san_xuat_truoc_ngay_nhap": 173,
+        "han_dung_sau_so_ngay": 667,
+        "so_luong": 140,
+        "don_gia_nhap": 7200
+      },
+      {
+        "ma_thuoc": "T1063",
+        "so_lo": "TR263951",
+        "san_xuat_truoc_ngay_nhap": 209,
+        "han_dung_sau_so_ngay": 459,
+        "so_luong": 40,
+        "don_gia_nhap": 29700
+      },
+      {
+        "ma_thuoc": "T1072",
+        "so_lo": "LT249300",
+        "san_xuat_truoc_ngay_nhap": 213,
+        "han_dung_sau_so_ngay": 250,
+        "so_luong": 100,
+        "don_gia_nhap": 36700
+      },
+      {
+        "ma_thuoc": "T1079",
+        "so_lo": "YW261428",
+        "san_xuat_truoc_ngay_nhap": 42,
+        "han_dung_sau_so_ngay": 759,
+        "so_luong": 30,
+        "don_gia_nhap": 50800
+      },
+      {
+        "ma_thuoc": "T1085",
+        "so_lo": "NA250185",
+        "san_xuat_truoc_ngay_nhap": 139,
+        "han_dung_sau_so_ngay": 259,
+        "so_luong": 90,
+        "don_gia_nhap": 43300
+      },
+      {
+        "ma_thuoc": "T1099",
+        "so_lo": "WR255027",
+        "san_xuat_truoc_ngay_nhap": 24,
+        "han_dung_sau_so_ngay": 780,
+        "so_luong": 130,
+        "don_gia_nhap": 42300
+      },
+      {
+        "ma_thuoc": "T1163",
+        "so_lo": "SN254228",
+        "san_xuat_truoc_ngay_nhap": 62,
+        "han_dung_sau_so_ngay": 445,
+        "so_luong": 200,
+        "don_gia_nhap": 42600
+      },
+      {
+        "ma_thuoc": "T1164",
+        "so_lo": "TR246174",
+        "san_xuat_truoc_ngay_nhap": 129,
+        "han_dung_sau_so_ngay": 352,
+        "so_luong": 50,
+        "don_gia_nhap": 43300
+      },
+      {
+        "ma_thuoc": "T1216",
+        "so_lo": "UY257672",
+        "san_xuat_truoc_ngay_nhap": 54,
+        "han_dung_sau_so_ngay": 240,
+        "so_luong": 180,
+        "don_gia_nhap": 50700
+      },
+      {
+        "ma_thuoc": "T1285",
+        "so_lo": "FB269540",
+        "san_xuat_truoc_ngay_nhap": 25,
+        "han_dung_sau_so_ngay": 632,
+        "so_luong": 50,
+        "don_gia_nhap": 8600
+      },
+      {
+        "ma_thuoc": "T1325",
+        "so_lo": "ZR254478",
+        "san_xuat_truoc_ngay_nhap": 121,
+        "han_dung_sau_so_ngay": 281,
+        "so_luong": 140,
+        "don_gia_nhap": 44900
+      },
+      {
+        "ma_thuoc": "T1384",
+        "so_lo": "TL260005",
+        "san_xuat_truoc_ngay_nhap": 162,
+        "han_dung_sau_so_ngay": 401,
+        "so_luong": 180,
+        "don_gia_nhap": 14100
+      },
+      {
+        "ma_thuoc": "T1407",
+        "so_lo": "PT242439",
+        "san_xuat_truoc_ngay_nhap": 234,
+        "han_dung_sau_so_ngay": 270,
+        "so_luong": 60,
+        "don_gia_nhap": 50000
+      },
+      {
+        "ma_thuoc": "T1429",
+        "so_lo": "LG244617",
+        "san_xuat_truoc_ngay_nhap": 93,
+        "han_dung_sau_so_ngay": 891,
+        "so_luong": 20,
+        "don_gia_nhap": 71400
+      },
+      {
+        "ma_thuoc": "T1457",
+        "so_lo": "AX249938",
+        "san_xuat_truoc_ngay_nhap": 120,
+        "han_dung_sau_so_ngay": 832,
+        "so_luong": 40,
+        "don_gia_nhap": 36200
+      },
+      {
+        "ma_thuoc": "T1495",
+        "so_lo": "FU261609",
+        "san_xuat_truoc_ngay_nhap": 220,
+        "han_dung_sau_so_ngay": 705,
+        "so_luong": 70,
+        "don_gia_nhap": 61500
+      },
+      {
+        "ma_thuoc": "T1513",
+        "so_lo": "LP243001",
+        "san_xuat_truoc_ngay_nhap": 167,
+        "han_dung_sau_so_ngay": 432,
+        "so_luong": 80,
+        "don_gia_nhap": 50100
+      },
+      {
+        "ma_thuoc": "T1529",
+        "so_lo": "TQ257220",
+        "san_xuat_truoc_ngay_nhap": 218,
+        "han_dung_sau_so_ngay": 490,
+        "so_luong": 30,
+        "don_gia_nhap": 14600
+      },
+      {
+        "ma_thuoc": "T1553",
+        "so_lo": "UQ268819",
+        "san_xuat_truoc_ngay_nhap": 126,
+        "han_dung_sau_so_ngay": 819,
+        "so_luong": 130,
+        "don_gia_nhap": 22000
+      },
+      {
+        "ma_thuoc": "T1614",
+        "so_lo": "PC241491",
+        "san_xuat_truoc_ngay_nhap": 233,
+        "han_dung_sau_so_ngay": 312,
+        "so_luong": 20,
+        "don_gia_nhap": 82600
+      },
+      {
+        "ma_thuoc": "T1677",
+        "so_lo": "KP267547",
+        "san_xuat_truoc_ngay_nhap": 42,
+        "han_dung_sau_so_ngay": 500,
+        "so_luong": 120,
+        "don_gia_nhap": 9200
+      },
+      {
+        "ma_thuoc": "T1681",
+        "so_lo": "TZ244266",
+        "san_xuat_truoc_ngay_nhap": 27,
+        "han_dung_sau_so_ngay": 319,
+        "so_luong": 20,
+        "don_gia_nhap": 77900
+      },
+      {
+        "ma_thuoc": "T1842",
+        "so_lo": "QV256623",
+        "san_xuat_truoc_ngay_nhap": 30,
+        "han_dung_sau_so_ngay": 655,
+        "so_luong": 30,
+        "don_gia_nhap": 20300
+      },
+      {
+        "ma_thuoc": "T1937",
+        "so_lo": "NU255959",
+        "san_xuat_truoc_ngay_nhap": 106,
+        "han_dung_sau_so_ngay": 685,
+        "so_luong": 60,
+        "don_gia_nhap": 45500
+      },
+      {
+        "ma_thuoc": "T1974",
+        "so_lo": "YY256148",
+        "san_xuat_truoc_ngay_nhap": 159,
+        "han_dung_sau_so_ngay": 14,
+        "so_luong": 200,
+        "don_gia_nhap": 28200
+      },
+      {
+        "ma_thuoc": "T1980",
+        "so_lo": "VQ249404",
+        "san_xuat_truoc_ngay_nhap": 239,
+        "han_dung_sau_so_ngay": 712,
+        "so_luong": 40,
+        "don_gia_nhap": 30700
+      },
+      {
+        "ma_thuoc": "T1998",
+        "so_lo": "NV248561",
+        "san_xuat_truoc_ngay_nhap": 68,
+        "han_dung_sau_so_ngay": 266,
+        "so_luong": 40,
+        "don_gia_nhap": 91800
+      },
+      {
+        "ma_thuoc": "T2003",
+        "so_lo": "DZ249246",
+        "san_xuat_truoc_ngay_nhap": 218,
+        "han_dung_sau_so_ngay": 312,
+        "so_luong": 50,
+        "don_gia_nhap": 63800
+      },
+      {
+        "ma_thuoc": "T2007",
+        "so_lo": "MC255697",
+        "san_xuat_truoc_ngay_nhap": 36,
+        "han_dung_sau_so_ngay": 304,
+        "so_luong": 40,
+        "don_gia_nhap": 360000
+      },
+      {
+        "ma_thuoc": "T2012",
+        "so_lo": "NU264402",
+        "san_xuat_truoc_ngay_nhap": 201,
+        "han_dung_sau_so_ngay": 315,
+        "so_luong": 50,
+        "don_gia_nhap": 135000
+      },
+      {
+        "ma_thuoc": "T2016",
+        "so_lo": "LQ255713",
+        "san_xuat_truoc_ngay_nhap": 181,
+        "han_dung_sau_so_ngay": 259,
+        "so_luong": 70,
+        "don_gia_nhap": 6000
+      },
+      {
+        "ma_thuoc": "T2019",
+        "so_lo": "AE255676",
+        "san_xuat_truoc_ngay_nhap": 189,
+        "han_dung_sau_so_ngay": 576,
+        "so_luong": 20,
+        "don_gia_nhap": 9000
+      },
+      {
+        "ma_thuoc": "T2023",
+        "so_lo": "EV265667",
+        "san_xuat_truoc_ngay_nhap": 54,
+        "han_dung_sau_so_ngay": 501,
+        "so_luong": 20,
+        "don_gia_nhap": 26300
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC006",
+    "ngay_nhap_truoc_so_ngay": 50,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0027",
+        "so_lo": "EK250821",
+        "san_xuat_truoc_ngay_nhap": 232,
+        "han_dung_sau_so_ngay": 715,
+        "so_luong": 30,
+        "don_gia_nhap": 9800
+      },
+      {
+        "ma_thuoc": "T0072",
+        "so_lo": "HB246535",
+        "san_xuat_truoc_ngay_nhap": 225,
+        "han_dung_sau_so_ngay": 616,
+        "so_luong": 30,
+        "don_gia_nhap": 12100
+      },
+      {
+        "ma_thuoc": "T0095",
+        "so_lo": "ML251110",
+        "san_xuat_truoc_ngay_nhap": 185,
+        "han_dung_sau_so_ngay": 867,
+        "so_luong": 60,
+        "don_gia_nhap": 30500
+      },
+      {
+        "ma_thuoc": "T0142",
+        "so_lo": "QH250109",
+        "san_xuat_truoc_ngay_nhap": 190,
+        "han_dung_sau_so_ngay": 341,
+        "so_luong": 130,
+        "don_gia_nhap": 50700
+      },
+      {
+        "ma_thuoc": "T0274",
+        "so_lo": "ZK261167",
+        "san_xuat_truoc_ngay_nhap": 191,
+        "han_dung_sau_so_ngay": 773,
+        "so_luong": 70,
+        "don_gia_nhap": 23800
+      },
+      {
+        "ma_thuoc": "T0289",
+        "so_lo": "WC255887",
+        "san_xuat_truoc_ngay_nhap": 235,
+        "han_dung_sau_so_ngay": 272,
+        "so_luong": 10,
+        "don_gia_nhap": 35300
+      },
+      {
+        "ma_thuoc": "T0373",
+        "so_lo": "ZY259170",
+        "san_xuat_truoc_ngay_nhap": 98,
+        "han_dung_sau_so_ngay": 593,
+        "so_luong": 60,
+        "don_gia_nhap": 20200
+      },
+      {
+        "ma_thuoc": "T0422",
+        "so_lo": "VU245473",
+        "san_xuat_truoc_ngay_nhap": 125,
+        "han_dung_sau_so_ngay": 254,
+        "so_luong": 20,
+        "don_gia_nhap": 23600
+      },
+      {
+        "ma_thuoc": "T0568",
+        "so_lo": "AY260470",
+        "san_xuat_truoc_ngay_nhap": 167,
+        "han_dung_sau_so_ngay": 325,
+        "so_luong": 90,
+        "don_gia_nhap": 41900
+      },
+      {
+        "ma_thuoc": "T0641",
+        "so_lo": "UD241183",
+        "san_xuat_truoc_ngay_nhap": 231,
+        "han_dung_sau_so_ngay": 554,
+        "so_luong": 110,
+        "don_gia_nhap": 26300
+      },
+      {
+        "ma_thuoc": "T0689",
+        "so_lo": "YR247544",
+        "san_xuat_truoc_ngay_nhap": 102,
+        "han_dung_sau_so_ngay": 263,
+        "so_luong": 50,
+        "don_gia_nhap": 38900
+      },
+      {
+        "ma_thuoc": "T0765",
+        "so_lo": "GY251378",
+        "san_xuat_truoc_ngay_nhap": 46,
+        "han_dung_sau_so_ngay": 885,
+        "so_luong": 80,
+        "don_gia_nhap": 5700
+      },
+      {
+        "ma_thuoc": "T0803",
+        "so_lo": "YW257263",
+        "san_xuat_truoc_ngay_nhap": 202,
+        "han_dung_sau_so_ngay": 821,
+        "so_luong": 40,
+        "don_gia_nhap": 7600
+      },
+      {
+        "ma_thuoc": "T0852",
+        "so_lo": "FV259479",
+        "san_xuat_truoc_ngay_nhap": 214,
+        "han_dung_sau_so_ngay": 846,
+        "so_luong": 90,
+        "don_gia_nhap": 5500
+      },
+      {
+        "ma_thuoc": "T0987",
+        "so_lo": "MM253427",
+        "san_xuat_truoc_ngay_nhap": 151,
+        "han_dung_sau_so_ngay": 530,
+        "so_luong": 90,
+        "don_gia_nhap": 21000
+      },
+      {
+        "ma_thuoc": "T1031",
+        "so_lo": "ZU253674",
+        "san_xuat_truoc_ngay_nhap": 237,
+        "han_dung_sau_so_ngay": 272,
+        "so_luong": 130,
+        "don_gia_nhap": 10200
+      },
+      {
+        "ma_thuoc": "T1072",
+        "so_lo": "GA259558",
+        "san_xuat_truoc_ngay_nhap": 224,
+        "han_dung_sau_so_ngay": 863,
+        "so_luong": 60,
+        "don_gia_nhap": 36700
+      },
+      {
+        "ma_thuoc": "T1079",
+        "so_lo": "DH267602",
+        "san_xuat_truoc_ngay_nhap": 238,
+        "han_dung_sau_so_ngay": 619,
+        "so_luong": 90,
+        "don_gia_nhap": 50800
+      },
+      {
+        "ma_thuoc": "T1098",
+        "so_lo": "CH252387",
+        "san_xuat_truoc_ngay_nhap": 81,
+        "han_dung_sau_so_ngay": 776,
+        "so_luong": 160,
+        "don_gia_nhap": 49300
+      },
+      {
+        "ma_thuoc": "T1117",
+        "so_lo": "QM247754",
+        "san_xuat_truoc_ngay_nhap": 73,
+        "han_dung_sau_so_ngay": 28,
+        "so_luong": 60,
+        "don_gia_nhap": 36500
+      },
+      {
+        "ma_thuoc": "T1150",
+        "so_lo": "EZ250253",
+        "san_xuat_truoc_ngay_nhap": 141,
+        "han_dung_sau_so_ngay": 321,
+        "so_luong": 60,
+        "don_gia_nhap": 19000
+      },
+      {
+        "ma_thuoc": "T1155",
+        "so_lo": "MV245836",
+        "san_xuat_truoc_ngay_nhap": 163,
+        "han_dung_sau_so_ngay": 343,
+        "so_luong": 30,
+        "don_gia_nhap": 41800
+      },
+      {
+        "ma_thuoc": "T1290",
+        "so_lo": "DD243911",
+        "san_xuat_truoc_ngay_nhap": 178,
+        "han_dung_sau_so_ngay": 245,
+        "so_luong": 170,
+        "don_gia_nhap": 10000
+      },
+      {
+        "ma_thuoc": "T1328",
+        "so_lo": "LL259994",
+        "san_xuat_truoc_ngay_nhap": 149,
+        "han_dung_sau_so_ngay": 337,
+        "so_luong": 11,
+        "don_gia_nhap": 42400
+      },
+      {
+        "ma_thuoc": "T1542",
+        "so_lo": "HP241919",
+        "san_xuat_truoc_ngay_nhap": 47,
+        "han_dung_sau_so_ngay": 781,
+        "so_luong": 40,
+        "don_gia_nhap": 17000
+      },
+      {
+        "ma_thuoc": "T1560",
+        "so_lo": "XH249657",
+        "san_xuat_truoc_ngay_nhap": 81,
+        "han_dung_sau_so_ngay": 828,
+        "so_luong": 50,
+        "don_gia_nhap": 19000
+      },
+      {
+        "ma_thuoc": "T1562",
+        "so_lo": "XG264801",
+        "san_xuat_truoc_ngay_nhap": 226,
+        "han_dung_sau_so_ngay": 444,
+        "so_luong": 50,
+        "don_gia_nhap": 22000
+      },
+      {
+        "ma_thuoc": "T1693",
+        "so_lo": "DK266020",
+        "san_xuat_truoc_ngay_nhap": 142,
+        "han_dung_sau_so_ngay": 619,
+        "so_luong": 70,
+        "don_gia_nhap": 101300
+      },
+      {
+        "ma_thuoc": "T1704",
+        "so_lo": "YV253951",
+        "san_xuat_truoc_ngay_nhap": 231,
+        "han_dung_sau_so_ngay": 551,
+        "so_luong": 30,
+        "don_gia_nhap": 93200
+      },
+      {
+        "ma_thuoc": "T1771",
+        "so_lo": "FN251922",
+        "san_xuat_truoc_ngay_nhap": 155,
+        "han_dung_sau_so_ngay": 692,
+        "so_luong": 50,
+        "don_gia_nhap": 3200
+      },
+      {
+        "ma_thuoc": "T1853",
+        "so_lo": "PP242543",
+        "san_xuat_truoc_ngay_nhap": 47,
+        "han_dung_sau_so_ngay": 788,
+        "so_luong": 40,
+        "don_gia_nhap": 15900
+      },
+      {
+        "ma_thuoc": "T1867",
+        "so_lo": "DT260392",
+        "san_xuat_truoc_ngay_nhap": 160,
+        "han_dung_sau_so_ngay": 774,
+        "so_luong": 4,
+        "don_gia_nhap": 19000
+      },
+      {
+        "ma_thuoc": "T1914",
+        "so_lo": "QF254343",
+        "san_xuat_truoc_ngay_nhap": 223,
+        "han_dung_sau_so_ngay": 381,
+        "so_luong": 130,
+        "don_gia_nhap": 18900
+      },
+      {
+        "ma_thuoc": "T1979",
+        "so_lo": "TY252595",
+        "san_xuat_truoc_ngay_nhap": 207,
+        "han_dung_sau_so_ngay": 602,
+        "so_luong": 60,
+        "don_gia_nhap": 29300
+      },
+      {
+        "ma_thuoc": "T1981",
+        "so_lo": "PP240925",
+        "san_xuat_truoc_ngay_nhap": 214,
+        "han_dung_sau_so_ngay": 808,
+        "so_luong": 180,
+        "don_gia_nhap": 29900
+      },
+      {
+        "ma_thuoc": "T1982",
+        "so_lo": "ZD263511",
+        "san_xuat_truoc_ngay_nhap": 139,
+        "han_dung_sau_so_ngay": 741,
+        "so_luong": 160,
+        "don_gia_nhap": 26700
+      },
+      {
+        "ma_thuoc": "T2004",
+        "so_lo": "DV247535",
+        "san_xuat_truoc_ngay_nhap": 37,
+        "han_dung_sau_so_ngay": 366,
+        "so_luong": 30,
+        "don_gia_nhap": 337500
+      },
+      {
+        "ma_thuoc": "T2008",
+        "so_lo": "UZ250190",
+        "san_xuat_truoc_ngay_nhap": 56,
+        "han_dung_sau_so_ngay": 428,
+        "so_luong": 40,
+        "don_gia_nhap": 9000
+      },
+      {
+        "ma_thuoc": "T2010",
+        "so_lo": "QZ261499",
+        "san_xuat_truoc_ngay_nhap": 237,
+        "han_dung_sau_so_ngay": 608,
+        "so_luong": 60,
+        "don_gia_nhap": 585000
+      },
+      {
+        "ma_thuoc": "T2013",
+        "so_lo": "BA242076",
+        "san_xuat_truoc_ngay_nhap": 53,
+        "han_dung_sau_so_ngay": 833,
+        "so_luong": 60,
+        "don_gia_nhap": 71300
+      },
+      {
+        "ma_thuoc": "T2014",
+        "so_lo": "SZ246461",
+        "san_xuat_truoc_ngay_nhap": 33,
+        "han_dung_sau_so_ngay": 322,
+        "so_luong": 20,
+        "don_gia_nhap": 18800
+      },
+      {
+        "ma_thuoc": "T2018",
+        "so_lo": "GL248563",
+        "san_xuat_truoc_ngay_nhap": 132,
+        "han_dung_sau_so_ngay": 450,
+        "so_luong": 60,
+        "don_gia_nhap": 18800
+      },
+      {
+        "ma_thuoc": "T2023",
+        "so_lo": "LZ242957",
+        "san_xuat_truoc_ngay_nhap": 55,
+        "han_dung_sau_so_ngay": 350,
+        "so_luong": 30,
+        "don_gia_nhap": 26300
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC007",
+    "ngay_nhap_truoc_so_ngay": 41,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0116",
+        "so_lo": "ZS244769",
+        "san_xuat_truoc_ngay_nhap": 82,
+        "han_dung_sau_so_ngay": 366,
+        "so_luong": 90,
+        "don_gia_nhap": 7500
+      },
+      {
+        "ma_thuoc": "T0128",
+        "so_lo": "AE241631",
+        "san_xuat_truoc_ngay_nhap": 159,
+        "han_dung_sau_so_ngay": 346,
+        "so_luong": 60,
+        "don_gia_nhap": 8400
+      },
+      {
+        "ma_thuoc": "T0235",
+        "so_lo": "GA250494",
+        "san_xuat_truoc_ngay_nhap": 133,
+        "han_dung_sau_so_ngay": 552,
+        "so_luong": 40,
+        "don_gia_nhap": 47600
+      },
+      {
+        "ma_thuoc": "T0237",
+        "so_lo": "FQ257568",
+        "san_xuat_truoc_ngay_nhap": 228,
+        "han_dung_sau_so_ngay": 858,
+        "so_luong": 120,
+        "don_gia_nhap": 42300
+      },
+      {
+        "ma_thuoc": "T0428",
+        "so_lo": "MQ249951",
+        "san_xuat_truoc_ngay_nhap": 68,
+        "han_dung_sau_so_ngay": 318,
+        "so_luong": 70,
+        "don_gia_nhap": 32200
+      },
+      {
+        "ma_thuoc": "T0465",
+        "so_lo": "RS269617",
+        "san_xuat_truoc_ngay_nhap": 133,
+        "han_dung_sau_so_ngay": 592,
+        "so_luong": 80,
+        "don_gia_nhap": 6800
+      },
+      {
+        "ma_thuoc": "T0535",
+        "so_lo": "MC268278",
+        "san_xuat_truoc_ngay_nhap": 78,
+        "han_dung_sau_so_ngay": 250,
+        "so_luong": 100,
+        "don_gia_nhap": 80600
+      },
+      {
+        "ma_thuoc": "T0568",
+        "so_lo": "HP266667",
+        "san_xuat_truoc_ngay_nhap": 22,
+        "han_dung_sau_so_ngay": 426,
+        "so_luong": 80,
+        "don_gia_nhap": 41900
+      },
+      {
+        "ma_thuoc": "T0647",
+        "so_lo": "KK248123",
+        "san_xuat_truoc_ngay_nhap": 26,
+        "han_dung_sau_so_ngay": 706,
+        "so_luong": 30,
+        "don_gia_nhap": 19400
+      },
+      {
+        "ma_thuoc": "T0659",
+        "so_lo": "GU258808",
+        "san_xuat_truoc_ngay_nhap": 194,
+        "han_dung_sau_so_ngay": 634,
+        "so_luong": 50,
+        "don_gia_nhap": 19500
+      },
+      {
+        "ma_thuoc": "T0793",
+        "so_lo": "TW260625",
+        "san_xuat_truoc_ngay_nhap": 61,
+        "han_dung_sau_so_ngay": 460,
+        "so_luong": 70,
+        "don_gia_nhap": 8800
+      },
+      {
+        "ma_thuoc": "T0879",
+        "so_lo": "WJ244917",
+        "san_xuat_truoc_ngay_nhap": 107,
+        "han_dung_sau_so_ngay": 781,
+        "so_luong": 100,
+        "don_gia_nhap": 7500
+      },
+      {
+        "ma_thuoc": "T0937",
+        "so_lo": "XE240025",
+        "san_xuat_truoc_ngay_nhap": 129,
+        "han_dung_sau_so_ngay": 564,
+        "so_luong": 90,
+        "don_gia_nhap": 24300
+      },
+      {
+        "ma_thuoc": "T0969",
+        "so_lo": "FF259863",
+        "san_xuat_truoc_ngay_nhap": 91,
+        "han_dung_sau_so_ngay": 548,
+        "so_luong": 40,
+        "don_gia_nhap": 23100
+      },
+      {
+        "ma_thuoc": "T0985",
+        "so_lo": "LZ264735",
+        "san_xuat_truoc_ngay_nhap": 156,
+        "han_dung_sau_so_ngay": 877,
+        "so_luong": 4,
+        "don_gia_nhap": 18700
+      },
+      {
+        "ma_thuoc": "T1031",
+        "so_lo": "VJ250743",
+        "san_xuat_truoc_ngay_nhap": 47,
+        "han_dung_sau_so_ngay": 549,
+        "so_luong": 140,
+        "don_gia_nhap": 10200
+      },
+      {
+        "ma_thuoc": "T1093",
+        "so_lo": "RN254248",
+        "san_xuat_truoc_ngay_nhap": 144,
+        "han_dung_sau_so_ngay": 776,
+        "so_luong": 30,
+        "don_gia_nhap": 47700
+      },
+      {
+        "ma_thuoc": "T1099",
+        "so_lo": "AP242837",
+        "san_xuat_truoc_ngay_nhap": 23,
+        "han_dung_sau_so_ngay": 297,
+        "so_luong": 70,
+        "don_gia_nhap": 42300
+      },
+      {
+        "ma_thuoc": "T1117",
+        "so_lo": "UD262402",
+        "san_xuat_truoc_ngay_nhap": 211,
+        "han_dung_sau_so_ngay": 835,
+        "so_luong": 40,
+        "don_gia_nhap": 36500
+      },
+      {
+        "ma_thuoc": "T1162",
+        "so_lo": "RP243494",
+        "san_xuat_truoc_ngay_nhap": 158,
+        "han_dung_sau_so_ngay": 762,
+        "so_luong": 90,
+        "don_gia_nhap": 69400
+      },
+      {
+        "ma_thuoc": "T1319",
+        "so_lo": "VE261349",
+        "san_xuat_truoc_ngay_nhap": 71,
+        "han_dung_sau_so_ngay": 794,
+        "so_luong": 70,
+        "don_gia_nhap": 43900
+      },
+      {
+        "ma_thuoc": "T1331",
+        "so_lo": "HC261329",
+        "san_xuat_truoc_ngay_nhap": 114,
+        "han_dung_sau_so_ngay": 899,
+        "so_luong": 160,
+        "don_gia_nhap": 49600
+      },
+      {
+        "ma_thuoc": "T1438",
+        "so_lo": "WS264893",
+        "san_xuat_truoc_ngay_nhap": 186,
+        "han_dung_sau_so_ngay": 618,
+        "so_luong": 70,
+        "don_gia_nhap": 105700
+      },
+      {
+        "ma_thuoc": "T1503",
+        "so_lo": "PV249397",
+        "san_xuat_truoc_ngay_nhap": 189,
+        "han_dung_sau_so_ngay": 572,
+        "so_luong": 110,
+        "don_gia_nhap": 62800
+      },
+      {
+        "ma_thuoc": "T1550",
+        "so_lo": "PA258287",
+        "san_xuat_truoc_ngay_nhap": 188,
+        "han_dung_sau_so_ngay": 251,
+        "so_luong": 60,
+        "don_gia_nhap": 19600
+      },
+      {
+        "ma_thuoc": "T1632",
+        "so_lo": "XG245257",
+        "san_xuat_truoc_ngay_nhap": 101,
+        "han_dung_sau_so_ngay": 851,
+        "so_luong": 30,
+        "don_gia_nhap": 13300
+      },
+      {
+        "ma_thuoc": "T1738",
+        "so_lo": "JF261399",
+        "san_xuat_truoc_ngay_nhap": 49,
+        "han_dung_sau_so_ngay": 571,
+        "so_luong": 90,
+        "don_gia_nhap": 40100
+      },
+      {
+        "ma_thuoc": "T1889",
+        "so_lo": "CZ257254",
+        "san_xuat_truoc_ngay_nhap": 110,
+        "han_dung_sau_so_ngay": 662,
+        "so_luong": 40,
+        "don_gia_nhap": 12600
+      },
+      {
+        "ma_thuoc": "T1928",
+        "so_lo": "MS245693",
+        "san_xuat_truoc_ngay_nhap": 137,
+        "han_dung_sau_so_ngay": 411,
+        "so_luong": 60,
+        "don_gia_nhap": 19200
+      },
+      {
+        "ma_thuoc": "T1965",
+        "so_lo": "TQ244762",
+        "san_xuat_truoc_ngay_nhap": 36,
+        "han_dung_sau_so_ngay": 827,
+        "so_luong": 70,
+        "don_gia_nhap": 115400
+      },
+      {
+        "ma_thuoc": "T1984",
+        "so_lo": "RC255191",
+        "san_xuat_truoc_ngay_nhap": 137,
+        "han_dung_sau_so_ngay": 55,
+        "so_luong": 30,
+        "don_gia_nhap": 27000
+      },
+      {
+        "ma_thuoc": "T1987",
+        "so_lo": "XE250740",
+        "san_xuat_truoc_ngay_nhap": 45,
+        "han_dung_sau_so_ngay": 583,
+        "so_luong": 180,
+        "don_gia_nhap": 27100
+      },
+      {
+        "ma_thuoc": "T2000",
+        "so_lo": "UJ268128",
+        "san_xuat_truoc_ngay_nhap": 227,
+        "han_dung_sau_so_ngay": 432,
+        "so_luong": 220,
+        "don_gia_nhap": 106000
+      },
+      {
+        "ma_thuoc": "T2009",
+        "so_lo": "MA255173",
+        "san_xuat_truoc_ngay_nhap": 92,
+        "han_dung_sau_so_ngay": 821,
+        "so_luong": 90,
+        "don_gia_nhap": 262500
+      },
+      {
+        "ma_thuoc": "T2021",
+        "so_lo": "KJ250152",
+        "san_xuat_truoc_ngay_nhap": 34,
+        "han_dung_sau_so_ngay": 285,
+        "so_luong": 20,
+        "don_gia_nhap": 41300
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC008",
+    "ngay_nhap_truoc_so_ngay": 32,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0034",
+        "so_lo": "TY244698",
+        "san_xuat_truoc_ngay_nhap": 156,
+        "han_dung_sau_so_ngay": 667,
+        "so_luong": 90,
+        "don_gia_nhap": 16800
+      },
+      {
+        "ma_thuoc": "T0123",
+        "so_lo": "FA252628",
+        "san_xuat_truoc_ngay_nhap": 57,
+        "han_dung_sau_so_ngay": 478,
+        "so_luong": 8,
+        "don_gia_nhap": 14800
+      },
+      {
+        "ma_thuoc": "T0134",
+        "so_lo": "RF262227",
+        "san_xuat_truoc_ngay_nhap": 70,
+        "han_dung_sau_so_ngay": 793,
+        "so_luong": 50,
+        "don_gia_nhap": 9700
+      },
+      {
+        "ma_thuoc": "T0195",
+        "so_lo": "CD251715",
+        "san_xuat_truoc_ngay_nhap": 234,
+        "han_dung_sau_so_ngay": 509,
+        "so_luong": 130,
+        "don_gia_nhap": 42700
+      },
+      {
+        "ma_thuoc": "T0229",
+        "so_lo": "WK251961",
+        "san_xuat_truoc_ngay_nhap": 27,
+        "han_dung_sau_so_ngay": 579,
+        "so_luong": 200,
+        "don_gia_nhap": 37500
+      },
+      {
+        "ma_thuoc": "T0275",
+        "so_lo": "YN260596",
+        "san_xuat_truoc_ngay_nhap": 86,
+        "han_dung_sau_so_ngay": 492,
+        "so_luong": 80,
+        "don_gia_nhap": 25700
+      },
+      {
+        "ma_thuoc": "T0278",
+        "so_lo": "CZ264719",
+        "san_xuat_truoc_ngay_nhap": 20,
+        "han_dung_sau_so_ngay": 849,
+        "so_luong": 30,
+        "don_gia_nhap": 22700
+      },
+      {
+        "ma_thuoc": "T0341",
+        "so_lo": "FM260123",
+        "san_xuat_truoc_ngay_nhap": 66,
+        "han_dung_sau_so_ngay": 801,
+        "so_luong": 40,
+        "don_gia_nhap": 9400
+      },
+      {
+        "ma_thuoc": "T0354",
+        "so_lo": "VV245012",
+        "san_xuat_truoc_ngay_nhap": 179,
+        "han_dung_sau_so_ngay": 423,
+        "so_luong": 90,
+        "don_gia_nhap": 15900
+      },
+      {
+        "ma_thuoc": "T0382",
+        "so_lo": "ER261048",
+        "san_xuat_truoc_ngay_nhap": 66,
+        "han_dung_sau_so_ngay": 400,
+        "so_luong": 140,
+        "don_gia_nhap": 43000
+      },
+      {
+        "ma_thuoc": "T0390",
+        "so_lo": "VU263866",
+        "san_xuat_truoc_ngay_nhap": 47,
+        "han_dung_sau_so_ngay": 700,
+        "so_luong": 100,
+        "don_gia_nhap": 35900
+      },
+      {
+        "ma_thuoc": "T0422",
+        "so_lo": "CH249975",
+        "san_xuat_truoc_ngay_nhap": 25,
+        "han_dung_sau_so_ngay": 571,
+        "so_luong": 60,
+        "don_gia_nhap": 23600
+      },
+      {
+        "ma_thuoc": "T0442",
+        "so_lo": "TR240928",
+        "san_xuat_truoc_ngay_nhap": 218,
+        "han_dung_sau_so_ngay": 593,
+        "so_luong": 60,
+        "don_gia_nhap": 59600
+      },
+      {
+        "ma_thuoc": "T0548",
+        "so_lo": "LS244711",
+        "san_xuat_truoc_ngay_nhap": 123,
+        "han_dung_sau_so_ngay": 453,
+        "so_luong": 30,
+        "don_gia_nhap": 7100
+      },
+      {
+        "ma_thuoc": "T0563",
+        "so_lo": "QF254688",
+        "san_xuat_truoc_ngay_nhap": 117,
+        "han_dung_sau_so_ngay": 71,
+        "so_luong": 180,
+        "don_gia_nhap": 8900
+      },
+      {
+        "ma_thuoc": "T0607",
+        "so_lo": "XL245826",
+        "san_xuat_truoc_ngay_nhap": 223,
+        "han_dung_sau_so_ngay": 782,
+        "so_luong": 130,
+        "don_gia_nhap": 62800
+      },
+      {
+        "ma_thuoc": "T0692",
+        "so_lo": "UP242149",
+        "san_xuat_truoc_ngay_nhap": 127,
+        "han_dung_sau_so_ngay": 395,
+        "so_luong": 50,
+        "don_gia_nhap": 30500
+      },
+      {
+        "ma_thuoc": "T0765",
+        "so_lo": "EA262151",
+        "san_xuat_truoc_ngay_nhap": 141,
+        "han_dung_sau_so_ngay": 861,
+        "so_luong": 80,
+        "don_gia_nhap": 5700
+      },
+      {
+        "ma_thuoc": "T0793",
+        "so_lo": "HP258698",
+        "san_xuat_truoc_ngay_nhap": 206,
+        "han_dung_sau_so_ngay": 399,
+        "so_luong": 70,
+        "don_gia_nhap": 8800
+      },
+      {
+        "ma_thuoc": "T0895",
+        "so_lo": "CY249654",
+        "san_xuat_truoc_ngay_nhap": 228,
+        "han_dung_sau_so_ngay": 858,
+        "so_luong": 110,
+        "don_gia_nhap": 4900
+      },
+      {
+        "ma_thuoc": "T0918",
+        "so_lo": "CC259856",
+        "san_xuat_truoc_ngay_nhap": 49,
+        "han_dung_sau_so_ngay": 870,
+        "so_luong": 130,
+        "don_gia_nhap": 21400
+      },
+      {
+        "ma_thuoc": "T0933",
+        "so_lo": "SC242725",
+        "san_xuat_truoc_ngay_nhap": 117,
+        "han_dung_sau_so_ngay": 479,
+        "so_luong": 60,
+        "don_gia_nhap": 22800
+      },
+      {
+        "ma_thuoc": "T0986",
+        "so_lo": "FQ247092",
+        "san_xuat_truoc_ngay_nhap": 39,
+        "han_dung_sau_so_ngay": 690,
+        "so_luong": 60,
+        "don_gia_nhap": 19900
+      },
+      {
+        "ma_thuoc": "T1052",
+        "so_lo": "FW265620",
+        "san_xuat_truoc_ngay_nhap": 155,
+        "han_dung_sau_so_ngay": 594,
+        "so_luong": 100,
+        "don_gia_nhap": 32700
+      },
+      {
+        "ma_thuoc": "T1076",
+        "so_lo": "CY249795",
+        "san_xuat_truoc_ngay_nhap": 179,
+        "han_dung_sau_so_ngay": 821,
+        "so_luong": 90,
+        "don_gia_nhap": 43500
+      },
+      {
+        "ma_thuoc": "T1078",
+        "so_lo": "BJ267755",
+        "san_xuat_truoc_ngay_nhap": 87,
+        "han_dung_sau_so_ngay": 571,
+        "so_luong": 190,
+        "don_gia_nhap": 52700
+      },
+      {
+        "ma_thuoc": "T1100",
+        "so_lo": "QT247432",
+        "san_xuat_truoc_ngay_nhap": 170,
+        "han_dung_sau_so_ngay": 513,
+        "so_luong": 140,
+        "don_gia_nhap": 52300
+      },
+      {
+        "ma_thuoc": "T1155",
+        "so_lo": "US253822",
+        "san_xuat_truoc_ngay_nhap": 113,
+        "han_dung_sau_so_ngay": 294,
+        "so_luong": 50,
+        "don_gia_nhap": 41800
+      },
+      {
+        "ma_thuoc": "T1206",
+        "so_lo": "LA269243",
+        "san_xuat_truoc_ngay_nhap": 62,
+        "han_dung_sau_so_ngay": 414,
+        "so_luong": 130,
+        "don_gia_nhap": 14200
+      },
+      {
+        "ma_thuoc": "T1289",
+        "so_lo": "BE245559",
+        "san_xuat_truoc_ngay_nhap": 222,
+        "han_dung_sau_so_ngay": 841,
+        "so_luong": 50,
+        "don_gia_nhap": 7500
+      },
+      {
+        "ma_thuoc": "T1291",
+        "so_lo": "RD268131",
+        "san_xuat_truoc_ngay_nhap": 167,
+        "han_dung_sau_so_ngay": 733,
+        "so_luong": 40,
+        "don_gia_nhap": 9500
+      },
+      {
+        "ma_thuoc": "T1319",
+        "so_lo": "GR269299",
+        "san_xuat_truoc_ngay_nhap": 208,
+        "han_dung_sau_so_ngay": 577,
+        "so_luong": 50,
+        "don_gia_nhap": 43900
+      },
+      {
+        "ma_thuoc": "T1385",
+        "so_lo": "WB260218",
+        "san_xuat_truoc_ngay_nhap": 150,
+        "han_dung_sau_so_ngay": 497,
+        "so_luong": 160,
+        "don_gia_nhap": 13200
+      },
+      {
+        "ma_thuoc": "T1459",
+        "so_lo": "YF268597",
+        "san_xuat_truoc_ngay_nhap": 190,
+        "han_dung_sau_so_ngay": 240,
+        "so_luong": 40,
+        "don_gia_nhap": 36900
+      },
+      {
+        "ma_thuoc": "T1502",
+        "so_lo": "HS251562",
+        "san_xuat_truoc_ngay_nhap": 153,
+        "han_dung_sau_so_ngay": 518,
+        "so_luong": 20,
+        "don_gia_nhap": 61100
+      },
+      {
+        "ma_thuoc": "T1555",
+        "so_lo": "SR268227",
+        "san_xuat_truoc_ngay_nhap": 135,
+        "han_dung_sau_so_ngay": 409,
+        "so_luong": 110,
+        "don_gia_nhap": 18700
+      },
+      {
+        "ma_thuoc": "T1632",
+        "so_lo": "XU241207",
+        "san_xuat_truoc_ngay_nhap": 193,
+        "han_dung_sau_so_ngay": 412,
+        "so_luong": 20,
+        "don_gia_nhap": 13300
+      },
+      {
+        "ma_thuoc": "T1653",
+        "so_lo": "DJ262310",
+        "san_xuat_truoc_ngay_nhap": 134,
+        "han_dung_sau_so_ngay": 473,
+        "so_luong": 30,
+        "don_gia_nhap": 9200
+      },
+      {
+        "ma_thuoc": "T1814",
+        "so_lo": "SJ243697",
+        "san_xuat_truoc_ngay_nhap": 138,
+        "han_dung_sau_so_ngay": 405,
+        "so_luong": 110,
+        "don_gia_nhap": 16300
+      },
+      {
+        "ma_thuoc": "T1906",
+        "so_lo": "KK256720",
+        "san_xuat_truoc_ngay_nhap": 68,
+        "han_dung_sau_so_ngay": 781,
+        "so_luong": 170,
+        "don_gia_nhap": 14600
+      },
+      {
+        "ma_thuoc": "T1992",
+        "so_lo": "QN256114",
+        "san_xuat_truoc_ngay_nhap": 91,
+        "han_dung_sau_so_ngay": 852,
+        "so_luong": 130,
+        "don_gia_nhap": 23600
+      },
+      {
+        "ma_thuoc": "T1993",
+        "so_lo": "NT253719",
+        "san_xuat_truoc_ngay_nhap": 95,
+        "han_dung_sau_so_ngay": 508,
+        "so_luong": 60,
+        "don_gia_nhap": 29500
+      },
+      {
+        "ma_thuoc": "T2017",
+        "so_lo": "SJ244055",
+        "san_xuat_truoc_ngay_nhap": 237,
+        "han_dung_sau_so_ngay": 455,
+        "so_luong": 30,
+        "don_gia_nhap": 11300
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC009",
+    "ngay_nhap_truoc_so_ngay": 23,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0001",
+        "so_lo": "EA248497",
+        "san_xuat_truoc_ngay_nhap": 183,
+        "han_dung_sau_so_ngay": 589,
+        "so_luong": 30,
+        "don_gia_nhap": 10800
+      },
+      {
+        "ma_thuoc": "T0058",
+        "so_lo": "GE250047",
+        "san_xuat_truoc_ngay_nhap": 155,
+        "han_dung_sau_so_ngay": 421,
+        "so_luong": 30,
+        "don_gia_nhap": 11400
+      },
+      {
+        "ma_thuoc": "T0072",
+        "so_lo": "WW246243",
+        "san_xuat_truoc_ngay_nhap": 109,
+        "han_dung_sau_so_ngay": 40,
+        "so_luong": 70,
+        "don_gia_nhap": 12100
+      },
+      {
+        "ma_thuoc": "T0084",
+        "so_lo": "BT250204",
+        "san_xuat_truoc_ngay_nhap": 99,
+        "han_dung_sau_so_ngay": 253,
+        "so_luong": 40,
+        "don_gia_nhap": 20300
+      },
+      {
+        "ma_thuoc": "T0119",
+        "so_lo": "WG250176",
+        "san_xuat_truoc_ngay_nhap": 141,
+        "han_dung_sau_so_ngay": 435,
+        "so_luong": 160,
+        "don_gia_nhap": 9400
+      },
+      {
+        "ma_thuoc": "T0315",
+        "so_lo": "GY262004",
+        "san_xuat_truoc_ngay_nhap": 77,
+        "han_dung_sau_so_ngay": 408,
+        "so_luong": 50,
+        "don_gia_nhap": 14400
+      },
+      {
+        "ma_thuoc": "T0334",
+        "so_lo": "AG267841",
+        "san_xuat_truoc_ngay_nhap": 187,
+        "han_dung_sau_so_ngay": 423,
+        "so_luong": 50,
+        "don_gia_nhap": 8800
+      },
+      {
+        "ma_thuoc": "T0441",
+        "so_lo": "FD243136",
+        "san_xuat_truoc_ngay_nhap": 30,
+        "han_dung_sau_so_ngay": 411,
+        "so_luong": 120,
+        "don_gia_nhap": 55500
+      },
+      {
+        "ma_thuoc": "T0464",
+        "so_lo": "UL260793",
+        "san_xuat_truoc_ngay_nhap": 63,
+        "han_dung_sau_so_ngay": 312,
+        "so_luong": 100,
+        "don_gia_nhap": 7200
+      },
+      {
+        "ma_thuoc": "T0747",
+        "so_lo": "GS244508",
+        "san_xuat_truoc_ngay_nhap": 172,
+        "han_dung_sau_so_ngay": 672,
+        "so_luong": 30,
+        "don_gia_nhap": 10100
+      },
+      {
+        "ma_thuoc": "T0781",
+        "so_lo": "GN247304",
+        "san_xuat_truoc_ngay_nhap": 96,
+        "han_dung_sau_so_ngay": 253,
+        "so_luong": 40,
+        "don_gia_nhap": 7800
+      },
+      {
+        "ma_thuoc": "T0788",
+        "so_lo": "GU250468",
+        "san_xuat_truoc_ngay_nhap": 165,
+        "han_dung_sau_so_ngay": 272,
+        "so_luong": 5,
+        "don_gia_nhap": 8800
+      },
+      {
+        "ma_thuoc": "T0792",
+        "so_lo": "ZW241538",
+        "san_xuat_truoc_ngay_nhap": 129,
+        "han_dung_sau_so_ngay": 386,
+        "so_luong": 60,
+        "don_gia_nhap": 9000
+      },
+      {
+        "ma_thuoc": "T0821",
+        "so_lo": "VK260744",
+        "san_xuat_truoc_ngay_nhap": 101,
+        "han_dung_sau_so_ngay": 342,
+        "so_luong": 50,
+        "don_gia_nhap": 44500
+      },
+      {
+        "ma_thuoc": "T0962",
+        "so_lo": "TD240248",
+        "san_xuat_truoc_ngay_nhap": 117,
+        "han_dung_sau_so_ngay": 363,
+        "so_luong": 90,
+        "don_gia_nhap": 23800
+      },
+      {
+        "ma_thuoc": "T1044",
+        "so_lo": "WU258876",
+        "san_xuat_truoc_ngay_nhap": 182,
+        "han_dung_sau_so_ngay": 527,
+        "so_luong": 120,
+        "don_gia_nhap": 11900
+      },
+      {
+        "ma_thuoc": "T1063",
+        "so_lo": "ZX252804",
+        "san_xuat_truoc_ngay_nhap": 39,
+        "han_dung_sau_so_ngay": 386,
+        "so_luong": 50,
+        "don_gia_nhap": 29700
+      },
+      {
+        "ma_thuoc": "T1066",
+        "so_lo": "JR256270",
+        "san_xuat_truoc_ngay_nhap": 166,
+        "han_dung_sau_so_ngay": 278,
+        "so_luong": 100,
+        "don_gia_nhap": 35700
+      },
+      {
+        "ma_thuoc": "T1095",
+        "so_lo": "SQ254587",
+        "san_xuat_truoc_ngay_nhap": 184,
+        "han_dung_sau_so_ngay": 280,
+        "so_luong": 80,
+        "don_gia_nhap": 50300
+      },
+      {
+        "ma_thuoc": "T1151",
+        "so_lo": "XQ265445",
+        "san_xuat_truoc_ngay_nhap": 168,
+        "han_dung_sau_so_ngay": 859,
+        "so_luong": 80,
+        "don_gia_nhap": 21900
+      },
+      {
+        "ma_thuoc": "T1152",
+        "so_lo": "WB260367",
+        "san_xuat_truoc_ngay_nhap": 35,
+        "han_dung_sau_so_ngay": 900,
+        "so_luong": 90,
+        "don_gia_nhap": 20600
+      },
+      {
+        "ma_thuoc": "T1163",
+        "so_lo": "XF259684",
+        "san_xuat_truoc_ngay_nhap": 86,
+        "han_dung_sau_so_ngay": 769,
+        "so_luong": 200,
+        "don_gia_nhap": 42600
+      },
+      {
+        "ma_thuoc": "T1164",
+        "so_lo": "SN240042",
+        "san_xuat_truoc_ngay_nhap": 20,
+        "han_dung_sau_so_ngay": 291,
+        "so_luong": 40,
+        "don_gia_nhap": 43300
+      },
+      {
+        "ma_thuoc": "T1216",
+        "so_lo": "UF248802",
+        "san_xuat_truoc_ngay_nhap": 179,
+        "han_dung_sau_so_ngay": 330,
+        "so_luong": 220,
+        "don_gia_nhap": 50700
+      },
+      {
+        "ma_thuoc": "T1279",
+        "so_lo": "JW252248",
+        "san_xuat_truoc_ngay_nhap": 215,
+        "han_dung_sau_so_ngay": 388,
+        "so_luong": 80,
+        "don_gia_nhap": 9200
+      },
+      {
+        "ma_thuoc": "T1351",
+        "so_lo": "YB244998",
+        "san_xuat_truoc_ngay_nhap": 166,
+        "han_dung_sau_so_ngay": 793,
+        "so_luong": 170,
+        "don_gia_nhap": 56600
+      },
+      {
+        "ma_thuoc": "T1404",
+        "so_lo": "GJ258896",
+        "san_xuat_truoc_ngay_nhap": 142,
+        "han_dung_sau_so_ngay": 434,
+        "so_luong": 110,
+        "don_gia_nhap": 57200
+      },
+      {
+        "ma_thuoc": "T1555",
+        "so_lo": "BZ266139",
+        "san_xuat_truoc_ngay_nhap": 133,
+        "han_dung_sau_so_ngay": 420,
+        "so_luong": 80,
+        "don_gia_nhap": 18700
+      },
+      {
+        "ma_thuoc": "T1814",
+        "so_lo": "KV256756",
+        "san_xuat_truoc_ngay_nhap": 47,
+        "han_dung_sau_so_ngay": 671,
+        "so_luong": 60,
+        "don_gia_nhap": 16300
+      },
+      {
+        "ma_thuoc": "T1872",
+        "so_lo": "GZ249662",
+        "san_xuat_truoc_ngay_nhap": 29,
+        "han_dung_sau_so_ngay": 508,
+        "so_luong": 170,
+        "don_gia_nhap": 18400
+      },
+      {
+        "ma_thuoc": "T1873",
+        "so_lo": "RW248895",
+        "san_xuat_truoc_ngay_nhap": 89,
+        "han_dung_sau_so_ngay": 283,
+        "so_luong": 110,
+        "don_gia_nhap": 16000
+      },
+      {
+        "ma_thuoc": "T1919",
+        "so_lo": "CJ265137",
+        "san_xuat_truoc_ngay_nhap": 119,
+        "han_dung_sau_so_ngay": 387,
+        "so_luong": 40,
+        "don_gia_nhap": 20200
+      },
+      {
+        "ma_thuoc": "T1940",
+        "so_lo": "ZC259936",
+        "san_xuat_truoc_ngay_nhap": 80,
+        "han_dung_sau_so_ngay": 750,
+        "so_luong": 90,
+        "don_gia_nhap": 48400
+      },
+      {
+        "ma_thuoc": "T1980",
+        "so_lo": "KZ242405",
+        "san_xuat_truoc_ngay_nhap": 189,
+        "han_dung_sau_so_ngay": 43,
+        "so_luong": 80,
+        "don_gia_nhap": 30700
+      },
+      {
+        "ma_thuoc": "T1988",
+        "so_lo": "VC246576",
+        "san_xuat_truoc_ngay_nhap": 160,
+        "han_dung_sau_so_ngay": 652,
+        "so_luong": 120,
+        "don_gia_nhap": 26200
+      },
+      {
+        "ma_thuoc": "T1999",
+        "so_lo": "TG243509",
+        "san_xuat_truoc_ngay_nhap": 174,
+        "han_dung_sau_so_ngay": 409,
+        "so_luong": 50,
+        "don_gia_nhap": 169800
+      },
+      {
+        "ma_thuoc": "T2004",
+        "so_lo": "LV269725",
+        "san_xuat_truoc_ngay_nhap": 44,
+        "han_dung_sau_so_ngay": 333,
+        "so_luong": 40,
+        "don_gia_nhap": 337500
+      }
+    ]
+  },
+  {
+    "ma_nha_cung_cap": "NCC010",
+    "ngay_nhap_truoc_so_ngay": 14,
+    "ghi_chu": "Nhập hàng tồn kho ban đầu",
+    "chi_tiet_phieu_nhap": [
+      {
+        "ma_thuoc": "T0307",
+        "so_lo": "EF240734",
+        "san_xuat_truoc_ngay_nhap": 149,
+        "han_dung_sau_so_ngay": 427,
+        "so_luong": 20,
+        "don_gia_nhap": 14600
+      },
+      {
+        "ma_thuoc": "T0415",
+        "so_lo": "EN263607",
+        "san_xuat_truoc_ngay_nhap": 114,
+        "han_dung_sau_so_ngay": 425,
+        "so_luong": 200,
+        "don_gia_nhap": 24600
+      },
+      {
+        "ma_thuoc": "T0428",
+        "so_lo": "MM266364",
+        "san_xuat_truoc_ngay_nhap": 85,
+        "han_dung_sau_so_ngay": 488,
+        "so_luong": 60,
+        "don_gia_nhap": 32200
+      },
+      {
+        "ma_thuoc": "T0464",
+        "so_lo": "US259513",
+        "san_xuat_truoc_ngay_nhap": 70,
+        "han_dung_sau_so_ngay": 66,
+        "so_luong": 140,
+        "don_gia_nhap": 7200
+      },
+      {
+        "ma_thuoc": "T0617",
+        "so_lo": "YE241462",
+        "san_xuat_truoc_ngay_nhap": 51,
+        "han_dung_sau_so_ngay": 332,
+        "so_luong": 50,
+        "don_gia_nhap": 6500
+      },
+      {
+        "ma_thuoc": "T0720",
+        "so_lo": "NK244412",
+        "san_xuat_truoc_ngay_nhap": 133,
+        "han_dung_sau_so_ngay": 375,
+        "so_luong": 170,
+        "don_gia_nhap": 15000
+      },
+      {
+        "ma_thuoc": "T0747",
+        "so_lo": "WY265501",
+        "san_xuat_truoc_ngay_nhap": 132,
+        "han_dung_sau_so_ngay": 62,
+        "so_luong": 30,
+        "don_gia_nhap": 10100
+      },
+      {
+        "ma_thuoc": "T0806",
+        "so_lo": "TT256654",
+        "san_xuat_truoc_ngay_nhap": 129,
+        "han_dung_sau_so_ngay": 673,
+        "so_luong": 30,
+        "don_gia_nhap": 51700
+      },
+      {
+        "ma_thuoc": "T0834",
+        "so_lo": "JM255066",
+        "san_xuat_truoc_ngay_nhap": 113,
+        "han_dung_sau_so_ngay": 624,
+        "so_luong": 60,
+        "don_gia_nhap": 5000
+      },
+      {
+        "ma_thuoc": "T1073",
+        "so_lo": "JK250035",
+        "san_xuat_truoc_ngay_nhap": 191,
+        "han_dung_sau_so_ngay": 320,
+        "so_luong": 50,
+        "don_gia_nhap": 29400
+      },
+      {
+        "ma_thuoc": "T1090",
+        "so_lo": "SP265011",
+        "san_xuat_truoc_ngay_nhap": 211,
+        "han_dung_sau_so_ngay": 435,
+        "so_luong": 35,
+        "don_gia_nhap": 45300
+      },
+      {
+        "ma_thuoc": "T1148",
+        "so_lo": "FR240190",
+        "san_xuat_truoc_ngay_nhap": 93,
+        "han_dung_sau_so_ngay": 22,
+        "so_luong": 30,
+        "don_gia_nhap": 23400
+      },
+      {
+        "ma_thuoc": "T1308",
+        "so_lo": "KF259513",
+        "san_xuat_truoc_ngay_nhap": 198,
+        "han_dung_sau_so_ngay": 746,
+        "so_luong": 80,
+        "don_gia_nhap": 47100
+      },
+      {
+        "ma_thuoc": "T1323",
+        "so_lo": "MP267954",
+        "san_xuat_truoc_ngay_nhap": 40,
+        "han_dung_sau_so_ngay": 309,
+        "so_luong": 40,
+        "don_gia_nhap": 37500
+      },
+      {
+        "ma_thuoc": "T1350",
+        "so_lo": "GQ258898",
+        "san_xuat_truoc_ngay_nhap": 176,
+        "han_dung_sau_so_ngay": 648,
+        "so_luong": 40,
+        "don_gia_nhap": 39300
+      },
+      {
+        "ma_thuoc": "T1459",
+        "so_lo": "NB267471",
+        "san_xuat_truoc_ngay_nhap": 74,
+        "han_dung_sau_so_ngay": 629,
+        "so_luong": 30,
+        "don_gia_nhap": 36900
+      },
+      {
+        "ma_thuoc": "T1478",
+        "so_lo": "TR240187",
+        "san_xuat_truoc_ngay_nhap": 205,
+        "han_dung_sau_so_ngay": 67,
+        "so_luong": 60,
+        "don_gia_nhap": 66500
+      },
+      {
+        "ma_thuoc": "T1483",
+        "so_lo": "ZE245392",
+        "san_xuat_truoc_ngay_nhap": 111,
+        "han_dung_sau_so_ngay": 517,
+        "so_luong": 60,
+        "don_gia_nhap": 55800
+      },
+      {
+        "ma_thuoc": "T1591",
+        "so_lo": "RJ253585",
+        "san_xuat_truoc_ngay_nhap": 180,
+        "han_dung_sau_so_ngay": 764,
+        "so_luong": 14,
+        "don_gia_nhap": 12900
+      },
+      {
+        "ma_thuoc": "T1699",
+        "so_lo": "BT267138",
+        "san_xuat_truoc_ngay_nhap": 85,
+        "han_dung_sau_so_ngay": 897,
+        "so_luong": 160,
+        "don_gia_nhap": 96100
+      },
+      {
+        "ma_thuoc": "T1706",
+        "so_lo": "GE247952",
+        "san_xuat_truoc_ngay_nhap": 141,
+        "han_dung_sau_so_ngay": 581,
+        "so_luong": 27,
+        "don_gia_nhap": 96800
+      },
+      {
+        "ma_thuoc": "T1715",
+        "so_lo": "AC260265",
+        "san_xuat_truoc_ngay_nhap": 232,
+        "han_dung_sau_so_ngay": 823,
+        "so_luong": 60,
+        "don_gia_nhap": 43900
+      },
+      {
+        "ma_thuoc": "T1722",
+        "so_lo": "ZK240004",
+        "san_xuat_truoc_ngay_nhap": 73,
+        "han_dung_sau_so_ngay": 869,
+        "so_luong": 100,
+        "don_gia_nhap": 39000
+      },
+      {
+        "ma_thuoc": "T1812",
+        "so_lo": "ZP262347",
+        "san_xuat_truoc_ngay_nhap": 175,
+        "han_dung_sau_so_ngay": 635,
+        "so_luong": 35,
+        "don_gia_nhap": 13500
+      },
+      {
+        "ma_thuoc": "T1849",
+        "so_lo": "LD243163",
+        "san_xuat_truoc_ngay_nhap": 167,
+        "han_dung_sau_so_ngay": 761,
+        "so_luong": 11,
+        "don_gia_nhap": 17900
+      },
+      {
+        "ma_thuoc": "T1881",
+        "so_lo": "VA241432",
+        "san_xuat_truoc_ngay_nhap": 121,
+        "han_dung_sau_so_ngay": 817,
+        "so_luong": 80,
+        "don_gia_nhap": 11900
+      },
+      {
+        "ma_thuoc": "T1916",
+        "so_lo": "ND248984",
+        "san_xuat_truoc_ngay_nhap": 128,
+        "han_dung_sau_so_ngay": 289,
+        "so_luong": 80,
+        "don_gia_nhap": 21400
+      },
+      {
+        "ma_thuoc": "T1937",
+        "so_lo": "UY259973",
+        "san_xuat_truoc_ngay_nhap": 156,
+        "han_dung_sau_so_ngay": 696,
+        "so_luong": 80,
+        "don_gia_nhap": 45500
+      },
+      {
+        "ma_thuoc": "T1954",
+        "so_lo": "NK244359",
+        "san_xuat_truoc_ngay_nhap": 76,
+        "han_dung_sau_so_ngay": 650,
+        "so_luong": 40,
+        "don_gia_nhap": 95700
+      },
+      {
+        "ma_thuoc": "T1977",
+        "so_lo": "RY249202",
+        "san_xuat_truoc_ngay_nhap": 128,
+        "han_dung_sau_so_ngay": 865,
+        "so_luong": 110,
+        "don_gia_nhap": 25500
+      },
+      {
+        "ma_thuoc": "T1988",
+        "so_lo": "FB260429",
+        "san_xuat_truoc_ngay_nhap": 109,
+        "han_dung_sau_so_ngay": 247,
+        "so_luong": 60,
+        "don_gia_nhap": 26200
+      },
+      {
+        "ma_thuoc": "T2001",
+        "so_lo": "LW251583",
+        "san_xuat_truoc_ngay_nhap": 132,
+        "han_dung_sau_so_ngay": 317,
+        "so_luong": 20,
+        "don_gia_nhap": 487500
+      },
+      {
+        "ma_thuoc": "T2009",
+        "so_lo": "QD247593",
+        "san_xuat_truoc_ngay_nhap": 27,
+        "han_dung_sau_so_ngay": 311,
+        "so_luong": 40,
+        "don_gia_nhap": 262500
+      }
+    ]
+  }
+]

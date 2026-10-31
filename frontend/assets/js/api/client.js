@@ -1,17 +1,6 @@
-import { appConfig } from '../config/app-config.js';
+import { httpAdapter } from './adapters/http-adapter.js';
 
-let adapterPromise = null;
 let unauthorizedHandler = null;
-
-const resolveAdapter = () => {
-  if (!adapterPromise) {
-    adapterPromise =
-      appConfig.apiMode === 'mock'
-        ? import('./adapters/mock-adapter.js').then((module) => module.mockAdapter)
-        : import('./adapters/http-adapter.js').then((module) => module.httpAdapter);
-  }
-  return adapterPromise;
-};
 
 const cleanParams = (params) =>
   Object.fromEntries(
@@ -19,9 +8,8 @@ const cleanParams = (params) =>
   );
 
 const send = async (method, path, { params, body } = {}) => {
-  const adapter = await resolveAdapter();
   try {
-    return await adapter.request({ method, path, params: cleanParams(params), body });
+    return await httpAdapter.request({ method, path, params: cleanParams(params), body });
   } catch (error) {
     if (error.status === 401 && unauthorizedHandler && !path.startsWith('/auth/')) unauthorizedHandler(error);
     throw error;

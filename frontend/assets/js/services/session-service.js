@@ -41,10 +41,36 @@ export const goHome = (role) => {
   window.location.replace(pageUrl(roleHome[role]));
 };
 
+const rejectRole = (user) => {
+  flash.set({
+    type: 'error',
+    title: 'Không có quyền truy cập',
+    message: 'Bạn không được phép mở trang của vai trò khác.',
+  });
+  goHome(user.role);
+};
+
+const verifyInBackground = (allowedRole) => {
+  authService
+    .currentUser()
+    .then((user) => {
+      if (allowedRole && user.role !== allowedRole) rejectRole(user);
+    })
+    .catch((error) => {
+      if (error.status === 401) goToLogin();
+    });
+};
+
 export const requireSession = async (allowedRole) => {
-  setUnauthorizedHandler(() =>
-    goToLogin({ type: 'warning', title: 'Phiên đăng nhập đã hết hạn', message: 'Vui lòng đăng nhập lại.' }),
-  );
+  setUnauthorizedHandler(() => {
+    authService.forgetUser();
+    goToLogin({ type: 'warning', title: 'Phiên đăng nhập đã hết hạn', message: 'Vui lòng đăng nhập lại.' });
+  });
+  const cached = authService.cachedUser();
+  if (cached && (!allowedRole || cached.role === allowedRole)) {
+    verifyInBackground(allowedRole);
+    return cached;
+  }
   let user;
   try {
     user = await authService.currentUser();
@@ -53,12 +79,7 @@ export const requireSession = async (allowedRole) => {
     return new Promise(() => {});
   }
   if (allowedRole && user.role !== allowedRole) {
-    flash.set({
-      type: 'error',
-      title: 'Không có quyền truy cập',
-      message: 'Bạn không được phép mở trang của vai trò khác.',
-    });
-    goHome(user.role);
+    rejectRole(user);
     return new Promise(() => {});
   }
   return user;

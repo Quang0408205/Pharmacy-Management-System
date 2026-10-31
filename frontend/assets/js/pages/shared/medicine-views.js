@@ -1,6 +1,7 @@
 import { html } from '../../core/html.js';
 import { icon } from '../../core/icons.js';
 import { getQuery } from '../../core/dom.js';
+import { medicineUnits } from '../../config/app-config.js';
 import { formatCurrency, formatDate, formatDateTime, formatNumber } from '../../core/format.js';
 import { medicineImage } from '../../core/medicine-image.js';
 import { createDataTable } from '../../components/data-table.js';
@@ -35,9 +36,23 @@ const formFields = (categories) => [
   { name: 'genericName', label: 'Hoạt chất' },
   { name: 'strength', label: 'Hàm lượng' },
   { name: 'dosageForm', label: 'Dạng bào chế' },
-  { name: 'unit', label: 'Đơn vị tính', required: true },
+  {
+    name: 'unit',
+    label: 'Đơn vị tính',
+    type: 'select',
+    required: true,
+    options: medicineUnits.map((unit) => ({ value: unit, label: unit })),
+  },
   { name: 'packaging', label: 'Quy cách đóng gói' },
-  { name: 'manufacturer', label: 'Nhà sản xuất', required: true },
+  {
+    name: 'manufacturer',
+    label: 'Nhà sản xuất',
+    type: 'combobox',
+    required: true,
+    maxlength: 200,
+    placeholder: 'Chọn hoặc nhập nhà sản xuất',
+    loadOptions: () => medicineService.manufacturers(),
+  },
   { name: 'country', label: 'Nước sản xuất' },
   {
     name: 'categoryId',
@@ -61,20 +76,85 @@ const formFields = (categories) => [
   { name: 'description', label: 'Mô tả', type: 'textarea', full: true },
 ];
 
+const imageField = (medicine) => html`<div class="image-field" data-image-field>
+  <img class="image-field__preview" data-image-preview src="${medicineImage(medicine || {})}" alt="Ảnh thuốc" />
+  <div class="image-field__actions">
+    <strong>Ảnh thuốc</strong>
+    <span class="text-secondary text-small">JPG, PNG hoặc WebP, tối đa 2MB. Nếu không có ảnh, hệ thống dùng ảnh minh họa theo dạng bào chế.</span>
+    <div class="row">
+      <button type="button" class="btn btn--secondary btn--sm" data-image-pick>${icon('upload', 'icon--sm')} Chọn ảnh</button>
+      <button type="button" class="btn btn--ghost btn--sm ${medicine?.imageUrl ? '' : 'hidden'}" data-image-remove>${icon('trash', 'icon--sm')} Xóa ảnh</button>
+    </div>
+    <input type="file" class="hidden" accept="image/jpeg,image/png,image/webp" data-image-input />
+    <span class="form-error" data-image-error role="alert"></span>
+  </div>
+</div>`;
+
+const bindImageField = (root, medicine) => {
+  const preview = root.querySelector('[data-image-preview]');
+  const input = root.querySelector('[data-image-input]');
+  const removeButton = root.querySelector('[data-image-remove]');
+  const error = root.querySelector('[data-image-error]');
+  const state = { file: null, remove: false };
+  const fallback = medicineImage({ ...medicine, imageUrl: null });
+  let objectUrl = null;
+  const show = (source, removable) => {
+    preview.src = source;
+    removeButton.classList.toggle('hidden', !removable);
+  };
+  root.querySelector('[data-image-pick]').addEventListener('click', () => input.click());
+  input.addEventListener('change', () => {
+    const [file] = input.files;
+    error.textContent = '';
+    if (!file) return;
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 2 * 1024 * 1024) {
+      error.textContent = 'Ảnh phải là JPG, PNG hoặc WebP và không quá 2MB.';
+      input.value = '';
+      return;
+    }
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = URL.createObjectURL(file);
+    state.file = file;
+    state.remove = false;
+    show(objectUrl, true);
+  });
+  removeButton.addEventListener('click', () => {
+    input.value = '';
+    state.file = null;
+    state.remove = Boolean(medicine?.imageUrl);
+    show(fallback, false);
+  });
+  return state;
+};
+
+const syncImage = async (id, state) => {
+  if (state.file) return medicineService.uploadImage(id, state.file);
+  if (state.remove) return medicineService.removeImage(id);
+  return null;
+};
+
 export const openMedicineForm = async ({ medicine = null, nextCode = '' }) => {
   const categories = await loadCategoryOptions();
+  let imageState = { file: null, remove: false };
   const dialog = openFormDialog({
     title: medicine ? `Sửa thuốc: ${medicine.name}` : 'Thêm thuốc mới',
     asDrawer: true,
     submitText: medicine ? 'Lưu thay đổi' : 'Thêm thuốc',
+    intro: imageField(medicine),
     fields: formFields(categories),
     values: medicine || { code: nextCode, prescriptionType: 'OTC', minStock: 20, unit: 'Hộp' },
     onSubmit: async (values) => {
-      const saved = medicine ? await medicineService.update(medicine.id, values) : await medicineService.create(values);
+      let saved = medicine ? await medicineService.update(medicine.id, values) : await medicineService.create(values);
       toast.success(medicine ? 'Đã cập nhật thuốc' : 'Đã thêm thuốc', saved.name);
+      try {
+        saved = (await syncImage(saved.id, imageState)) || saved;
+      } catch (error) {
+        toast.error('Đã lưu thuốc nhưng chưa cập nhật được ảnh', errorMessage(error));
+      }
       return saved;
     },
   });
+  imageState = bindImageField(dialog.body, medicine);
   return dialog.closed;
 };
 

@@ -1,5 +1,4 @@
 import { html } from '../../core/html.js';
-import { appConfig } from '../../config/app-config.js';
 import { icon } from '../../core/icons.js';
 import { errorMessage } from '../../core/errors.js';
 import { startPage } from '../../components/page.js';
@@ -12,7 +11,6 @@ import {
   showErrors,
   validateFields,
 } from '../../components/form.js';
-import { confirmDialog } from '../../components/overlay.js';
 import { toast } from '../../components/toast.js';
 import { preferences } from '../../services/session-service.js';
 import { settingsService } from '../../services/admin-service.js';
@@ -59,6 +57,38 @@ const thresholdFields = [
     step: 1,
     required: true,
     help: 'Ba mốc dùng cho trang Hạn sử dụng của kho, phải tăng dần.',
+  },
+];
+
+const loyaltyFields = [
+  {
+    name: 'earnAmountPerPoint',
+    label: 'Số tiền để được 1 điểm (VNĐ)',
+    type: 'number',
+    min: 1000,
+    max: 10000000,
+    step: 1000,
+    required: true,
+    help: 'Tính trên số tiền khách thực trả, làm tròn xuống. Ví dụ 10.000 = cứ 10.000đ được 1 điểm.',
+  },
+  {
+    name: 'pointValue',
+    label: 'Giá trị 1 điểm khi đổi (VNĐ)',
+    type: 'number',
+    min: 100,
+    max: 1000000,
+    step: 100,
+    required: true,
+  },
+  {
+    name: 'maxRedeemPercent',
+    label: 'Tối đa được đổi (% giá trị đơn)',
+    type: 'number',
+    min: 1,
+    max: 100,
+    step: 1,
+    required: true,
+    help: 'Tính trên giá trị đơn sau giảm giá.',
   },
 ];
 
@@ -109,6 +139,12 @@ startPage({
         </div>
         <div class="stack">
           ${section(
+            'loyalty',
+            'Chương trình tích điểm',
+            html`<label class="switch"><span>Bật tích điểm và đổi điểm</span><input type="checkbox" name="enabled" ${settings.loyalty.enabled ? 'checked' : ''} /></label>${renderFields(loyaltyFields, settings.loyalty, 'lo')}`,
+            'Lưu chương trình',
+          )}
+          ${section(
             'appearance',
             'Giao diện',
             html`<div class="form-grid">
@@ -125,15 +161,6 @@ startPage({
             html`<div>${Object.entries(notificationLabels).map(([key, label]) => html`<label class="switch"><span>${label}</span><input type="checkbox" name="${key}" ${settings.notifications[key] ? 'checked' : ''} /></label>`)}</div>`,
             'Lưu tùy chọn',
           )}
-          ${
-            appConfig.apiMode !== 'mock'
-              ? ''
-              : card({
-                  title: 'Dữ liệu demo',
-                  body: html`<p class="text-secondary">Đặt lại toàn bộ dữ liệu mẫu (thuốc, lô, hóa đơn, phiếu nhập...) về trạng thái ban đầu. Chỉ có ở chế độ Mock API.</p>
-              <button type="button" class="btn btn--danger" data-reset>${icon('reset', 'icon--sm')} Đặt lại dữ liệu mẫu</button>`,
-                })
-          }
         </div>
       </div>
     `.value;
@@ -148,7 +175,7 @@ startPage({
         try {
           await handler(form);
         } catch (error) {
-          if (error.fieldErrors) showErrors(form, error.fieldErrors, id === 'profile' ? 'pf' : 'th');
+          if (error.fieldErrors) showErrors(form, error.fieldErrors, { profile: 'pf', loyalty: 'lo' }[id] || 'th');
           toast.error('Không thể lưu cài đặt', errorMessage(error));
         } finally {
           setLoading(submit, false);
@@ -174,6 +201,20 @@ startPage({
       });
       return toast.success('Đã lưu ngưỡng cảnh báo', 'Các cảnh báo tồn kho và hạn dùng sẽ áp dụng ngay.');
     });
+    bind('loyalty', async (form) => {
+      const values = readValues(form, loyaltyFields);
+      const errors = validateFields(loyaltyFields, values);
+      if (Object.keys(errors).length) return showErrors(form, errors, 'lo');
+      await settingsService.update({
+        loyalty: {
+          enabled: form.elements.enabled.checked,
+          earnAmountPerPoint: values.earnAmountPerPoint,
+          pointValue: values.pointValue,
+          maxRedeemPercent: values.maxRedeemPercent,
+        },
+      });
+      return toast.success('Đã lưu chương trình tích điểm', 'Áp dụng cho các hóa đơn tiếp theo.');
+    });
     bind('appearance', async (form) => {
       preferences.update({ theme: form.elements.theme.value, density: form.elements.density.value });
       window.dispatchEvent(new CustomEvent('pms:theme-changed'));
@@ -188,24 +229,6 @@ startPage({
       );
       await settingsService.update({ notifications });
       return toast.success('Đã lưu tùy chọn thông báo');
-    });
-
-    content.querySelector('[data-reset]')?.addEventListener('click', async () => {
-      const confirmed = await confirmDialog({
-        title: 'Đặt lại dữ liệu mẫu?',
-        message:
-          'Mọi thay đổi bạn đã thực hiện (hóa đơn, phiếu nhập, chỉnh sửa) sẽ mất và dữ liệu về trạng thái ban đầu.',
-        confirmText: 'Đặt lại',
-        tone: 'danger',
-      });
-      if (!confirmed) return;
-      try {
-        await settingsService.resetDemoData();
-        toast.success('Đã đặt lại dữ liệu mẫu');
-        setTimeout(() => window.location.reload(), 600);
-      } catch (error) {
-        toast.error('Không thể đặt lại', errorMessage(error));
-      }
     });
   },
 });

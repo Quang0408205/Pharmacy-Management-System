@@ -39,7 +39,7 @@ startPage({
 
     const table = mountBatchTable({
       container: content.querySelector('[data-table]'),
-      canWriteOff: true,
+      canDispose: true,
       showStatusFilter: false,
       baseParams: {},
     });
