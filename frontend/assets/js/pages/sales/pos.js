@@ -5,7 +5,7 @@ import { formatCurrency, formatDateTime, formatNumber, formatRelative, initials 
 import { errorMessage } from '../../core/errors.js';
 import { medicineImage } from '../../core/medicine-image.js';
 import { startPage } from '../../components/page.js';
-import { statusBadge, paymentLabels } from '../../components/badge.js';
+import { statusBadge, statusLabel, paymentLabels } from '../../components/badge.js';
 import { confirmDialog, openModal } from '../../components/overlay.js';
 import { toast } from '../../components/toast.js';
 import { emptyState, errorState, skeletonCards } from '../../components/states.js';
@@ -65,7 +65,11 @@ const pointsDiscount = () => state.pointsUsed * state.loyalty.pointValue;
 
 const total = () => payable() - pointsDiscount();
 
-const earnedPoints = () => (loyaltyActive() ? Math.floor(total() / state.loyalty.earnAmountPerPoint) : 0);
+const earnedPoints = () => {
+  if (!loyaltyActive()) return 0;
+  const rate = state.customer.earnRatePercent || 100;
+  return Math.floor((total() * rate) / (state.loyalty.earnAmountPerPoint * 100));
+};
 
 const quickAmounts = () => {
   const due = total();
@@ -146,41 +150,35 @@ const shell = (user) => html`<div class="workspace" data-workspace>
       <footer class="pos-pay">
         <div class="summary-lines pos-pay__summary" data-summary></div>
         <div class="pos-pay__adjust">
-          <div class="form-field">
+          <div class="pos-pay__discount">
             <label class="form-label" for="discount-value">Giảm giá</label>
-            <div class="row row--tight">
-              <select class="form-control" data-discount-type aria-label="Loại giảm giá"><option value="AMOUNT">VNĐ</option><option value="PERCENT">%</option></select>
-              <input class="form-control grow" id="discount-value" type="number" min="0" step="500" value="0" data-discount-value />
-            </div>
-            <span class="form-error" data-discount-error role="alert"></span>
+            <select class="form-control" data-discount-type aria-label="Loại giảm giá"><option value="AMOUNT">VNĐ</option><option value="PERCENT">%</option></select>
+            <input class="form-control" id="discount-value" type="number" min="0" step="500" value="0" data-discount-value />
           </div>
-          <div class="form-field hidden" data-points-region>
-            <label class="form-label" for="points-used">Dùng điểm <span class="form-label__hint" data-points-help></span></label>
-            <div class="row row--tight">
-              <input class="form-control grow" id="points-used" type="number" min="0" step="1" value="0" data-points-input inputmode="numeric" />
-              <button type="button" class="btn btn--secondary btn--sm" data-points-max>Tối đa</button>
-            </div>
+          <span class="form-error" data-discount-error role="alert"></span>
+          <div class="pos-pay__discount pos-pay__points hidden" data-points-region>
+            <label class="form-label" for="points-used">Dùng điểm</label>
+            <input class="form-control" id="points-used" type="number" min="0" step="1" value="0" data-points-input inputmode="numeric" />
+            <button type="button" class="btn btn--secondary btn--sm" data-points-max>Tối đa</button>
+            <span class="form-label__hint pos-pay__points-help" data-points-help></span>
           </div>
         </div>
         <div class="payment-methods" role="group" aria-label="Phương thức thanh toán">
           ${Object.entries({ CASH: 'banknote', TRANSFER: 'smartphone', CARD: 'creditCard' }).map(([key, name]) => html`<button type="button" class="payment-methods__option" data-payment="${key}" aria-pressed="${key === 'CASH'}">${icon(name)}${paymentLabels[key]}</button>`)}
         </div>
         <div class="pos-cash" data-change-region>
-          <div class="pos-cash__head">
-            <label class="form-label" for="received">Tiền khách đưa</label>
-            <div class="chip-row pos-cash__quick" data-quick-amounts></div>
-          </div>
+          <div class="chip-row pos-cash__quick" data-quick-amounts></div>
           <div class="pos-cash__row" data-received-region>
-            <input class="form-control pos-cash__input" id="received" type="number" min="0" step="1000" value="" data-received inputmode="numeric" />
+            <input class="form-control pos-cash__input" id="received" type="number" min="0" step="1000" value="" data-received inputmode="numeric" placeholder="Tiền khách đưa" aria-label="Tiền khách đưa" />
             <div class="pos-cash__change"><span>Tiền thừa</span><strong data-change>0 ₫</strong></div>
           </div>
           <span class="form-error" data-received-error role="alert"></span>
         </div>
-        <button type="button" class="btn btn--primary btn--lg btn--block pos-pay__checkout" data-checkout>${icon('checkCircle')} Thanh toán</button>
-        <div class="pos-pay__secondary">
-          <button type="button" class="btn btn--secondary btn--sm" data-save-draft>${icon('save', 'icon--sm')} Lưu nháp</button>
-          <button type="button" class="btn btn--secondary btn--sm" data-open-drafts>${icon('clipboard', 'icon--sm')} Nháp <span class="cart-badge" data-draft-count>0</span></button>
-          <button type="button" class="btn btn--ghost btn--sm" data-reset>${icon('reset', 'icon--sm')} Xóa giỏ</button>
+        <div class="pos-pay__actions">
+          <button type="button" class="icon-button" data-save-draft title="Lưu nháp" aria-label="Lưu nháp">${icon('save')}</button>
+          <button type="button" class="icon-button pos-pay__drafts" data-open-drafts title="Đơn nháp" aria-label="Đơn nháp">${icon('clipboard')}<span class="cart-badge" data-draft-count>0</span></button>
+          <button type="button" class="icon-button" data-reset title="Xóa giỏ" aria-label="Xóa giỏ">${icon('reset')}</button>
+          <button type="button" class="btn btn--primary btn--lg pos-pay__checkout" data-checkout>${icon('checkCircle')} Thanh toán</button>
         </div>
       </footer>
     </div>
@@ -263,7 +261,7 @@ startPage({
             <span class="avatar">${initials(customer.name)}</span>
             <div class="pos-customer__info">
               <strong class="truncate">${customer.name}</strong>
-              <small>${customer.phone} · ${customer.code}</small>
+              <small>${customer.phone} · ${customer.code} · ${statusLabel('tier', customer.tier)}</small>
             </div>
             ${state.loyalty.enabled ? html`<span class="points-pill" title="Điểm tích lũy">${icon('star', 'icon--sm')} ${formatNumber(customer.loyaltyPoints || 0)} điểm</span>` : ''}
             <button type="button" class="btn btn--secondary btn--sm" data-pick-customer>Đổi</button>

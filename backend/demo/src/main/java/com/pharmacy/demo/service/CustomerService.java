@@ -5,11 +5,15 @@ import com.pharmacy.demo.dto.common.PageResponse;
 import com.pharmacy.demo.dto.request.CustomerRequest;
 import com.pharmacy.demo.dto.response.CustomerDetailResponse;
 import com.pharmacy.demo.dto.response.CustomerResponse;
+import com.pharmacy.demo.dto.response.LoyaltySummaryResponse;
+import com.pharmacy.demo.enums.MembershipTier;
 import com.pharmacy.demo.security.Actor;
 
 public interface CustomerService {
 
-    PageResponse<CustomerResponse> search(String q, PageQuery query);
+    PageResponse<CustomerResponse> search(String q, MembershipTier tier, PageQuery query);
+
+    LoyaltySummaryResponse loyaltySummary();
 
     CustomerDetailResponse get(String id);
 

@@ -13,7 +13,8 @@ public enum CodeKind {
     RECEIPT("PN", 4, Scope.YEAR),
     STOCKTAKE("KK", 3, Scope.YEAR),
     DISPOSAL("XH", 3, Scope.YEAR),
-    INVOICE("HD", 4, Scope.DAY);
+    INVOICE("HD", 4, Scope.DAY),
+    INTERNAL_BATCH("NB", 4, Scope.DAY);
 
     private static final DateTimeFormatter YEAR = DateTimeFormatter.ofPattern("yyyy");
     private static final DateTimeFormatter DAY = DateTimeFormatter.ofPattern("yyyyMMdd");

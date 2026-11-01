@@ -52,6 +52,8 @@ public class ReceiptCommandServiceImpl implements ReceiptCommandService {
     private static final String INVALID_LINES_MESSAGE =
             "Phiếu nhập có dòng chưa hợp lệ. Vui lòng kiểm tra các dòng được đánh dấu.";
 
+    private static final String INTERNAL_BATCH_PREFIX = "NB-";
+
     private final GoodsReceiptRepository receiptRepository;
     private final SupplierRepository supplierRepository;
     private final MedicineRepository medicineRepository;
@@ -186,6 +188,12 @@ public class ReceiptCommandServiceImpl implements ReceiptCommandService {
             String batchCode = item.batchCode() == null || item.batchCode().isBlank()
                     ? null
                     : item.batchCode().trim().toUpperCase(Locale.ROOT);
+            boolean internalBatch = Boolean.TRUE.equals(item.noBatchCode());
+            if (internalBatch && (batchCode == null || !batchCode.startsWith(INTERNAL_BATCH_PREFIX))) {
+                batchCode = codeGenerator.next(CodeKind.INTERNAL_BATCH);
+            } else if (!internalBatch && batchCode != null && batchCode.startsWith(INTERNAL_BATCH_PREFIX)) {
+                errors.put(prefix + "batchCode", "Tiền tố NB- dành riêng cho lô nội bộ, hãy dùng số lô trên bao bì.");
+            }
             if (strict) {
                 checkBatchFields(errors, prefix, item, batchCode, medicine, receivingDate, today);
                 if (batchCode != null && !seenBatches.add(medicine.getId() + "|" + batchCode)) {

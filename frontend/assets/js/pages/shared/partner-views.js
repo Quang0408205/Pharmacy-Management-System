@@ -6,7 +6,7 @@ import { createDataTable } from '../../components/data-table.js';
 import { openFormDialog } from '../../components/form-modal.js';
 import { confirmDialog, openDrawer } from '../../components/overlay.js';
 import { bindTabs, detailList, rowButton, tabs } from '../../components/blocks.js';
-import { statusBadge, statusOptions } from '../../components/badge.js';
+import { statusBadge, statusLabel, statusOptions } from '../../components/badge.js';
 import { skeletonTable } from '../../components/states.js';
 import { toast } from '../../components/toast.js';
 import { errorMessage } from '../../core/errors.js';
@@ -236,9 +236,15 @@ const loyaltyLabels = {
   EARN_REVOKE: 'Thu hồi điểm',
 };
 
+export const tierProgressText = (customer) =>
+  customer.nextTier
+    ? `Còn ${formatCurrency(customer.amountToNextTier)} để lên hạng ${statusLabel('tier', customer.nextTier)}`
+    : 'Đã đạt hạng cao nhất';
+
 const loyaltyPanel = (customer, history) =>
   html`<div class="stack">
     <div class="points-balance"><span class="points-balance__icon">${icon('star', 'icon--lg')}</span><div><strong>${formatNumber(customer.loyaltyPoints)} điểm</strong><span class="text-secondary">Số điểm hiện có của ${customer.name}</span></div></div>
+    <div class="tier-line">${statusBadge('tier', customer.tier)}<span>Tích điểm ×${customer.earnRatePercent / 100} · ${tierProgressText(customer)}</span></div>
     ${
       history && history.length
         ? html`<div class="table-wrap"><table class="table"><thead><tr><th>Thời gian</th><th>Loại</th><th>Hóa đơn</th><th class="num">Điểm</th><th class="num">Còn lại</th></tr></thead>
@@ -275,6 +281,8 @@ export const openCustomerDrawer = async (id, { role, onChanged = () => {} }) => 
                 ['Năm sinh', customer.birthYear],
                 ['Số hóa đơn', formatNumber(customer.invoiceCount)],
                 ['Tổng chi tiêu', formatCurrency(customer.totalSpent)],
+                ['Hạng thành viên', statusBadge('tier', customer.tier)],
+                ['Lên hạng', tierProgressText(customer)],
                 ['Điểm tích lũy', `${formatNumber(customer.loyaltyPoints)} điểm`],
                 ['Địa chỉ', customer.address],
                 ['Ghi chú', customer.note],
@@ -328,7 +336,7 @@ export const openCustomerDrawer = async (id, { role, onChanged = () => {} }) => 
   }
 };
 
-export const mountCustomerTable = ({ container, role }) => {
+export const mountCustomerTable = ({ container, role, initialTier = '', defaultSort = 'code,desc' }) => {
   const query = getQuery();
   const table = createDataTable({
     container,
@@ -343,6 +351,7 @@ export const mountCustomerTable = ({ container, role }) => {
       },
       { key: 'phone', label: 'Số điện thoại', sortable: true },
       { key: 'invoiceCount', label: 'Số hóa đơn', sortable: true, align: 'right' },
+      { key: 'tier', label: 'Hạng', render: (row) => statusBadge('tier', row.tier) },
       {
         key: 'loyaltyPoints',
         label: 'Điểm',
@@ -360,9 +369,12 @@ export const mountCustomerTable = ({ container, role }) => {
       { key: 'lastPurchase', label: 'Mua gần nhất', sortable: true, render: (row) => formatDate(row.lastPurchase) },
     ],
     fetch: (params) => customerService.list(params),
-    filters: [{ type: 'search', name: 'q', placeholder: 'Tìm tên, mã khách, số điện thoại...' }],
-    initialParams: { q: query.q || '' },
-    defaultSort: 'code,desc',
+    filters: [
+      { type: 'search', name: 'q', placeholder: 'Tìm tên, mã khách, số điện thoại...' },
+      { type: 'select', name: 'tier', label: 'Hạng', options: statusOptions('tier') },
+    ],
+    initialParams: { q: query.q || '', tier: query.tier || initialTier },
+    defaultSort,
     caption: 'Danh sách khách hàng',
     emptyTitle: 'Chưa có khách hàng',
     emptyIcon: 'users',

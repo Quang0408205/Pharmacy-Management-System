@@ -15,6 +15,10 @@ public interface LoyaltyService {
 
     int earnedPoints(Customer customer, long paid);
 
+    TierStatus tierStatus(long totalSpent);
+
+    long totalSpent(String customerId);
+
     void settle(Invoice invoice, Actor actor);
 
     void reverse(Invoice invoice, Actor actor);

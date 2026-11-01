@@ -5,7 +5,9 @@ import com.pharmacy.demo.entity.Customer;
 import com.pharmacy.demo.entity.Invoice;
 import com.pharmacy.demo.entity.LoyaltyTransaction;
 import com.pharmacy.demo.entity.embedded.LoyaltySetting;
+import com.pharmacy.demo.enums.InvoiceStatus;
 import com.pharmacy.demo.enums.LoyaltyType;
+import com.pharmacy.demo.enums.MembershipTier;
 import com.pharmacy.demo.exception.BadRequestException;
 import com.pharmacy.demo.exception.ConflictException;
 import com.pharmacy.demo.exception.NotFoundException;
@@ -16,12 +18,16 @@ import com.pharmacy.demo.security.Actor;
 import com.pharmacy.demo.service.IdGenerator;
 import com.pharmacy.demo.service.LoyaltyService;
 import com.pharmacy.demo.service.SystemSettingService;
+import com.pharmacy.demo.service.TierStatus;
 import java.time.Clock;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -74,7 +80,42 @@ public class LoyaltyServiceImpl implements LoyaltyService {
         if (customer == null || !settings.isEnabled() || paid <= 0) {
             return 0;
         }
-        return (int) (paid / settings.getEarnAmountPerPoint());
+        int ratePercent = tierStatus(totalSpent(customer.getId())).earnRatePercent();
+        return (int) (paid * ratePercent / (settings.getEarnAmountPerPoint() * 100));
+    }
+
+    @Override
+    public TierStatus tierStatus(long totalSpent) {
+        LoyaltySetting settings = settingService.current().getLoyalty();
+        MembershipTier tier = MembershipTier.STANDARD;
+        if (totalSpent >= settings.getDiamondThreshold()) {
+            tier = MembershipTier.DIAMOND;
+        } else if (totalSpent >= settings.getGoldThreshold()) {
+            tier = MembershipTier.GOLD;
+        } else if (totalSpent >= settings.getSilverThreshold()) {
+            tier = MembershipTier.SILVER;
+        }
+        MembershipTier next = switch (tier) {
+            case STANDARD -> MembershipTier.SILVER;
+            case SILVER -> MembershipTier.GOLD;
+            case GOLD -> MembershipTier.DIAMOND;
+            case DIAMOND -> null;
+        };
+        long needed = next == null ? 0 : Math.max(0, thresholdOf(settings, next) - totalSpent);
+        return new TierStatus(tier, next, needed, rateOf(settings, tier));
+    }
+
+    @Override
+    public long totalSpent(String customerId) {
+        TypedAggregation<Invoice> aggregation = Aggregation.newAggregation(
+                Invoice.class,
+                Aggregation.match(Criteria.where("status")
+                        .is(InvoiceStatus.COMPLETED)
+                        .and("customerId")
+                        .is(customerId)),
+                Aggregation.group().sum("total").as("total"));
+        Document row = mongoTemplate.aggregate(aggregation, Document.class).getUniqueMappedResult();
+        return row == null ? 0 : row.get("total", Number.class).longValue();
     }
 
     @Override
@@ -171,6 +212,24 @@ public class LoyaltyServiceImpl implements LoyaltyService {
                 .actorName(actor.name())
                 .createdAt(clock.instant())
                 .build());
+    }
+
+    private static long thresholdOf(LoyaltySetting settings, MembershipTier tier) {
+        return switch (tier) {
+            case STANDARD -> 0;
+            case SILVER -> settings.getSilverThreshold();
+            case GOLD -> settings.getGoldThreshold();
+            case DIAMOND -> settings.getDiamondThreshold();
+        };
+    }
+
+    private static int rateOf(LoyaltySetting settings, MembershipTier tier) {
+        return switch (tier) {
+            case STANDARD -> 100;
+            case SILVER -> settings.getSilverRate();
+            case GOLD -> settings.getGoldRate();
+            case DIAMOND -> settings.getDiamondRate();
+        };
     }
 
     private static BadRequestException reject(String message) {

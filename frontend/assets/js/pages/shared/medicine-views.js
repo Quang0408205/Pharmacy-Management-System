@@ -13,6 +13,7 @@ import { toast } from '../../components/toast.js';
 import { categoryService, medicineService } from '../../services/catalog-service.js';
 import { errorMessage } from '../../core/errors.js';
 import { skeletonTable } from '../../components/states.js';
+import { openBulkImageDialog } from './bulk-image-dialog.js';
 
 const prescriptionOptions = [
   { value: 'OTC', label: 'Không kê đơn (OTC)' },
@@ -369,7 +370,7 @@ export const mountMedicineTable = async ({ container, role, mode, presets = {} }
     emptyIcon: 'pill',
     toolbarExtra:
       mode === 'admin'
-        ? html`<button type="button" class="btn btn--primary" data-action="create">${icon('plus', 'icon--sm')} Thêm thuốc</button>`
+        ? html`<button type="button" class="btn btn--secondary" data-action="bulk-images">${icon('image', 'icon--sm')} Tải ảnh hàng loạt</button><button type="button" class="btn btn--primary" data-action="create">${icon('plus', 'icon--sm')} Thêm thuốc</button>`
         : '',
     rowActions:
       mode === 'admin'
@@ -382,6 +383,7 @@ export const mountMedicineTable = async ({ container, role, mode, presets = {} }
         const saved = await openMedicineForm({ nextCode: code });
         if (saved) table.reload();
       }
+      if (action === 'bulk-images' && (await openBulkImageDialog())) table.reload();
       if (action === 'view') openMedicineDrawer(row.id, { role, onChanged: () => table.reload() });
       if (action === 'edit') {
         const detail = await medicineService.get(row.id);

@@ -17,5 +17,15 @@ public record SettingsResponse(
 
     public record Notifications(boolean lowStock, boolean expiring, boolean newReceipt, boolean dailyReport) {}
 
-    public record Loyalty(boolean enabled, long earnAmountPerPoint, long pointValue, int maxRedeemPercent) {}
+    public record Loyalty(
+            boolean enabled,
+            long earnAmountPerPoint,
+            long pointValue,
+            int maxRedeemPercent,
+            long silverThreshold,
+            long goldThreshold,
+            long diamondThreshold,
+            int silverRate,
+            int goldRate,
+            int diamondRate) {}
 }

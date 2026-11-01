@@ -64,6 +64,12 @@ const catalog = {
     REJECTED: ['danger', 'Từ chối'],
     EXECUTED: ['success', 'Đã thực hiện'],
   },
+  tier: {
+    STANDARD: ['neutral', 'Thường'],
+    SILVER: ['info', 'Bạc'],
+    GOLD: ['warning', 'Vàng'],
+    DIAMOND: ['primary', 'Kim cương'],
+  },
   disposalReason: {
     EXPIRED: ['danger', 'Hết hạn'],
     DAMAGED: ['warning', 'Hư hỏng'],

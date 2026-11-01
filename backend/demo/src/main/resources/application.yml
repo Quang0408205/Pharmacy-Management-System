@@ -3,8 +3,8 @@ spring:
     name: pharmacy-backend
   servlet:
     multipart:
-      max-file-size: 3MB
-      max-request-size: 4MB
+      max-file-size: 40MB
+      max-request-size: 60MB
   mongodb:
     uri: ${SPRING_MONGODB_URI:mongodb://localhost:27017/pharmacy?replicaSet=rs0&directConnection=true}
   data:

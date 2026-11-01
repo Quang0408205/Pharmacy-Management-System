@@ -37,6 +37,8 @@ public class SystemSettingServiceImpl implements SystemSettingService {
         if (setting.getLoyalty() == null) {
             setting.setLoyalty(LoyaltySetting.defaults());
             repository.save(setting);
+        } else if (setting.getLoyalty().fillMissingTiers()) {
+            repository.save(setting);
         }
         return setting;
     }
@@ -155,6 +157,30 @@ public class SystemSettingServiceImpl implements SystemSettingService {
         }
         if (source.maxRedeemPercent() != null) {
             target.setMaxRedeemPercent(source.maxRedeemPercent());
+        }
+        if (source.silverThreshold() != null) {
+            target.setSilverThreshold(source.silverThreshold());
+        }
+        if (source.goldThreshold() != null) {
+            target.setGoldThreshold(source.goldThreshold());
+        }
+        if (source.diamondThreshold() != null) {
+            target.setDiamondThreshold(source.diamondThreshold());
+        }
+        if (source.silverRate() != null) {
+            target.setSilverRate(source.silverRate());
+        }
+        if (source.goldRate() != null) {
+            target.setGoldRate(source.goldRate());
+        }
+        if (source.diamondRate() != null) {
+            target.setDiamondRate(source.diamondRate());
+        }
+        if (target.getSilverThreshold() >= target.getGoldThreshold()
+                || target.getGoldThreshold() >= target.getDiamondThreshold()) {
+            throw new BadRequestException(
+                    "Ngưỡng các hạng phải tăng dần: Bạc < Vàng < Kim cương.",
+                    Map.of("silverThreshold", "Ngưỡng các hạng phải tăng dần: Bạc < Vàng < Kim cương."));
         }
     }
 

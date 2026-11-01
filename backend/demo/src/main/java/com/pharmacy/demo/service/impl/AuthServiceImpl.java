@@ -1,10 +1,12 @@
 package com.pharmacy.demo.service.impl;
 
 import com.pharmacy.demo.config.AppProperties;
+import com.pharmacy.demo.dto.request.ChangePasswordRequest;
 import com.pharmacy.demo.dto.request.LoginRequest;
 import com.pharmacy.demo.dto.response.UserResponse;
 import com.pharmacy.demo.entity.Employee;
 import com.pharmacy.demo.enums.EmployeeStatus;
+import com.pharmacy.demo.exception.BadRequestException;
 import com.pharmacy.demo.exception.ForbiddenException;
 import com.pharmacy.demo.exception.UnauthorizedException;
 import com.pharmacy.demo.mapper.EmployeeMapper;
@@ -19,6 +21,7 @@ import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -113,6 +116,44 @@ public class AuthServiceImpl implements AuthService {
                 .filter(employee -> employee.getStatus() == EmployeeStatus.ACTIVE)
                 .map(employeeMapper::toUserResponse)
                 .orElseThrow(UnauthorizedException::new);
+    }
+
+    @Override
+    public LoginResult changePassword(String employeeId, ChangePasswordRequest request) {
+        Employee employee = employeeRepository
+                .findById(employeeId)
+                .filter(found -> found.getStatus() == EmployeeStatus.ACTIVE)
+                .orElseThrow(UnauthorizedException::new);
+        Instant now = clock.instant();
+        if (employee.getLockedUntil() != null && employee.getLockedUntil().isAfter(now)) {
+            throw lockedOut(employee.getLockedUntil());
+        }
+        if (employee.getPasswordHash() == null
+                || !passwordEncoder.matches(request.currentPassword(), employee.getPasswordHash())) {
+            registerFailure(employee, now);
+            throw new BadRequestException(
+                    "Mật khẩu hiện tại không đúng.", Map.of("currentPassword", "Mật khẩu hiện tại không đúng."));
+        }
+        if (request.currentPassword().equals(request.newPassword())) {
+            throw new BadRequestException(
+                    "Mật khẩu mới phải khác mật khẩu hiện tại.",
+                    Map.of("newPassword", "Mật khẩu mới phải khác mật khẩu hiện tại."));
+        }
+        employee.setPasswordHash(passwordEncoder.encode(request.newPassword()));
+        employee.setSecurityVersion(employee.getSecurityVersion() + 1);
+        employee.setFailedLoginCount(0);
+        employee.setLockedUntil(null);
+        employee.setUpdatedAt(now);
+        Employee saved = employeeRepository.save(employee);
+        Duration ttl = properties.security().sessionTtl();
+        activityLogger.log(
+                new Actor(saved.getId(), saved.getFullName(), saved.getRole()),
+                "CHANGE_PASSWORD",
+                "EMPLOYEE",
+                saved.getId(),
+                saved.getUsername(),
+                saved.getFullName() + " đổi mật khẩu");
+        return new LoginResult(employeeMapper.toUserResponse(saved), jwtService.issue(saved, ttl), ttl);
     }
 
     private void registerFailure(Employee employee, Instant now) {

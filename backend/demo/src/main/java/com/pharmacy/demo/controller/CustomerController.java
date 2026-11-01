@@ -6,6 +6,8 @@ import com.pharmacy.demo.dto.request.CustomerRequest;
 import com.pharmacy.demo.dto.response.CustomerDetailResponse;
 import com.pharmacy.demo.dto.response.CustomerResponse;
 import com.pharmacy.demo.dto.response.LoyaltyEntryResponse;
+import com.pharmacy.demo.dto.response.LoyaltySummaryResponse;
+import com.pharmacy.demo.enums.MembershipTier;
 import com.pharmacy.demo.security.Actor;
 import com.pharmacy.demo.service.CustomerService;
 import com.pharmacy.demo.service.LoyaltyService;
@@ -41,10 +43,17 @@ public class CustomerController {
     @GetMapping
     public PageResponse<CustomerResponse> list(
             @RequestParam(required = false) String q,
+            @RequestParam(required = false) MembershipTier tier,
             @RequestParam(required = false) Integer page,
             @RequestParam(required = false) Integer size,
             @RequestParam(required = false) String sort) {
-        return customerService.search(q, PageQuery.of(page, size, sort));
+        return customerService.search(q, tier, PageQuery.of(page, size, sort));
+    }
+
+    @Operation(summary = "Thống kê khách thân thiết theo hạng thành viên")
+    @GetMapping("/loyalty-summary")
+    public LoyaltySummaryResponse loyaltySummary() {
+        return customerService.loyaltySummary();
     }
 
     @Operation(summary = "Tìm khách hàng theo số điện thoại")

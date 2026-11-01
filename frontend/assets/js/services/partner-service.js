@@ -12,6 +12,7 @@ export const customerService = {
   list: (params) => api.get('/customers', params),
   get: (id) => api.get(`/customers/${id}`),
   byPhone: (phone) => api.get('/customers/by-phone', { phone }),
+  loyaltySummary: () => api.get('/customers/loyalty-summary'),
   loyalty: (id) => api.get(`/customers/${id}/loyalty`),
   create: (payload) => api.post('/customers', payload),
   update: (id, payload) => api.put(`/customers/${id}`, payload),

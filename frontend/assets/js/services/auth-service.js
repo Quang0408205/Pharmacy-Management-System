@@ -23,6 +23,11 @@ export const authService = {
       throw error;
     }
   },
+  changePassword: async ({ currentPassword, newPassword }) => {
+    const result = await api.post('/auth/change-password', { currentPassword, newPassword });
+    session.set(userKey, result.user);
+    return result;
+  },
   cachedUser: () => session.get(userKey),
   forgetUser: () => session.remove(userKey),
   activationInfo: (token) => api.get(`/auth/activation/${encodeURIComponent(token)}`),

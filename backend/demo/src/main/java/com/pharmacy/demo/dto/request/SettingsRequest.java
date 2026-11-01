@@ -67,5 +67,29 @@ public record SettingsRequest(
 
             @Min(value = 1, message = "Tỷ lệ đổi điểm tối đa từ 1 đến 100%.")
             @Max(value = 100, message = "Tỷ lệ đổi điểm tối đa từ 1 đến 100%.")
-            Integer maxRedeemPercent) {}
+            Integer maxRedeemPercent,
+
+            @Min(value = 1, message = "Ngưỡng hạng Bạc phải lớn hơn 0.")
+            @Max(value = 100000000000L, message = "Ngưỡng hạng quá lớn.")
+            Long silverThreshold,
+
+            @Min(value = 1, message = "Ngưỡng hạng Vàng phải lớn hơn 0.")
+            @Max(value = 100000000000L, message = "Ngưỡng hạng quá lớn.")
+            Long goldThreshold,
+
+            @Min(value = 1, message = "Ngưỡng hạng Kim cương phải lớn hơn 0.")
+            @Max(value = 100000000000L, message = "Ngưỡng hạng quá lớn.")
+            Long diamondThreshold,
+
+            @Min(value = 100, message = "Hệ số tích điểm tối thiểu 100%.")
+            @Max(value = 500, message = "Hệ số tích điểm tối đa 500%.")
+            Integer silverRate,
+
+            @Min(value = 100, message = "Hệ số tích điểm tối thiểu 100%.")
+            @Max(value = 500, message = "Hệ số tích điểm tối đa 500%.")
+            Integer goldRate,
+
+            @Min(value = 100, message = "Hệ số tích điểm tối thiểu 100%.")
+            @Max(value = 500, message = "Hệ số tích điểm tối đa 500%.")
+            Integer diamondRate) {}
 }

@@ -20,5 +20,10 @@ export const medicineService = {
     form.append('image', file);
     return api.post(`/medicines/${id}/image`, form);
   },
+  uploadImages: (files, overwrite) => {
+    const form = new FormData();
+    files.forEach((file) => form.append('files', file));
+    return api.post(`/medicines/images/bulk?overwrite=${overwrite ? 'true' : 'false'}`, form);
+  },
   removeImage: (id) => api.delete(`/medicines/${id}/image`),
 };

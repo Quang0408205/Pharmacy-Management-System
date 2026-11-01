@@ -1,5 +1,6 @@
 package com.pharmacy.demo.dto.response;
 
+import com.pharmacy.demo.enums.MembershipTier;
 import java.time.Instant;
 import java.util.List;
 
@@ -18,4 +19,8 @@ public record CustomerDetailResponse(
         long invoiceCount,
         long totalSpent,
         Instant lastPurchase,
+        MembershipTier tier,
+        MembershipTier nextTier,
+        long amountToNextTier,
+        int earnRatePercent,
         List<InvoiceSummaryResponse> invoices) {}

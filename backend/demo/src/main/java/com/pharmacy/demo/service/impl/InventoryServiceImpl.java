@@ -46,6 +46,11 @@ public class InventoryServiceImpl implements InventoryService {
         return new InventorySummaryResponse(
                 medicines.size(),
                 active.size(),
+                active.stream()
+                        .filter(medicine -> stock.getOrDefault(medicine.getId(), StockSummary.EMPTY)
+                                        .availableQty()
+                                > 0)
+                        .count(),
                 withStock.size(),
                 withStock.stream().mapToLong(StockBatch::getRemainingQty).sum(),
                 withStock.stream()
@@ -59,7 +64,8 @@ public class InventoryServiceImpl implements InventoryService {
                         .count(),
                 withStock.stream()
                         .filter(batch -> batch.getExpiryDate().isBefore(today))
-                        .count());
+                        .count(),
+                settings.getExpiryWarningDays());
     }
 
     @Override

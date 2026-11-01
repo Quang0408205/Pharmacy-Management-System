@@ -1272,3 +1272,56 @@ th[aria-sort='descending'] .icon {
     color: #000000;
   }
 }
+
+.tier-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-secondary);
+}
+
+.tier-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-left: 4px solid var(--color-border);
+}
+
+.tier-card--silver {
+  border-left-color: var(--color-info, #3b82f6);
+}
+
+.tier-card--gold {
+  border-left-color: var(--color-warning, #f59e0b);
+}
+
+.tier-card--diamond {
+  border-left-color: var(--color-primary);
+}
+
+.tier-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.tier-card__rate,
+.tier-card__hint {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-secondary);
+}
+
+.tier-card__count {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold, 700);
+}
+
+.tier-card__count small {
+  font-size: var(--font-size-secondary);
+  font-weight: var(--font-weight-regular, 400);
+  color: var(--color-text-secondary);
+}

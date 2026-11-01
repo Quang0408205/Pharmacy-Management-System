@@ -65,6 +65,7 @@ const renderHeader = (user, crumbs, title) => html`<header class="app-header">
     <div class="dropdown__panel">
       <div class="dropdown__heading">${user.name}<br /><span class="text-secondary text-small">${user.email}</span></div>
       <div class="dropdown__divider"></div>
+      <a class="dropdown__item" href="${pageUrl('pages/account.html')}">${icon('idCard')} Tài khoản của tôi</a>
       <button type="button" class="dropdown__item" data-action="toggle-theme">${icon('moon')}<span data-theme-label>Chế độ tối</span></button>
       <div class="dropdown__divider"></div>
       <button type="button" class="dropdown__item dropdown__item--danger" data-action="logout">${icon('logout')} Đăng xuất</button>

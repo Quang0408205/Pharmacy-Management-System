@@ -4,6 +4,7 @@ import com.pharmacy.demo.dto.common.PageQuery;
 import com.pharmacy.demo.dto.common.PageResponse;
 import com.pharmacy.demo.dto.request.ChangeMedicineStatusRequest;
 import com.pharmacy.demo.dto.request.MedicineRequest;
+import com.pharmacy.demo.dto.response.BulkImageResultResponse;
 import com.pharmacy.demo.dto.response.CodePreviewResponse;
 import com.pharmacy.demo.dto.response.MedicineResponse;
 import com.pharmacy.demo.enums.MedicineStatus;
@@ -124,6 +125,16 @@ public class MedicineController {
     public MedicineResponse uploadImage(
             @PathVariable String id, @RequestPart("image") MultipartFile image, @AuthenticationPrincipal Actor actor) {
         return imageService.upload(id, image, actor);
+    }
+
+    @Operation(summary = "Tải ảnh thuốc hàng loạt, tên file là mã thuốc, mã vạch hoặc số đăng ký (Admin)")
+    @PostMapping(value = "/images/bulk", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
+    public BulkImageResultResponse uploadImages(
+            @RequestPart("files") List<MultipartFile> files,
+            @RequestParam(defaultValue = "false") boolean overwrite,
+            @AuthenticationPrincipal Actor actor) {
+        return imageService.uploadBulk(files, overwrite, actor);
     }
 
     @Operation(summary = "Xóa ảnh thuốc (Admin)")

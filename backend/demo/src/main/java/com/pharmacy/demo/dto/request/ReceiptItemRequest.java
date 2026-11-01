@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public record ReceiptItemRequest(
         String medicineId,
         String batchCode,
+        Boolean noBatchCode,
         LocalDate manufactureDate,
         LocalDate expiryDate,
         Integer quantity,

@@ -50,7 +50,8 @@ const renderLine = (line, index) => html`<div class="receipt-line" data-line="${
       (field) => html`<div class="form-field">
         <label class="form-label" for="line-${index}-${field.key}">${field.label}${field.required ? html` <span class="required" aria-hidden="true">*</span>` : ''}</label>
         <input class="form-control" id="line-${index}-${field.key}" type="${field.type}" data-field="${field.key}" data-index="${index}" value="${line[field.key] ?? ''}"
-          ${field.min !== undefined ? raw(`min="${field.min}"`) : ''} ${field.step !== undefined ? raw(`step="${field.step}"`) : ''} ${field.placeholder ? raw(`placeholder="${field.placeholder}"`) : ''} />
+          ${field.min !== undefined ? raw(`min="${field.min}"`) : ''} ${field.step !== undefined ? raw(`step="${field.step}"`) : ''} ${field.key === 'batchCode' && line.internal ? raw('disabled placeholder="Tự sinh khi lưu phiếu"') : field.placeholder ? raw(`placeholder="${field.placeholder}"`) : ''} />
+        ${field.key === 'batchCode' ? html`<label class="check text-small"><input type="checkbox" data-internal="${index}" ${line.internal ? raw('checked') : ''} /> Bao bì không có số lô (dùng số lô nội bộ)</label>` : ''}
         <span class="form-error" data-line-error="${index}-${field.key}" role="alert"></span>
       </div>`,
     )}
@@ -200,6 +201,7 @@ startPage({
       state.lines.push({
         medicine,
         batchCode: '',
+        internal: false,
         manufactureDate: '',
         expiryDate: '',
         quantity: 10,
@@ -249,7 +251,8 @@ startPage({
       confirm,
       items: state.lines.map((line) => ({
         medicineId: line.medicine.id,
-        batchCode: line.batchCode,
+        batchCode: line.internal ? '' : line.batchCode,
+        noBatchCode: line.internal,
         manufactureDate: line.manufactureDate,
         expiryDate: line.expiryDate,
         quantity: Number(line.quantity),
@@ -410,6 +413,19 @@ startPage({
       const output = content.querySelector(`[data-line-error="${input.dataset.index}-${input.dataset.field}"]`);
       if (output) output.textContent = '';
       renderTotals();
+    });
+    delegate(content, 'change', '[data-internal]', (event, checkbox) => {
+      const index = Number(checkbox.dataset.internal);
+      const line = state.lines[index];
+      if (!line) return;
+      line.internal = checkbox.checked;
+      const input = content.querySelector(`#line-${index}-batchCode`);
+      input.disabled = line.internal;
+      input.placeholder = line.internal ? 'Tự sinh khi lưu phiếu' : 'VD: L2610-0001';
+      if (line.internal) {
+        input.value = '';
+        line.batchCode = '';
+      }
     });
     refs.supplier.addEventListener('change', () => {
       state.supplierId = refs.supplier.value;

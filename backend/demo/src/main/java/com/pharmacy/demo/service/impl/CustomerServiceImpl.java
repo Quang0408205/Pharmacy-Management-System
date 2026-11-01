@@ -7,9 +7,12 @@ import com.pharmacy.demo.dto.request.CustomerRequest;
 import com.pharmacy.demo.dto.response.CustomerDetailResponse;
 import com.pharmacy.demo.dto.response.CustomerResponse;
 import com.pharmacy.demo.dto.response.InvoiceSummaryResponse;
+import com.pharmacy.demo.dto.response.LoyaltySummaryResponse;
 import com.pharmacy.demo.entity.Customer;
 import com.pharmacy.demo.entity.Invoice;
+import com.pharmacy.demo.entity.embedded.LoyaltySetting;
 import com.pharmacy.demo.enums.InvoiceStatus;
+import com.pharmacy.demo.enums.MembershipTier;
 import com.pharmacy.demo.exception.ConflictException;
 import com.pharmacy.demo.exception.NotFoundException;
 import com.pharmacy.demo.mapper.CustomerMapper;
@@ -22,12 +25,15 @@ import com.pharmacy.demo.service.CodeGenerator;
 import com.pharmacy.demo.service.CodeKind;
 import com.pharmacy.demo.service.CustomerService;
 import com.pharmacy.demo.service.IdGenerator;
+import com.pharmacy.demo.service.LoyaltyService;
+import com.pharmacy.demo.service.SystemSettingService;
 import com.pharmacy.demo.util.PhoneMatcher;
 import com.pharmacy.demo.util.TextSearch;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,18 +68,44 @@ public class CustomerServiceImpl implements CustomerService {
     private final CodeGenerator codeGenerator;
     private final ActivityLogger activityLogger;
     private final IdGenerator idGenerator;
+    private final LoyaltyService loyaltyService;
+    private final SystemSettingService settingService;
     private final MongoTemplate mongoTemplate;
     private final Clock clock;
 
     @Override
-    public PageResponse<CustomerResponse> search(String q, PageQuery query) {
+    public PageResponse<CustomerResponse> search(String q, MembershipTier tier, PageQuery query) {
         Map<String, Purchases> purchases = purchases();
         List<CustomerResponse> items = customerRepository.findAll().stream()
                 .filter(customer -> TextSearch.matchesAny(
                         q, customer.getName(), customer.getCode(), customer.getPhone(), customer.getEmail()))
                 .map(customer -> toResponse(customer, purchases.getOrDefault(customer.getId(), Purchases.EMPTY)))
+                .filter(response -> tier == null || response.tier() == tier)
                 .toList();
         return ListPager.paginate(items, query, SORTABLE, "code,desc");
+    }
+
+    @Override
+    public LoyaltySummaryResponse loyaltySummary() {
+        LoyaltySetting settings = settingService.current().getLoyalty();
+        Map<String, Purchases> purchases = purchases();
+        Map<MembershipTier, Long> counts = new EnumMap<>(MembershipTier.class);
+        for (Customer customer : customerRepository.findAll()) {
+            Purchases own = purchases.getOrDefault(customer.getId(), Purchases.EMPTY);
+            counts.merge(loyaltyService.tierStatus(own.total()).tier(), 1L, Long::sum);
+        }
+        List<LoyaltySummaryResponse.TierSummary> tiers = List.of(
+                tierSummary(MembershipTier.STANDARD, 0, 100, counts),
+                tierSummary(MembershipTier.SILVER, settings.getSilverThreshold(), settings.getSilverRate(), counts),
+                tierSummary(MembershipTier.GOLD, settings.getGoldThreshold(), settings.getGoldRate(), counts),
+                tierSummary(MembershipTier.DIAMOND, settings.getDiamondThreshold(), settings.getDiamondRate(), counts));
+        long members = counts.values().stream().mapToLong(Long::longValue).sum();
+        return new LoyaltySummaryResponse(settings.isEnabled(), members, tiers);
+    }
+
+    private static LoyaltySummaryResponse.TierSummary tierSummary(
+            MembershipTier tier, long minSpent, int ratePercent, Map<MembershipTier, Long> counts) {
+        return new LoyaltySummaryResponse.TierSummary(tier, minSpent, ratePercent, counts.getOrDefault(tier, 0L));
     }
 
     @Override
@@ -84,7 +116,12 @@ public class CustomerServiceImpl implements CustomerService {
                 .map(invoiceMapper::toSummary)
                 .toList();
         return customerMapper.toDetail(
-                customer, purchases.count(), purchases.total(), purchases.lastPurchase(), invoices);
+                customer,
+                purchases.count(),
+                purchases.total(),
+                purchases.lastPurchase(),
+                loyaltyService.tierStatus(purchases.total()),
+                invoices);
     }
 
     @Override
@@ -141,7 +178,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private CustomerResponse toResponse(Customer customer, Purchases purchases) {
-        return customerMapper.toResponse(customer, purchases.count(), purchases.total(), purchases.lastPurchase());
+        return customerMapper.toResponse(
+                customer,
+                purchases.count(),
+                purchases.total(),
+                purchases.lastPurchase(),
+                loyaltyService.tierStatus(purchases.total()));
     }
 
     private void apply(Customer customer, CustomerRequest request, Instant now) {

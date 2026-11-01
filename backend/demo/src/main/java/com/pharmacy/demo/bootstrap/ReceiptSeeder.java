@@ -66,6 +66,7 @@ public class ReceiptSeeder {
         return new ReceiptItemRequest(
                 required(medicineIdOf.apply(text(line, "ma_thuoc")), "medicine"),
                 text(line, "so_lo"),
+                false,
                 receivingDate.minusDays(integer(line, "san_xuat_truoc_ngay_nhap")),
                 today.plusDays(integer(line, "han_dung_sau_so_ngay")),
                 integer(line, "so_luong"),

@@ -16,4 +16,6 @@ public interface MedicineRepository extends MongoRepository<Medicine, String> {
     Optional<Medicine> findByCodeIgnoreCase(String code);
 
     Optional<Medicine> findByBarcode(String barcode);
+
+    Optional<Medicine> findFirstByRegistrationNumberIgnoreCase(String registrationNumber);
 }

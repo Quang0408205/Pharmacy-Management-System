@@ -1,6 +1,7 @@
 package com.pharmacy.demo.controller;
 
 import com.pharmacy.demo.dto.request.ActivateAccountRequest;
+import com.pharmacy.demo.dto.request.ChangePasswordRequest;
 import com.pharmacy.demo.dto.request.LoginRequest;
 import com.pharmacy.demo.dto.request.ResetPasswordRequest;
 import com.pharmacy.demo.dto.response.ActivationInfoResponse;
@@ -63,6 +64,21 @@ public class AuthController {
             throw new UnauthorizedException("UNAUTHORIZED", "Chưa đăng nhập.");
         }
         return new AuthResponse(authService.currentUser(actor.id()));
+    }
+
+    @Operation(summary = "Đổi mật khẩu của chính mình, nhận cookie phiên mới")
+    @PostMapping("/change-password")
+    public ResponseEntity<AuthResponse> changePassword(
+            @AuthenticationPrincipal Actor actor, @Valid @RequestBody ChangePasswordRequest request) {
+        if (actor == null) {
+            throw new UnauthorizedException("UNAUTHORIZED", "Chưa đăng nhập.");
+        }
+        AuthService.LoginResult result = authService.changePassword(actor.id(), request);
+        return ResponseEntity.ok()
+                .header(
+                        HttpHeaders.SET_COOKIE,
+                        cookieService.issue(result.token(), result.ttl()).toString())
+                .body(new AuthResponse(result.user()));
     }
 
     @Operation(summary = "Kiểm tra link kích hoạt tài khoản")
