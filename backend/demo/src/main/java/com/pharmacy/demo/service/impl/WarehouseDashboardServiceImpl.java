@@ -56,7 +56,7 @@ public class WarehouseDashboardServiceImpl implements WarehouseDashboardService 
     public WarehouseDashboardResponse warehouse() {
         LocalDate today = LocalDate.now(clock);
         InventorySummaryResponse inventory = inventoryService.summary();
-        long lowStock = inventory.lowStock() + inventory.outOfStock();
+        long lowStock = inventory.lowStock();
         long pendingReceipts = receiptRepository.countByStatus(ReceiptStatus.DRAFT);
         long openStocktakes = stocktakeRepository.countByStatus(StocktakeStatus.DRAFT)
                 + stocktakeRepository.countByStatus(StocktakeStatus.PENDING_APPROVAL);

@@ -32,6 +32,12 @@ export const mountMovementTable = ({ container }) => {
       { key: 'performedByName', label: 'Thực hiện bởi', sortable: true },
     ],
     fetch: (params) => inventoryService.movements(params),
+
+    validateParams: (params) =>
+      params.from && params.to && params.from > params.to
+        ? 'Ngày bắt đầu không được lớn hơn ngày kết thúc. Vui lòng chọn lại khoảng ngày.'
+        : null,
+
     filters: [
       { type: 'search', name: 'q', placeholder: 'Tìm thuốc, lô, chứng từ, người thực hiện...' },
       { type: 'select', name: 'type', label: 'Loại biến động', options: statusOptions('movement') },

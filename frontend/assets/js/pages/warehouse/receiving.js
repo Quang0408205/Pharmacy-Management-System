@@ -47,14 +47,14 @@ const renderLine = (line, index) => html`<div class="receipt-line" data-line="${
   </div>
   <div class="receipt-line__grid">
     ${lineFields.map(
-      (field) => html`<div class="form-field">
+  (field) => html`<div class="form-field">
         <label class="form-label" for="line-${index}-${field.key}">${field.label}${field.required ? html` <span class="required" aria-hidden="true">*</span>` : ''}</label>
         <input class="form-control" id="line-${index}-${field.key}" type="${field.type}" data-field="${field.key}" data-index="${index}" value="${line[field.key] ?? ''}"
           ${field.min !== undefined ? raw(`min="${field.min}"`) : ''} ${field.step !== undefined ? raw(`step="${field.step}"`) : ''} ${field.key === 'batchCode' && line.internal ? raw('disabled placeholder="Tự sinh khi lưu phiếu"') : field.placeholder ? raw(`placeholder="${field.placeholder}"`) : ''} />
         ${field.key === 'batchCode' ? html`<label class="check text-small"><input type="checkbox" data-internal="${index}" ${line.internal ? raw('checked') : ''} /> Bao bì không có số lô (dùng số lô nội bộ)</label>` : ''}
         <span class="form-error" data-line-error="${index}-${field.key}" role="alert"></span>
       </div>`,
-    )}
+)}
     <div class="receipt-line__subtotal"><span>Thành tiền</span><span data-subtotal="${index}">${formatCurrency(lineSubtotal(line))}</span></div>
   </div>
 </div>`;
@@ -148,10 +148,10 @@ startPage({
       refs.lines.innerHTML = state.lines.length
         ? state.lines.map((line, index) => renderLine(line, index).value).join('')
         : emptyState({
-            title: 'Phiếu nhập chưa có thuốc',
-            message: 'Chọn thuốc ở bên trái để thêm dòng nhập hàng.',
-            iconName: 'inbox',
-          }).value;
+          title: 'Phiếu nhập chưa có thuốc',
+          message: 'Chọn thuốc ở bên trái để thêm dòng nhập hàng.',
+          iconName: 'inbox',
+        }).value;
       renderTotals();
       renderList();
     };
@@ -305,6 +305,63 @@ startPage({
         toast.warning('Phiếu nhập chưa có thuốc', 'Hãy chọn ít nhất một loại thuốc.');
         return;
       }
+
+      if (confirm) {
+        let firstInvalid = null;
+        const today = todayKey();
+
+        state.lines.forEach((line, index) => {
+          const errors = {};
+
+          if (!line.internal && !String(line.batchCode || '').trim()) {
+            errors.batchCode = 'Vui lòng nhập số lô hoặc chọn số lô nội bộ.';
+          }
+
+          if (!line.expiryDate) {
+            errors.expiryDate = 'Vui lòng chọn hạn sử dụng.';
+          } else if (line.expiryDate <= today) {
+            errors.expiryDate = 'Hạn sử dụng phải sau ngày hiện tại.';
+          }
+
+          if (
+            line.manufactureDate &&
+            line.expiryDate &&
+            line.manufactureDate > line.expiryDate
+          ) {
+            errors.manufactureDate = 'Ngày sản xuất không được sau hạn sử dụng.';
+          }
+
+          const quantity = Number(line.quantity);
+          if (!Number.isInteger(quantity) || quantity <= 0) {
+            errors.quantity = 'Số lượng phải là số nguyên lớn hơn 0.';
+          }
+
+          const price = Number(line.purchasePrice);
+          if (!Number.isFinite(price) || price < 0) {
+            errors.purchasePrice = 'Giá nhập không được âm.';
+          }
+
+          Object.entries(errors).forEach(([field, message]) => {
+            const input = content.querySelector(`#line-${index}-${field}`);
+            const output = content.querySelector(
+              `[data-line-error="${index}-${field}"]`
+            );
+
+            if (input) {
+              input.setAttribute('aria-invalid', 'true');
+              if (!firstInvalid) firstInvalid = input;
+            }
+            if (output) output.textContent = message;
+          });
+        });
+
+        if (firstInvalid) {
+          firstInvalid.focus();
+          firstInvalid.scrollIntoView({ block: 'nearest' });
+          return;
+        }
+      }
+
       if (confirm) {
         const ok = await confirmDialog({
           title: 'Xác nhận nhập kho?',

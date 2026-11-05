@@ -37,6 +37,8 @@ const catalog = {
     OUT: ['info', 'Xuất kho'],
     ADJUSTMENT: ['warning', 'Điều chỉnh'],
     WRITE_OFF: ['danger', 'Hủy hàng'],
+    RETURN: ['success', 'Hoàn trả'],
+
   },
   prescription: {
     OTC: ['neutral', 'Không kê đơn'],
@@ -79,7 +81,13 @@ const catalog = {
 
 export const paymentLabels = { CASH: 'Tiền mặt', TRANSFER: 'Chuyển khoản', CARD: 'Thẻ' };
 
-export const movementLabels = { IN: 'Nhập kho', OUT: 'Xuất kho', ADJUSTMENT: 'Điều chỉnh', WRITE_OFF: 'Hủy hàng' };
+export const movementLabels = {
+  IN: 'Nhập kho',
+  OUT: 'Xuất kho',
+  ADJUSTMENT: 'Điều chỉnh',
+  WRITE_OFF: 'Hủy hàng',
+  RETURN: 'Hoàn trả',
+};
 
 export const statusLabel = (kind, value) => (catalog[kind] && catalog[kind][value] ? catalog[kind][value][1] : value);
 

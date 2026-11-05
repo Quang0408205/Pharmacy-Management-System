@@ -42,6 +42,7 @@ export const createDataTable = ({
   pageSize = 10,
   pageSizes = [10, 20, 50],
   defaultSort = '',
+  validateParams = null,
   rowKey = 'id',
   rowActions = null,
   actionsLabel = 'Thao tác',
@@ -64,14 +65,13 @@ export const createDataTable = ({
   const filterNames = filters.map((filter) => filter.name);
 
   container.innerHTML = html`<div class="${card ? 'card' : ''}">
-    ${
-      filters.length || toolbarExtra
-        ? html`<div class="toolbar" role="search">
+    ${filters.length || toolbarExtra
+      ? html`<div class="toolbar" role="search">
           ${filters.map((filter) => renderFilter(filter, state.params[filter.name]))}
           <span class="toolbar__spacer"></span>
           ${toolbarExtra}
         </div>`
-        : ''
+      : ''
     }
     <div class="table-wrap" data-region="body" aria-live="polite"></div>
     <div class="pagination" data-region="pagination"></div>
@@ -85,30 +85,30 @@ export const createDataTable = ({
   const renderHead = () => html`<thead>
     <tr>
       ${columns.map((column) => {
-        const sortKey = column.sortKey || (column.sortable ? column.key : null);
-        const [currentField, direction] = String(state.params.sort || '').split(',');
-        const sorted = sortKey && currentField === sortKey;
-        const ariaSort = sorted ? (direction === 'desc' ? 'descending' : 'ascending') : 'none';
-        const alignClass = column.align === 'right' ? 'num' : '';
-        return html`<th scope="col" class="${alignClass} ${column.className || ''}" ${sortKey ? raw(`aria-sort="${ariaSort}"`) : ''}>
+    const sortKey = column.sortKey || (column.sortable ? column.key : null);
+    const [currentField, direction] = String(state.params.sort || '').split(',');
+    const sorted = sortKey && currentField === sortKey;
+    const ariaSort = sorted ? (direction === 'desc' ? 'descending' : 'ascending') : 'none';
+    const alignClass = column.align === 'right' ? 'num' : '';
+    return html`<th scope="col" class="${alignClass} ${column.className || ''}" ${sortKey ? raw(`aria-sort="${ariaSort}"`) : ''}>
           ${sortKey ? html`<button type="button" class="sort-button" data-sort="${sortKey}">${column.label}${icon(sorted ? (direction === 'desc' ? 'chevronDown' : 'chevronUp') : 'sort')}</button>` : column.label}
         </th>`;
-      })}
+  })}
       ${rowActions ? html`<th scope="col" class="actions">${actionsLabel}</th>` : ''}
     </tr>
   </thead>`;
 
   const renderRows = () => html`<tbody>
     ${state.rows.map((row) => {
-      const interactive = onRowClick ? raw('tabindex="0"') : '';
-      return html`<tr data-key="${row[rowKey]}" class="${onRowClick ? 'is-clickable' : ''}" ${interactive}>
+    const interactive = onRowClick ? raw('tabindex="0"') : '';
+    return html`<tr data-key="${row[rowKey]}" class="${onRowClick ? 'is-clickable' : ''}" ${interactive}>
         ${columns.map((column) => {
-          const content = column.render ? column.render(row) : row[column.key];
-          return html`<td class="${column.align === 'right' ? 'num' : ''} ${column.className || ''}">${content}</td>`;
-        })}
+      const content = column.render ? column.render(row) : row[column.key];
+      return html`<td class="${column.align === 'right' ? 'num' : ''} ${column.className || ''}">${content}</td>`;
+    })}
         ${rowActions ? html`<td class="actions">${rowActions(row)}</td>` : ''}
       </tr>`;
-    })}
+  })}
   </tbody>`;
 
   const renderPagination = () => {
@@ -125,10 +125,10 @@ export const createDataTable = ({
       <nav class="pagination__pages" aria-label="Phân trang">
         <button type="button" class="pagination__button" data-page="${meta.page - 1}" ${meta.page <= 1 ? raw('disabled') : ''} aria-label="Trang trước">${icon('chevronLeft', 'icon--sm')}</button>
         ${pageWindow(meta.page, meta.totalPages).map((value) =>
-          value === 'gap'
-            ? html`<span aria-hidden="true">…</span>`
-            : html`<button type="button" class="pagination__button" data-page="${value}" ${value === meta.page ? raw('aria-current="page"') : ''}>${value}</button>`,
-        )}
+      value === 'gap'
+        ? html`<span aria-hidden="true">…</span>`
+        : html`<button type="button" class="pagination__button" data-page="${value}" ${value === meta.page ? raw('aria-current="page"') : ''}>${value}</button>`,
+    )}
         <button type="button" class="pagination__button" data-page="${meta.page + 1}" ${meta.page >= meta.totalPages ? raw('disabled') : ''} aria-label="Trang sau">${icon('chevronRight', 'icon--sm')}</button>
       </nav>
       <label class="row text-small">Mỗi trang
@@ -144,6 +144,21 @@ export const createDataTable = ({
     const token = state.token;
     bodyRegion.innerHTML = skeletonTable(Math.min(state.params.size, 8)).value;
     paginationRegion.classList.add('hidden');
+
+    const validationMessage = validateParams?.(state.params);
+
+    if (validationMessage) {
+      state.rows = [];
+      state.meta = null;
+
+      bodyRegion.innerHTML = emptyState({
+        title: 'Khoảng ngày không hợp lệ',
+        message: validationMessage,
+        iconName: 'alertCircle',
+      }).value;
+
+      return;
+    }
     try {
       const result = await fetch({ ...state.params });
       if (token !== state.token) return;

@@ -26,9 +26,9 @@ const lineRow = (batches, index, line) => html`<div class="form-grid" data-line=
     <select class="form-control" id="line-batch-${index}" data-field="batchId">
       <option value="">Chọn lô cần hủy</option>
       ${batches.map(
-        (batch) =>
-          html`<option value="${batch.id}" ${batch.id === line.batchId ? 'selected' : ''}>${batchLabel(batch)}</option>`,
-      )}
+  (batch) =>
+    html`<option value="${batch.id}" ${batch.id === line.batchId ? 'selected' : ''}>${batchLabel(batch)}</option>`,
+)}
     </select>
   </div>
   <div class="form-field">
@@ -39,9 +39,9 @@ const lineRow = (batches, index, line) => html`<div class="form-grid" data-line=
     <label class="form-label" for="line-type-${index}">Loại lý do</label>
     <select class="form-control" id="line-type-${index}" data-field="reasonType">
       ${reasonOptions.map(
-        ([value, label]) =>
-          html`<option value="${value}" ${value === line.reasonType ? 'selected' : ''}>${label}</option>`,
-      )}
+  ([value, label]) =>
+    html`<option value="${value}" ${value === line.reasonType ? 'selected' : ''}>${label}</option>`,
+)}
     </select>
   </div>
   <div class="form-field form-field--full">
@@ -52,9 +52,28 @@ const lineRow = (batches, index, line) => html`<div class="form-grid" data-line=
 </div>`;
 
 const openCreate = async (presetBatchId) => {
-  const batches = (await batchService.list({ hasStock: 'true', size: 200, sort: 'expiryDate,asc' })).items.filter(
+
+  const allBatches = [];
+  let page = 1;
+  let totalPages = 1;
+
+  do {
+    const result = await batchService.list({
+      hasStock: 'true',
+      page,
+      size: 200,
+      sort: 'expiryDate,asc',
+    });
+
+    allBatches.push(...result.items);
+    totalPages = result.totalPages;
+    page++;
+  } while (page <= totalPages);
+
+  const batches = allBatches.filter(
     (batch) => batch.status !== 'QUARANTINED',
   );
+
   const defaultLine = (batchId = '') => {
     const batch = batches.find((item) => item.id === batchId);
     return {

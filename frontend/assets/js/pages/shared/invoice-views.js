@@ -20,16 +20,23 @@ export const invoiceSheet = (invoice) => html`<article class="print-sheet" aria-
   <table class="table">
     <thead><tr><th>Thuốc</th><th class="num">SL</th><th class="num">Đơn giá</th><th class="num">Thành tiền</th></tr></thead>
     <tbody>${invoice.items.map(
-      (
-        item,
-      ) => html`<tr><td>${item.medicineName}<br /><small class="text-secondary">${item.allocations.map((allocation) => `Lô ${allocation.batchCode} (HSD ${formatDate(allocation.expiryDate)})`).join(', ')}</small></td>
+  (
+    item,
+  ) => html`<tr><td>${item.medicineName}<br /><small class="text-secondary">${item.allocations.map((allocation) => `Lô ${allocation.batchCode} (HSD ${formatDate(allocation.expiryDate)})`).join(', ')}</small></td>
       <td class="num">${item.quantity} ${item.unit}</td><td class="num">${formatCurrency(item.unitPrice)}</td><td class="num">${formatCurrency(item.subtotal)}</td></tr>`,
-    )}</tbody>
+)}</tbody>
   </table>
-  <div class="summary-lines">
-    <div class="summary-lines__row"><span>Tạm tính</span><span>${formatCurrency(invoice.subtotal)}</span></div>
-    <div class="summary-lines__row"><span>Giảm giá</span><span>-${formatCurrency(invoice.discountAmount)}</span></div>
-    <div class="summary-lines__row summary-lines__row--total"><span>Tổng thanh toán</span><span>${formatCurrency(invoice.total)}</span></div>
+<div class="summary-lines">
+<div class="summary-lines__row"><span>Tạm tính</span><span>${formatCurrency(invoice.subtotal)}</span></div>
+<div class="summary-lines__row"><span>Giảm giá</span><span>-${formatCurrency(invoice.discountAmount)}</span></div>
+${Number(invoice.pointsUsed || 0) > 0 ? html`
+  <div class="summary-lines__row">
+    <span>Sử dụng ${formatNumber(invoice.pointsUsed)} điểm tích lũy</span>
+    <span>-${formatCurrency(invoice.pointsDiscount)}</span>
+  </div>
+` : ''}
+<div class="summary-lines__row summary-lines__row--total"><span>Tổng thanh toán</span><span>${formatCurrency(invoice.total)}</span></div>
+
     <div class="summary-lines__row"><span>${paymentLabels[invoice.paymentMethod]}</span><span>${formatCurrency(invoice.receivedAmount)}</span></div>
     <div class="summary-lines__row"><span>Tiền thừa</span><span>${formatCurrency(invoice.changeAmount)}</span></div>
   </div>
@@ -47,7 +54,7 @@ export const openPrintPreview = (invoice) => {
   return modal;
 };
 
-export const openInvoiceDrawer = async (id, { role, onChanged = () => {} }) => {
+export const openInvoiceDrawer = async (id, { role, onChanged = () => { } }) => {
   const drawer = openDrawer({ title: 'Chi tiết hóa đơn', content: skeletonTable(6) });
   try {
     let invoice = await invoiceService.get(id);
@@ -58,28 +65,35 @@ export const openInvoiceDrawer = async (id, { role, onChanged = () => {} }) => {
         ${invoice.status === 'CANCELLED' ? html`<div class="alert alert--danger">${icon('ban')}<span>Đã hủy: ${invoice.cancelReason}</span></div>` : ''}
         <h3>Nhân viên & khách hàng</h3>
         ${detailList([
-          [
-            'Nhân viên bán',
-            invoice.employee ? `${invoice.employee.name} (${invoice.employee.email})` : invoice.employeeName,
-          ],
-          ['Khách hàng', invoice.customer ? `${invoice.customer.name} · ${invoice.customer.phone}` : 'Khách lẻ'],
-          ['Mã đơn thuốc', invoice.prescriptionCode],
-          ['Ghi chú', invoice.note],
-        ])}
+        [
+          'Nhân viên bán',
+          invoice.employee ? `${invoice.employee.name} (${invoice.employee.email})` : invoice.employeeName,
+        ],
+        ['Khách hàng', invoice.customer ? `${invoice.customer.name} · ${invoice.customer.phone}` : 'Khách lẻ'],
+        ['Mã đơn thuốc', invoice.prescriptionCode],
+        ['Ghi chú', invoice.note],
+      ])}
         <h3>Danh sách thuốc</h3>
         <div class="table-wrap"><table class="table"><thead><tr><th>Thuốc</th><th>Lô xuất (FEFO)</th><th class="num">SL</th><th class="num">Đơn giá</th><th class="num">Thành tiền</th></tr></thead>
           <tbody>${invoice.items.map(
-            (
-              item,
-            ) => html`<tr><td><strong>${item.medicineName}</strong><br /><small class="text-secondary">${item.medicineCode}</small></td>
+        (
+          item,
+        ) => html`<tr><td><strong>${item.medicineName}</strong><br /><small class="text-secondary">${item.medicineCode}</small></td>
             <td>${item.allocations.length ? item.allocations.map((allocation) => html`<div class="text-small">${allocation.batchCode} × ${allocation.quantity} · HSD ${formatDate(allocation.expiryDate)}</div>`) : '—'}</td>
             <td class="num">${formatNumber(item.quantity)} ${item.unit}</td><td class="num">${formatCurrency(item.unitPrice)}</td><td class="num">${formatCurrency(item.subtotal)}</td></tr>`,
-          )}</tbody></table></div>
+      )}</tbody></table></div>
         <h3>Thanh toán</h3>
         <div class="summary-lines">
-          <div class="summary-lines__row"><span>Tạm tính</span><span>${formatCurrency(invoice.subtotal)}</span></div>
-          <div class="summary-lines__row"><span>Giảm giá</span><span>-${formatCurrency(invoice.discountAmount)}</span></div>
-          <div class="summary-lines__row summary-lines__row--total"><span>Tổng thanh toán</span><span>${formatCurrency(invoice.total)}</span></div>
+<div class="summary-lines__row"><span>Tạm tính</span><span>${formatCurrency(invoice.subtotal)}</span></div>
+<div class="summary-lines__row"><span>Giảm giá</span><span>-${formatCurrency(invoice.discountAmount)}</span></div>
+${Number(invoice.pointsUsed || 0) > 0 ? html`
+  <div class="summary-lines__row">
+    <span>Sử dụng ${formatNumber(invoice.pointsUsed)} điểm tích lũy</span>
+    <span>-${formatCurrency(invoice.pointsDiscount)}</span>
+  </div>
+` : ''}
+<div class="summary-lines__row summary-lines__row--total"><span>Tổng thanh toán</span><span>${formatCurrency(invoice.total)}</span></div>
+
           <div class="summary-lines__row"><span>Phương thức</span><span>${paymentLabels[invoice.paymentMethod]}</span></div>
           <div class="summary-lines__row"><span>Khách đưa</span><span>${formatCurrency(invoice.receivedAmount)}</span></div>
           <div class="summary-lines__row"><span>Tiền thừa</span><span>${formatCurrency(invoice.changeAmount)}</span></div>
